@@ -1,0 +1,6 @@
+﻿1.使用配置库的信息
+	1.帮助
+	2.权限配置相关：功能项（Sys_Function）、Page信息（Sys_Search_Page）、模块信息（Sys_Module）
+	3.下拉配置相关：Sys_ComboBox
+	4.保存命令相关：Sys_Table_Info
+	5.查询配置相关：Sys_Search_Page_WhereConfig

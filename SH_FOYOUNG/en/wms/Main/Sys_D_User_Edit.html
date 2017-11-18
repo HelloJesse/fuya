@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<script src="../../../js/boot.js" type="text/javascript"></script>
+<script src="../../../js/core.js" type="text/javascript"></script>
+<script src="../../../js/jquery.min.js" type="text/javascript"></script>
+<title>岗位INFO</title>
+</head>
+<body>
+    <div class="mini-toolbar" id="toolbar">
+        <a class="mini-button" iconcls="icon-add" onclick="Add()">增加</a>
+        <a class="mini-button" iconcls="icon-save" onclick="DataSave()">SAVE</a>
+        <a class="mini-button" iconcls="icon-remove">DEL</a>
+        <a class="mini-button" iconcls="icon-ok" onclick="UpdateActivedSech('act')">启用</a>
+        <a class="mini-button" iconcls="icon-close" onclick="UpdateActivedSech('disact')">STOP USING</a>
+    </div>
+    <div id="tabs1" class="mini-tabs" activeindex="0" style="width:100%;height:100%;" bodystyle="padding:0;border:0;">
+        <div id="tabform" title="岗位INFO" style="">
+            <div id="form1">
+                <input id="ID" name="ID" class="mini-hidden" />
+                <fieldset style="width:800px;border:solid 1px #aaa;">
+                    <legend>SHIPMENT INFO</legend>
+                    <table style="width:100%;" cellspacing="5px" cellpadding="5px">
+                        <tr>
+                            <td style="width:120px"><label for="CODE$text" style="width:100%">CODE：</label></td>
+                            <td style="width: 280px">
+                                <input id="CODE" emptytext="必填" name="CODE" class="mini-textbox" style="width:100%" required="true" requirederrortext="CODE不能为空！" />
+                            </td>
+                            <td style="width:120px"><label for="NAME$text" style="width:100%">PORT CHINESE NAME：</label></td>
+                            <td style="width: 280px">
+                                <input id="NAME" emptytext="必填" name="NAME" class="mini-textbox" style="width:100%" required="true" requirederrortext="PORT CHINESE NAME不能为空！" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="NAME_E$text">AGENT ENGLISH NAME：</label></td>
+                            <td >
+                                <input id="NAME_E" name="NAME_E" class="mini-textbox" style="width:100%" />
+                            </td>
+                            <td><label for="USER_PWD$text">密码：</label></td>
+                            <td >
+                                <input id="USER_PWD" name="USER_PWD" onvaluechanged="OnClientValueChange" class="mini-password" style="width:100%" required="true" requirederrortext="密码不能为空！" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="USER_TYPE$text">岗位TYPE：</label></td>
+                            <td>
+                                <div style="width:100%" id="USER_TYPE" name="USER_TYPE" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                                     allowinput="true" emptytext="请选择..."
+                                    showclose="true" oncloseclick="onCloseClick">
+                                    <div property="columns">
+                                        <div header="CODE" field="CODE" width="80"></div>
+                                        <div header="NULL" field="NAME" width="100%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><label for="CompanyID$text">所属公司：</label></td>
+                            <td>
+                                <div style="width:100%" id="CompanyID" name="CompanyID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                                     allowinput="true" emptytext="请选择..." required="true" requirederrortext="所属公司不能为空！"
+                                     showclose="true" oncloseclick="onCloseClick" onvaluechanged="onCompanyChanged">
+                                    <div property="columns">
+                                        <div header="CODE" field="CODE" width="80"></div>
+                                        <div header="NULL" field="NAME" width="100%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="DepartmentID$text">所属部门：</label></td>
+                            <td>
+                                <div style="width:100%" id="DepartmentID" name="DepartmentID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                                     allowinput="true" emptytext="请选择..." required="true" requirederrortext="所属部门不能为空！" showclose="true" oncloseclick="onCloseClick">
+                                    <div property="columns">
+                                        <div header="CODE" field="CODE" width="80"></div>
+                                        <div header="NULL" field="NAME" width="100%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><label for="Activated$text">YESNO 启用：</label></td>
+                            <td>
+                                <input id="Activated" name="Activated" class="mini-checkbox" readonly="readonly" />
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset style="width:800px;border:solid 1px #aaa;">
+                    <legend>联系INFO</legend>
+                    <table style="width:100%;" cellspacing="5px" cellpadding="5px">
+                        <tr>
+                            <td style="width:100px"><label for="TELE$text">MOBILE：</label></td>
+                            <td style="width:165px">
+                                <input id="TELE" name="TELE" vtype="int" class="mini-textbox" style="width:100%" />
+                            </td>
+                            <td style="width:100px"><label for="MOBILE$text">座机：</label></td>
+                            <td style="width:165px">
+                                <input id="MOBILE" name="MOBILE" class="mini-textbox" style="width:100%" />
+                            </td>
+                            <td style="width:100px"><label for="FAX$text">FAX：</label></td>
+                            <td style="width:170px">
+                                <input id="FAX" name="FAX" class="mini-textbox" style="width:100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="QQ$text">QQ：</label></td>
+                            <td>
+                                <input id="QQ" name="QQ" class="mini-textbox" style="width:100%" />
+                            </td>
+                            <td><label for="WinXin$text">微信：</label></td>
+                            <td>
+                                <input id="WinXin" name="WinXin" class="mini-textbox" style="width:100%" />
+                            </td>
+                            <td><label for="EMAIL$text">Email：</label></td>
+                            <td>
+                                <input id="EMAIL" name="EMAIL" class="mini-textbox" vtype="email" style="width:100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  style="width:100px"><label for="ADDRESS$text">ADDRESS：</label></td>
+                            <td colspan="5"  style="width:300px">
+                                <input id="ADDRESS" name="ADDRESS" class="mini-textbox" style="width:100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  style="width:100px"><label for="REMARK$text">NOTE：</label></td>
+                            <td colspan="5"  style="width:300px">
+                                <input id="REMARK" name="REMARK" class="mini-textbox" style="width:100%" />
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset style="width:800px;border:solid 1px #aaa;">
+                    <legend>系统INFO</legend>
+                    <table style="width:100%;" cellspacing="5px">
+                        <tr>
+                            <td style="width:80px">DOC CREATED BY：</td>
+                            <td style="width:120px"><input style="width:100%" id="CREATE_NAME" name="CREATE_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                            <td style="width:80px">DOC CREATED DATE：</td>
+                            <td style="width:140px"><input style="width:100%" id="CREATE_DATE" name="CREATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                            <td style="width:80px">UPDATE BY ：</td>
+                            <td style="width:120px"><input style="width:100%" id="UPDATE_NAME" name="UPDATE_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                            <td style="width:80px">UPDATE DATE：</td>
+                            <td style="width:140px"><input style="width:100%" id="UPDATE_DATE" name="UPDATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                         </tr>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+        <div id="form2" title="ROLE MAN.INFO">
+            <a class="mini-button" plain="true" iconCls="icon-save" onclick="saveViewRoleID">SAVE</a>
+            <div class="mini-fit">
+                <ul id="tree_role" class="mini-tree" url="" style="width:100%;" allowSelect="true"
+                    showTreeIcon="true" textField="NAME" idField="ID" showCheckBox="true"  parentField="pid" resultAsTree="false" expandOnNodeClick="true"   >        
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="../../../wms/Main/Sys_D_User_Edit.js" type="text/javascript"></script>
+</body>
+</html>

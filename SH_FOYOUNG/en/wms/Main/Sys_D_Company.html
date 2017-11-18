@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>公司管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../../js/boot.js" type="text/javascript"></script>
+    <style type="text/css">
+        html, body
+        {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="mini-toolbar" id="toolbar">
+    </div>
+    <div id="form1">
+        <input id="IDS" name="IDS" class="mini-hidden" />
+        <fieldset style="width: 800px;">
+            <legend>SEARCH FORM</legend>
+            <table border="0" cellpadding="1" cellspacing="2" style="width: 100%">
+                <tr>
+                    <td style="width: 80px;">CODE：</td>
+                    <td style="width: 120px;">
+                        <input name="CODE" id="CODE" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">PORT CHINESE NAME：</td>
+                    <td style="width: 120px;">
+                        <input id="Name" name="Name" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">AGENT ENGLISH NAME：</td>
+                    <td style="width: 120px;">
+                        <input id="Name_E" name="Name_E" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">上级CODE：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="PARENT_ID" name="PARENT_ID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="CODE" width="60" field="CODE"></div>
+                                <div header="NULL" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 80px;">中文简称：</td>
+                    <td style="width: 120px;">
+                        <input id="SHORT_NAME" name="SHORT_NAME" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">ENGLISH NAME SHORT TERM：</td>
+                    <td style="width: 120px;">
+                        <input id="SHORT_NAME_E" name="SHORT_NAME_E" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">所属COUNTRY：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="COUNTRY_ID" name="COUNTRY_ID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="CODE" width="60" field="CODE"></div>
+                                <div header="NULL" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 80px;">所属PROVINCE：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="PROVINCE_ID" name="PROVINCE_ID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220" showclose="true" oncloseclick="onCloseClick" onvaluechanged="onProviceChanged">
+                            <div property="columns">
+                                <div header="CODE" width="60" field="CODE"></div>
+                                <div header="NULL" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 80px;">所属CITY：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="CITY_ID" name="CITY_ID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="CODE" width="60" field="CODE"></div>
+                                <div header="NULL" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 80px;">TEL：</td>
+                    <td style="width: 120px;">
+                        <input id="TELE" name="TELE" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">ADDRESS：</td>
+                    <td style="width: 120px;">
+                        <input id="ADDRESS" name="ADDRESS" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">邮编：</td>
+                    <td style="width: 120px;">
+                        <input id="POST_CODE" name="POST_CODE" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td style="width: 80px;">DOC CREATED BY：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="CREATE_BY" name="CREATE_BY"   textName="CREATE_NAME" class="mini-autocomplete" textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220px" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="CODE" width="60px" field="CODE"></div>
+                                <div header="NULL" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td style="width: 80px;">DOC CREATED DATE：</td>
+                    <td style="width: 120px;">
+                        <input id="CREATE_DATE_BEGIN" name="CREATE_DATE_BEGIN" class="mini-datepicker" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">TO：</td>
+                    <td style="width: 120px;">
+                        <input id="CREATE_DATE_END" name="CREATE_DATE_END" class="mini-datepicker" style="width: 100%;" />
+                    </td>
+
+                <td>YESNO 启用：</td>
+                <td>
+                    <div style="width:100%" id="Activated" name="Activated" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                         allowinput="true" emptytext="请选择..."
+                         showclose="true" oncloseclick="onCloseClick">
+                        <div property="columns">
+                            <div header="NULL" field="NAME"></div>
+                        </div>
+                    </div>
+                </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 80px;">UPDATE BY ：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="UPDATE_BY" name="UPDATE_BY" textName="UPDATE_NAME" class="mini-autocomplete" textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220px" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="CODE" width="60px" field="CODE"></div>
+                                <div header="NULL" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 80px;">UPDATE DATE：</td>
+                    <td style="width: 120px;">
+                        <input id="UPDATE_DATE_BEGIN" name="UPDATE_DATE_BEGIN" class="mini-datepicker" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">TO：</td>
+                    <td style="width: 120px;">
+                        <input id="UPDATE_DATE_END" name="UPDATE_DATE_END" class="mini-datepicker" style="width: 100%;" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+    <div class="mini-fit">
+        <div id="grdList" class="mini-datagrid" style="width: 100%; height: 100%;" pagerbuttons="#grdexcelbutton" allowalternating="true"
+            url="../../../data/SearchManager.ashx?PageID=4" idfield="ID" allowresize="true" sizelist="[20,30,50,100]" pagesize="20" multiselect="true">
+            <div property="columns">
+                <div type="indexcolumn"></div>
+                <div type="checkcolumn"></div>
+                <div field="CODE" width="80" headeralign="center" allowsort="true">CODE</div>
+                <div field="NAME" width="80" headeralign="center" allowsort="true">PORT CHINESE NAME</div>
+                <div field="NAME_E" width="80" headeralign="center">AGENT ENGLISH NAME</div>
+                <div field="SHORT_NAME" width="80" headeralign="center">中文简称</div>
+                <div field="SHORT_NAME_E" width="80" headeralign="center">ENGLISH NAME SHORT TERM</div>
+                <div field="PARENT_NAME" width="80" headeralign="center">上级公司简称</div>
+                <div field="CountryName" width="80" headeralign="center">所属COUNTRY</div>
+                <div field="ProvinceName" width="80" headeralign="center">所属PROVINCE</div>
+                <div field="CityName" width="80" headeralign="center">所属CITY</div>
+                <div field="TELE" width="80" headeralign="center">TEL</div>
+                <div field="FAX" width="80" headeralign="center">FAX</div>
+                <div field="EMAIL" width="80" headeralign="center">EMAIL</div>
+                <div field="Activated" width="80" headeralign="center" renderer="onBoolRenderer">YESNO 启用</div>
+                <div field="POST_CODE" width="80" headeralign="center">邮编</div>
+                <div field="ADDRESS" width="80" headeralign="center">ADDRESS</div>
+                <div field="REMARK" width="80" headeralign="center">NOTE</div>
+                <div header="系统INFO" headeralign="center">
+                    <div property="columns">
+                        <div field="CREATE_NAME" width="80px" headeralign="center" allowsort="true">DOC CREATED BY</div>
+                        <div field="CREATE_DATE" width="140px" headeralign="center" allowsort="true" renderer="onDateTimeRenderer">DOC CREATED DATE</div>
+                        <div field="UPDATE_NAME" width="80px" headeralign="center" allowsort="true">UPDATE BY </div>
+                        <div field="UPDATE_DATE" width="140px" headeralign="center" renderer="onDateTimeRenderer" allowsort="true">UPDATE DATE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="grdexcelbutton"><span class="separator"></span><a class="mini-button" iconcls="icon-excle" tooltip="EXPORT Excle" plain="true" onclick="ExportExcel('grdList')" id="add"></a></div>
+    <iframe id="exportIFrame" style="display: none;"></iframe>
+    <!--EXPORT Excel相关HTML-->
+    <form id="excelForm" action="../../../data/ToExcle.aspx?PageID=4" method="post" target="excelIFrame">
+        <input type="hidden" name="columns" id="excelData" />
+    </form>
+    <iframe id="excelIFrame" name="excelIFrame" style="display: none;"></iframe>
+
+    <script src="../../../wms/Main/Sys_D_Company.js" type="text/javascript"></script>
+    <script src="../../../js/Search.js" type="text/javascript"></script>
+</body>
+</html>

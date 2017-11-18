@@ -1,0 +1,344 @@
+﻿::-webkit-scrollbar{width: 7px; height: 7px;}
+::-webkit-scrollbar-track{/*border-radius: 10px;*/ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);}
+::-webkit-scrollbar-track:hover{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4); background-color: rgba(0,0,0,0.01);}
+::-webkit-scrollbar-track:active{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4); background-color: rgba(0,0,0,0.05);}
+::-webkit-scrollbar-thumb{background-color: rgba(0,0,0,0.05); /*border-radius: 10px;*/ -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);}
+::-webkit-scrollbar-thumb{background-color: rgba(0,0,0,0.2); /*border-radius: 10px;*/ -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);}
+::-webkit-scrollbar-thumb:hover{background-color: rgba(0,0,0,0.4); -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);}
+::-webkit-scrollbar-thumb:active{background-color: rgba(0,0,0,0.4);}  
+
+body {
+            margin: 0px;
+            padding: 0px;
+            font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;
+            color: #000000;
+        }
+
+
+        .box {
+            margin: 0px;
+            padding: 0px;
+            min-height: 65px;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        .box-title {
+            height: 27px;
+            line-height: 27px;
+            text-indent: 7px;
+            border-bottom: 1px solid #ccc;
+            background-color: #F2F2F2;
+            background: -webkit-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+            background: -moz-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+            background: -o-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+            background: linear-gradient(to bottom,#ffffff 0,#F2F2F2 100%);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#F2F2F2,GradientType=0);
+        }
+
+            .box-title img {
+                padding-bottom: 3px;
+                vertical-align: middle;
+            }
+
+        .box-content {
+            height: auto;
+            padding: 7px;
+            line-height: 20px;
+        }
+
+            .box-content a {
+                color: #000000;
+                text-decoration: none;
+            }
+
+                .box-content a:link {
+                    color: #000000;
+                    text-decoration: none;
+                }
+
+        .Task {
+            width: 165px;
+            height: 110px;
+            margin: 20px;
+            display: block;
+            position: relative;
+            cursor: pointer;
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+            .Task i {
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                display: block;
+                width: 12px;
+                height: 12px;
+                background: url(../images/dispose.png) repeat-x;
+            }
+
+            .Task .centre {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                margin-bottom: 5px;
+            }
+
+            .Task .Number {
+                position: absolute;
+                top: -3px;
+                left: 56px;
+                margin-bottom: 5px;
+                color: #fff;
+                font-size: 45px;
+                font-family: Microsoft Yahei;
+                width: 85px;
+                text-align: center;
+            }
+
+            .Task .text {
+                position: absolute;
+                top: 87px;
+                left: 18px;
+                color: #fff;
+                font-size: 13px;
+                font-family: Microsoft Yahei;
+            }
+
+        .bd {
+            border: 1px solid #ccc;
+        }
+
+        .todayInfoPanelTab {
+            height: 32px;
+            line-height: 32px;
+            padding-top: 0px;
+            padding-right: 0px;
+            padding-bottom: 0px;
+            padding-left: 5px;
+            border-top: 0px !important;
+            border-right-width: 0px !important;
+            border-bottom-width: 1px !important;
+            border-left-width: 0px !important;
+        }
+
+        .settingtable {
+            background-image: none;
+            background-attachment: scroll;
+            background-repeat: repeat;
+            background-position-x: 0%;
+            background-position-y: 0%;
+            background-color: #F7F7F7;
+        }
+
+        .rightPanelTitle_normal .tab_list {
+            line-height: 15px;
+            padding-top: 6px;
+            padding-right: 10px;
+            padding-bottom: 6px;
+            padding-left: 10px;
+            font-size: 12px;
+            margin-top: 4px;
+            margin-right: 5px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            border-top-width: 1px;
+            border-right-width: 1px;
+            border-left-width: 1px;
+            float: left;
+            -moz-border-radius-topright: 7px;
+            -moz-border-radius-topleft: 7px;
+            -webkit-border-top-right-radius: 7px;
+            -webkit-border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+            border-top-left-radius: 7px;
+            cursor: pointer;
+        }
+
+        .rightPanelTitle_normal .actived {
+            border-bottom-color: #fff;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            background-image: none;
+            background-attachment: scroll;
+            background-repeat: repeat;
+            background-position-x: 0px;
+            background-position-y: 0px;
+            background-color: rgb(255,255,255);
+            -moz-border-radius-topright: 7px;
+            -moz-border-radius-topleft: 7px;
+            -webkit-border-top-right-radius: 7px;
+            -webkit-border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+            border-top-left-radius: 7px;
+        }
+
+        /*自定义复选框（跟按钮一样 效果非常好）end*/
+        /*表格begin*/
+        .grid {
+            margin: 0px;
+            border-collapse: collapse;
+            table-layout: fixed;
+            width:100%;
+        }
+
+            .grid thead td {
+                border-top: 1px solid #ccc;
+                border-left: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                text-align: left;
+                text-overflow: ellipsis;
+                font-weight: normal;
+                word-break: keep-all;
+                overflow: hidden;
+                background-color: #F7F7F7;
+            }
+
+                .grid thead td .table-header {
+                    padding: 6px 2px;
+                    background-color: #F2F2F2;
+                    background: -webkit-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+                    background: -moz-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+                    background: -o-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+                    background: linear-gradient(to bottom,#ffffff 0,#F2F2F2 100%);
+                    background-repeat: repeat-x;
+                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#F2F2F2,GradientType=0);
+                }
+
+            .grid tbody td {
+                text-align: left;
+                border-bottom: 1px solid #ccc;
+                border-left: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+                height: 22px;
+                word-break: break-all;
+            }
+
+            .grid .txt {
+                border: 0px solid #fff;
+                padding: 0px;
+                height: 22px;
+                line-height: 22px;
+                width: 100%;
+                font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;
+                font-size: 9pt;
+                color: #000000;
+            }
+
+            .grid .disabled {
+                background-color: #F7F7F7;
+            }
+
+            .grid .txtselect {
+                border: 0px solid #fff;
+                height: 22px;
+                line-height: 22px;
+                display: inline-block;
+                width: 100%;
+                font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;
+                font-size: 9pt;
+                color: #000000;
+            }
+
+            .grid .td-div {
+                background-color: #F7F7F7;
+                color: #222;
+                cursor: pointer;
+            }
+
+            .grid td img {
+                vertical-align: middle;
+                border: 0px solid #fff;
+            }
+
+            .grid tbody .selected {
+                background-color: #4A5B79;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .grid tbody .tdhover {
+                background-color: #eee;
+                cursor: pointer;
+            }
+
+            .grid .tdwarning {
+                border-bottom: 1px solid #E74D3C;
+            }
+
+        .groupgrid {
+            margin: 0px;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+            .groupgrid thead td {
+                border-bottom: 1px solid #ccc;
+                text-align: left;
+                padding: 6px 2px;
+                color: #666;
+                font-weight: bold;
+                background-color: #F7F7F7;
+            }
+
+            .groupgrid tbody td {
+                text-align: left;
+                border-bottom: 1px solid #ccc;
+                padding: 5px 2px;
+                word-break: break-all;
+            }
+
+                .groupgrid tbody td img {
+                    vertical-align: middle;
+                    border: 0px solid #fff;
+                }
+
+                .groupgrid tbody td .grouptitle {
+                    float: left;
+                    font-weight: bold;
+                }
+
+            .groupgrid tbody .active {
+                background-color: #4A5B79;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .groupgrid tbody .tdhover {
+                background-color: #eee;
+                cursor: pointer;
+            }
+        /*表格end*/
+
+        a {
+            display:block;
+            width:100%;
+            height:100%;
+        }
+        a:link {
+            text-decoration: none;
+        }
+
+            a:visited {
+                /*color: #32CD32;*/
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #4169E1;
+                text-decoration: none;
+            }
+
+        a:active {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+         .grid tbody td {
+            padding-left: 3px;
+        }

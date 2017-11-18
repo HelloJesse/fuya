@@ -1,0 +1,10 @@
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\bin\Debug\TestConsole.exe
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\bin\Debug\TestConsole.pdb
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\obj\Debug\TestConsole.csproj.CoreCompileInputs.cache
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\obj\Debug\TestConsole.exe
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\obj\Debug\TestConsole.pdb
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\bin\Debug\VLP.NAV.dll
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\bin\Debug\Nordasoft.Sql.dll
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\bin\Debug\Nordasoft.Common.dll
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TestConsole\bin\Debug\VLP.NAV.pdb

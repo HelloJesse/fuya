@@ -1,0 +1,604 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nordasoft.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Nordasoft.Common.Result">
+            <summary>
+            执行结果类
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.Result.m_Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.Result.m_TipMessage">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.Result.#ctor">
+            <summary>
+            构造体
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.Result.#ctor(Nordasoft.Common.ExecuteResultType,System.String)">
+            <summary>
+            构造体
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.Result.#ctor(System.String,System.String)">
+            <summary>
+            构造体
+            </summary>
+            <param name="errTipTitle">错误信息提示标题</param>
+            <param name="errTipMessage">错误描述</param>
+        </member>
+        <member name="M:Nordasoft.Common.Result.#ctor(System.String,System.Exception)">
+            <summary>
+            构造体
+            </summary>
+            <param name="errTipTitle">错误信息提示标题</param>
+            <param name="err">错误实体</param>
+        </member>
+        <member name="P:Nordasoft.Common.Result.Type">
+            <summary>
+            运行结果类型
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Common.Result.TipMessage">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Common.ExecuteResultType">
+            <summary>
+            执行结果类型
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.ExecuteResultType.Error">
+            <summary>
+            执行错误
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.ExecuteResultType.Succeed">
+            <summary>
+            执行成功
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Common.IO.FileLog">
+            <summary>
+            文件日志
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.IO.FileLog.m_Size">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.FileLog.#ctor(System.String,System.String)">
+            <summary>
+            构造体
+            </summary>
+            <param name="filename">文件名</param>
+            <remarks>默认文件大小为10M</remarks>
+        </member>
+        <member name="M:Nordasoft.Common.IO.FileLog.#ctor(System.String,System.String,System.Int16)">
+            <summary>
+            构造体
+            </summary>
+            <param name="filePath">文件路径</param>
+            <param name="fileName">文件名</param>
+            <param name="size">文件大小(M),当文件大于size时,系统会自动保存,然后新建一个文件</param>
+        </member>
+        <member name="M:Nordasoft.Common.IO.FileLog.CreateFile">
+            <summary>
+            创建日志文件
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.FileLog.AddLogInfo(System.String,System.String)">
+            <summary>
+            添加日志信息
+            </summary>
+            <param name="value"></param>
+            <param name="detailInfo">详细信息</param>
+        </member>
+        <member name="M:Nordasoft.Common.IO.FileLog.AddLogInfo(System.String)">
+            <summary>
+            添加日志信息
+            </summary>
+            <param name="value"></param>
+            <param name="detailInfo">详细信息</param>
+        </member>
+        <member name="T:Nordasoft.Common.IO.Compress">
+            <summary>
+            压缩
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Compress.CompressData(System.String)">
+            <summary>
+            压缩字节
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Compress.CompressData(System.Byte[])">
+            <summary>
+            压缩字节
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Compress.CompressData(System.String,System.String)">
+            <summary>
+            压缩文件，并生成新的文件
+            </summary>
+            <param name="sourceFile"></param>
+            <param name="destinationFile"></param>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Compress.DeCompressData(System.Byte[])">
+            <summary>
+            压缩字节
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Compress.DeCompress(System.Byte[])">
+            <summary>
+            解压数据到内存流
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Compress.DeCompressData(System.String)">
+            <summary>
+            解压缩
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Compress.DeCompressData(System.String,System.String)">
+            <summary>
+            压缩文件，并生成新的文件
+            </summary>
+            <param name="sourceFile"></param>
+            <param name="destinationFile"></param>
+        </member>
+        <member name="T:Nordasoft.Common.ConvertType">
+            <summary>
+            转换类型
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.ConvertType.Simplified">
+            <summary>
+            简体
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.ConvertType.Traditional">
+            <summary>
+            繁体
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Common.ConvertEnum`1">
+            <summary>
+            转换枚举类型
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Nordasoft.Common.ConvertEnum`1.Convert(System.String)">
+            <summary>
+            将字符串转换为枚举类型
+            </summary>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.Convert.SCTCConvert(Nordasoft.Common.ConvertType,Nordasoft.Common.ConvertType,System.String)">
+            <summary>
+            字符串转换
+            </summary>
+            <param name="sourceType">源类型</param>
+            <param name="desType">目标类型</param>
+            <param name="strSource">源字符串</param>
+            <returns>目标字符串</returns>
+        </member>
+        <member name="M:Nordasoft.Common.Convert.SimpleChineseToTraditionalChinese(System.String)">
+            <summary>
+            简体转繁体
+            </summary>
+            <param name="source">简体字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.Convert.TraditionalChineseToSimpleChinese(System.String)">
+            <summary>
+            繁体转简体
+            </summary>
+            <param name="source">繁体字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.Ime.#ctor(System.Windows.Forms.Form)">
+            <summary>
+            构造体
+            </summary>
+            <param name="frm"></param>
+        </member>
+        <member name="M:Nordasoft.Common.Ime.SetCase(System.IntPtr,System.Boolean)">
+            <summary>
+            设置全半角
+            </summary>
+            <param name="isSBCCase">是否为全角 true - 全角 false - 半角</param>
+        </member>
+        <member name="T:Nordasoft.Common.IO.Ini">
+            <summary>
+            配置文件类，最终类
+            </summary>
+            <remarks>很简单的一个类</remarks>
+        </member>
+        <member name="F:Nordasoft.Common.IO.Ini.m_strIniFilePath">
+            <summary>
+            配置文件路径
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.IO.Ini.m_bIsLoad">
+            <summary>
+            是否已经初始化
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.IO.Ini.m_arrProperties">
+            <summary>
+            属性值数组
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.#ctor(System.String)">
+            <summary>
+            重载构造函数
+            </summary>
+            <param name="a_strIniFilePath">配置文件路径</param>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.AddProperty(System.String,System.String)">
+            <summary>
+            添加属性
+            </summary>
+            <param name="a_strName">属性名称</param>
+            <param name="a_strValue">属性值</param>
+            <exception cref="T:System.Exception"></exception>
+            <remarks>如果已经有指定属性值，抛出异常</remarks>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.Exists(System.String)">
+            <summary>
+            检测属性是否存在
+            </summary>
+            <param name="propertyName">属性名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.SetProperty(System.String,System.String)">
+            <summary>
+            设置属性值
+            </summary>
+            <param name="a_strName">属性名称</param>
+            <param name="a_strValue">属性值</param>
+            <exception cref="T:System.Exception"></exception>
+            <remarks>改变已有的属性值,如果没有找到指定属性，则直接添加</remarks>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.DelProperty(System.String)">
+            <summary>
+            删除属性
+            </summary>
+            <param name="a_strName">属性名称</param>
+            <remarks>如果没有找到属性则什么也不做</remarks>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.GetProperty(System.String)">
+            <summary>
+            取得指定属性值
+            </summary>
+            <param name="a_strName">属性名称</param>
+            <returns>如果找不到该属性，返回 null</returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.GetDecryptProperty(System.String)">
+            <summary>
+            取得指定属性值
+            </summary>
+            <param name="a_strName">属性名称</param>
+            <returns>如果找不到该属性，返回null</returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.Save">
+            <summary>
+            保存配置文件
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.Load">
+            <summary>
+            读取配置文件
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.AddSecurityProperty(System.String,System.String)">
+            <summary>
+            添加加密属性
+            </summary>
+            <param name="a_strName">属性名称</param>
+            <param name="a_strValue">属性值</param>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.SetSecurityProperty(System.String,System.String)">
+            <summary>
+            设置属性值
+            </summary>
+            <param name="a_strName">属性名称</param>
+            <param name="a_strValue">属性值</param>
+            <exception cref="T:System.Exception"></exception>
+            <remarks>改变已有的属性值,如果没有找到指定属性，则直接添加</remarks>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Ini.Close">
+            <summary>
+            关闭
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Common.IO.Ini.IniFilePath">
+            <summary>
+            配置文件路径
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Common.IO.Property">
+            <summary>
+            属性类
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.IO.Property.m_strName">
+            <summary>
+            属性名称
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Common.IO.Property.m_strValue">
+            <summary>
+            属性值
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Property.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Property.#ctor(System.String,System.String)">
+            <summary>
+            重载构造函数
+            </summary>
+            <param name="a_strName">属性名称</param>
+            <param name="a_strValue">属性值</param>
+        </member>
+        <member name="P:Nordasoft.Common.IO.Property.Name">
+            <summary>
+            存取属性名称
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Common.IO.Property.Value">
+            <summary>
+            存取属性值
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Common.IO.Cryptography">
+            <summary>
+            Class1 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Cryptography.Encrypt(System.String)">
+            <summary>
+            字符串加密函数
+            </summary>
+            <param name="pToEncrypt">需要加密的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.IO.Cryptography.Decrypt(System.String)">
+            <summary>
+            字符串解密
+            </summary>
+            <param name="pToDecrypt">待解密字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nordasoft.Common.DateTimeEx">
+            <summary>
+            扩展的时间类型
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.DateTimeEx.ToShortDateString">
+            <summary>
+            返回短类型日期
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.DateTimeEx.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.DateTimeEx.Parse(System.String)">
+            <summary>
+            将时间字符串转换为扩展的时间类型
+            </summary>
+            <param name="datetime"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Nordasoft.Common.DateTimeEx.IsEmpty">
+            <summary>
+            获取当前日期是否为空值
+            </summary>
+            <remarks>当日期小于1900-1-1时，为true.else false;
+            </remarks>
+        </member>
+        <member name="P:Nordasoft.Common.DateTimeEx.Now">
+            <summary>
+            当前时间
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Common.DateTimeEx.Empty">
+            <summary>
+            为空时间
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Common.Common">
+            <summary>
+            通用方法类
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.Common.CovertToUpperCaseMoney(System.Decimal)">
+            <summary> 
+            转换人民币大小金额 
+            </summary> 
+            <param name="num">金额</param> 
+            <returns>返回大写形式</returns> 
+        </member>
+        <member name="M:Nordasoft.Common.Common.CovertToUpperCaseMoney(System.Decimal,System.Boolean)">
+            <summary>
+            转换人民币大小金额
+            </summary>
+            <param name="num">金额</param>
+            <param name="isRMB">是否为RMB</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.Common.CovertToUpperCaseMoney(System.String)">
+            <summary> 
+            一个重载，将字符串先转换成数字在调用CmycurD(decimal num) 
+            </summary> 
+            <param name="num">用户输入的金额，字符串形式未转成decimal</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:Nordasoft.Common.Common.GetWordLength(System.String)">
+            <summary>
+            获取字符串的长度
+            </summary>
+            <param name="value">字符串</param>
+            <returns>字符串的长度</returns>
+        </member>
+        <member name="M:Nordasoft.Common.Common.GetPinyinCode(System.String)">
+            <summary>
+            生成拼音简码
+            </summary>
+            <param name="unicodeString">Unicode编码字符串</param>
+            <returns>拼音简码:string</returns>
+        </member>
+        <member name="M:Nordasoft.Common.Common.GetCondition(System.Collections.ObjectModel.Collection{Nordasoft.Common.ISearchControl})">
+            <summary>
+            获取查询条件
+            </summary>
+            <param name="controls">条件控件</param>
+            <returns>查询条件</returns>
+        </member>
+        <member name="M:Nordasoft.Common.Common.GetCondition(System.Collections.ObjectModel.Collection{Nordasoft.Common.ISearchControl},System.Collections.Specialized.StringDictionary@)">
+            <summary>
+            获取查询条件
+            </summary>
+            <param name="controls">条件控件</param>
+            <param name="keyValues">值集</param>
+            <returns>查询条件</returns>
+        </member>
+        <member name="M:Nordasoft.Common.Common.GetSendString(System.String)">
+            <summary>
+            获取发送字符串
+            </summary>
+            <param name="value">待发送到活动窗口的字符串</param>
+            <returns>返回转义后的字符串</returns>
+        </member>
+        <member name="P:Nordasoft.Common.Common.ConifigFile">
+            <summary>
+            配置文件
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Common.ISearchControl">
+            <summary>
+            查询控件接口
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Common.ISearchControl.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Common.ISearchControl.FileName">
+            <summary>
+            对应查询字段
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Common.ISearchControl.SqlCondition">
+            <summary>
+            SQL 条件
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Common.Tool">
+            <summary>
+            工具类
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.Tool.GetActiveWindow">
+            <summary>
+            获取当前窗口句柄
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.Tool.GetWindowText(System.IntPtr,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            获取指定窗口的标题信息
+            </summary>
+            <param name="hwnd"></param>
+            <param name="text"></param>
+            <param name="maxLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.Tool.MoveMouse(System.Int32,System.Int32)">
+            <summary>
+            移动鼠
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.Tool.MouseEvent(Nordasoft.Common.MouseEventFlag,System.Int32,System.Int32)">
+            <summary>
+            鼠标操作
+            </summary>
+            <param name="flags"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="M:Nordasoft.Common.Tool.GetKeyState(System.Windows.Forms.Keys)">
+            <summary>
+            检测Key是否被按下
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nordasoft.Common.SpeakVoice">
+            <summary>
+            朗读文字(需要安装语音库)
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Common.SpeakVoice.Instance">
+            <summary>
+             唯一入口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.SpeakVoice.GetVoiceUser">
+            <summary>
+            获取发音人名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Common.SpeakVoice.SetVoiceUser(System.Int32)">
+            <summary>
+            设置朗读人的indx,从0开始
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:Nordasoft.Common.SpeakVoice.Speak(System.String)">
+            <summary>
+            朗读指定文字
+            </summary>
+            <param name="Text"></param>
+        </member>
+    </members>
+</doc>

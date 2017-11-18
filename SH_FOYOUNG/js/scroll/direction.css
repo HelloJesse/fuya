@@ -1,0 +1,50 @@
+/*body{
+	margin: 0;
+	padding: 0;
+}*/
+#mainBar{
+	width: 360px;
+	/*margin: 150px auto;*/
+    margin-left:8px;
+}
+#mainBB{
+	width: 180px;
+	/*margin: 150px auto;*/
+    margin-left:8px;
+}
+#mainUP{
+	width: 180px;
+	/*margin: 150px auto;*/
+    margin-left:8px;
+}
+
+
+.scroll-bar{
+	height: 36px;
+	position: relative;
+	margin-top: 8px;
+}
+.entire-bar{
+	width:100%;
+	height: 4px;
+	top: 12px;
+	left: 0;
+	position: absolute;
+	background: #dedede;
+}
+.action-bar{
+	top: 12px;
+	height: 4px;
+	position: absolute;
+	/*background: #4F94CD;*/
+}
+.action-block{
+	top: 4px;
+	width: 8px;
+	height: 16px;
+	cursor: pointer;
+	position: absolute;
+	/*background: #fff;*/
+    background: #4F94CD;
+	border: 1px solid #000;
+}

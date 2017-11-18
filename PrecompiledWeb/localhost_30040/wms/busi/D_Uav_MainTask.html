@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../js/boot.js" type="text/javascript"></script>
+    <script src="../../js/core.js" type="text/javascript"></script>
+    <title>任务界面</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+    </style>
+
+    <link href="../../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/xwin.css" rel="stylesheet" type="text/css" />
+
+    <script src="http://api.shipxy.com/apdll/ap.dll?api=map&key=1ee14d6d7788461380589643ce44bcb7&ver=1.3" type="text/javascript"></script>
+    <script src="http://api.shipxy.com/apdll/ap.dll?api=data&key=1ee14d6d7788461380589643ce44bcb7&ver=1.3" type="text/javascript"></script>
+    
+    
+    <script src="../../js/myApp.js?ver=13" type="text/javascript"></script>
+    <!--<script src="LatLngApp.js?ver=1" type="text/javascript"></script>-->
+    <script src="../../js/util.js?ver=6" type="text/javascript"></script>
+    <script src="D_Uav_MainTaskView.js?ver=6" type="text/javascript"></script>
+    <script src="../../js/service.js?ver=10" type="text/javascript"></script>
+    <script src="../../js/xwin.js?ver=6" type="text/javascript"></script>
+    <script type="text/javascript">
+    $("#mainer").addClass("pointer");
+        window.onload = function () {
+            myApp.initView();
+            //myApp.initView('177861920412068B371F7F396D6298EA');
+        }
+    </script>
+
+</head>
+<body>
+    <div id="form1">
+        <input id="IDS" name="IDS" class="mini-hidden" />
+        <input id="TaskSource" name="TaskSource" class="mini-hidden" />
+    </div>
+    <div class="mini-splitter" vertical="true" style="width:100%;height:100%;">
+        <div size="40%" showCollapseButton="true">
+
+            <div class="mini-splitter" style="width:100%;height:100%;border:none">
+                <div size="30%" showCollapseButton="true" >
+                    <div>
+                        <div class="mini-toolbar" style="border: none; padding: 0px;">
+                            <img src="../../images/address_block.png" alt="" width="20" height="20" style="padding-bottom: 3px; vertical-align: middle;" />
+                            当前任务信息
+                        </div>
+                    </div>
+
+                    <div  id="editForm1">
+                        <table style="width:95%;border-collapse:separate; border-spacing:0px 5px;">
+                            <tr>
+                                <td style="width:20%;">基站：</td>
+                                <td style="width:80%" colspan="3">
+                                    <div style="width: 100%" id="BaseStationID" name="BaseStationID"  class="mini-autocomplete readonly" textfield="NAME" valuefield="ID"
+                                        allowinput="true" emptytext="请选择..." readonly="true" textName="BaseStationID_NAME"
+                                        showclose="true" oncloseclick="onCloseClick">
+                                        <div property="columns">
+                                            <div header="编码" width="60px" field="CODE"></div>
+                                            <div header="名称" width="100%" field="NAME"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:20%;">纬度：</td>
+                                <td style="width:30%">
+                                    <input id="LatitudeFromat" name="LatitudeFromat" class="mini-textbox readonly" readonly="true" vtype="float" style="width: 100%" inputstyle="text-align:right;" />
+                                </td>
+                                <td style="width:20%;text-align:center">经度：</td>
+                                <td style="width:40%">
+                                    <input id="LongitudeFromat" name="LongitudeFromat" class="mini-textbox readonly" readonly="true" style="width: 100%" inputstyle="text-align:right;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:20%;">飞机：</td>
+                                <td style="width:80%" colspan="3">
+                                    <div style="width: 100%" id="UavSetID" name="UavSetID"  class="mini-autocomplete readonly" textfield="NAME" valuefield="ID"
+                                        allowinput="true" emptytext="请选择..." readonly="true" textName="UavSetID_NAME"
+                                        showclose="true" oncloseclick="onCloseClick">
+                                        <div property="columns">
+                                            <div header="编码" width="60px" field="CODE"></div>
+                                            <div header="名称" width="100%" field="NAME"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:20%;">飞机状态：</td>
+                                <td style="width:80%" colspan="3">
+                                    <div id="Status" name="Status" class="mini-combobox readonly"  textfield="NAME" valuefield="ID"
+                                         allowinput="true" emptytext="请选择..." style="width:100%" readonly="true" 
+                                         showclose="true" oncloseclick="onCloseClick">
+                                        <div property="columns">
+                                            <div header="编码" width="60px" field="CODE"></div>
+                                            <div header="名称" width="100%" field="NAME"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:20%;">任务描述：</td>
+                                <td style="width:80%" colspan="3">
+                                   <input id="TaskDescription" name="TaskDescription" class="mini-textarea readonly" readonly="true" style="width: 100%"/> 
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div showCollapseButton="true">
+                   
+                    <div class="mini-toolbar" style="border: none; padding: 0px;">
+                        <table style="width: 100%;">
+                            <tr id="mainID">
+                                <td style="width: 100%;">
+                                    <a class="mini-button" id="btnAcceptTask" iconcls="icon-add" onclick="onAcceptTask(1)" plain="true">接受任务</a>
+                                    <a class="mini-button" id="btnNoAcceptTask" iconcls="icon-no" onclick="onNoAcceptTask(2)" plain="true">拒绝接受任务</a>
+                                    <a class="mini-button" id="btnPlanTask" iconcls="icon-edit" onclick="onPlanTask()" plain="true">安排任务</a>
+                                    <a class="mini-button" id="btnTaskFinish" iconcls="icon-ok" onclick="onAcceptTask(4)" plain="true">任务完成</a>
+                                    <a class="mini-button" id="btnOpenTimeOut" style="display:none" iconcls="icon-reload" onclick="onOpenTimeOut()" plain="true">开启实时查询</a>
+                                    <a class="mini-button" id="btnCloseTimeOut"  iconcls="icon-cancel" onclick="onCloseTimeOut()" plain="true">关闭实时查询</a>
+
+                                    <a class="mini-button" id="btnReload"  iconcls="icon-reload" onclick="SystemSearch()" plain="true">刷 新</a>
+                                </td>
+                            </tr>
+                            <tr id="otherID" style="display:none">
+                                <td style="width: 100%;">
+                                    <a class="mini-button" id="btnCheckReason" iconcls="icon-search" onclick="onCheckReason()" plain="true">查看拒绝任务原因</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="mini-fit" style="padding:1px">
+                        <div id="grdList" class="mini-datagrid" style="width:100%;height:100%;" showPager="true" multiSelect="true"
+                             url="../../data/SearchManager.ashx?PageID=13" idfield="BILLID" allowresize="true" allowalternating="true"
+                             sizelist="[20,30,50,100]" pagesize="15" multiselect="true">
+                            <div property="columns">
+                                <div type="indexcolumn"></div>
+                                <div type="checkcolumn"></div>
+                                <div field="BILLID" width="80" headeralign="center" visible="false">BILLID</div>
+                                <div field="BILLNO" width="100" headeralign="center">任务单号</div>
+                                <div field="TaskStatus_NAME" width="80" headeralign="center" >任务状态</div>
+                                <div field="FlyWay_NAME" width="80" headeralign="center" >任务类型</div>
+                                <div field="TaskSource_NAME" width="80" headeralign="center" >任务来源</div>
+                                <div field="TaskBTime" width="140" headeralign="center" renderer="onDateTimeRenderer">任务开始时间</div>
+                                <div field="TaskETime" width="140" headeralign="center" renderer="onDateTimeRenderer">任务结束时间</div>
+                                <div field="CREATE_BY_NAME" width="80" headeralign="center" >录入人</div>
+                                <div field="CREATE_DATE" width="100" headeralign="center" renderer="onDateRenderer">录入日期</div>
+
+                                <div field="BaseStationID_NAME" width="90" headeralign="center" visible="false">基站</div>
+                                <div field="TaskStatus" width="90" headeralign="center" visible="false">任务状态id</div>
+                                <div field="BaseStationID" width="90" headeralign="center" visible="false">基站ID</div>
+                                <div field="UavSetID_NAME" width="90" headeralign="center" visible="false">飞机</div>
+                                <div field="LatitudeFromat" width="90" headeralign="center" visible="false">Latitude</div>
+                                <div field="LongitudeFromat" width="90" headeralign="center" visible="false">Longitude</div>
+                                <div field="Status" width="90" headeralign="center" visible="false">飞机状态</div>
+                                <div field="FlyWay" width="90" headeralign="center" visible="false">飞行方式ID</div>
+                                <div field="TaskDescription" width="90" headeralign="center" visible="false">任务描述</div>
+                                <div field="TaskSource" width="80" headeralign="center" visible="false">任务来源ID</div>
+                                <div field="LineHeight" width="80" headeralign="center" visible="false">航线高度</div>
+                            </div>
+                        </div>  
+                    </div>
+
+                </div>        
+            </div>
+
+        </div>
+        <div showCollapseButton="true">
+            <div class="mini-toolbar" style="border: none; padding: 0px;">
+                <table style="width: 100%;">
+                    <tr id="">
+                        <td style="width: 100%;">
+                            <a class="mini-button" id="btnAddOption"  iconcls="icon-add"    onclick="addOptions();" plain="true">开始规划巡航任务</a>
+                            <!--<a class="mini-button" id="btnAddOption"  iconcls="icon-add"    onclick="aaaa();" plain="true">绘制区域</a>
+                            <a class="mini-button" id="btnAddOption"  iconcls="icon-add"    onclick="bbbb();" plain="true">区域坐标</a>-->
+
+                            <a class="mini-button" id="btnOverOption" iconcls="icon-edit" onclick="OverOptions();" plain="true">完成规划</a>
+                            <a class="mini-button" id="btnReset"      iconcls="icon-no" onclick="resetPolyline()" plain="true">重新规划</a>
+                            <a class="mini-button" id="btnStop"      iconcls="icon-cancel" onclick="stopPolyline()" plain="true">放弃规划</a>
+                            <!--<a class="mini-button" id="btnSaveLine"   iconcls="icon-save" onclick="savePolyLine()" plain="true">保存巡航任务</a>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="mainer">
+                <div id="mapDiv" style="width:100%;height:100%"></div>
+            </div>
+        </div>        
+    </div>
+    <script src="../../js/multisort.js" type="text/javascript"></script>
+    <script src="D_Uav_MainTask.js?ver=1" type="text/javascript"></script> 
+</body>
+</html>

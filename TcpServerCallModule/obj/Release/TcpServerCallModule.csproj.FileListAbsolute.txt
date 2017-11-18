@@ -1,0 +1,8 @@
+C:\VLP\通用VLP\VLP_FOYOUNG\TcpServerCallModule\bin\Release\TcpServerCallModule.exe
+C:\VLP\通用VLP\VLP_FOYOUNG\TcpServerCallModule\bin\Release\TcpServerCallModule.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\TcpServerCallModule\obj\Release\TcpServerCallModule.csprojResolveAssemblyReference.cache
+C:\VLP\通用VLP\VLP_FOYOUNG\TcpServerCallModule\obj\Release\TcpServerCallModule.TcpServer.resources
+C:\VLP\通用VLP\VLP_FOYOUNG\TcpServerCallModule\obj\Release\TcpServerCallModule.Properties.Resources.resources
+C:\VLP\通用VLP\VLP_FOYOUNG\TcpServerCallModule\obj\Release\TcpServerCallModule.csproj.GenerateResource.Cache
+C:\VLP\通用VLP\VLP_FOYOUNG\TcpServerCallModule\obj\Release\TcpServerCallModule.exe
+C:\VLP\通用VLP\VLP_FOYOUNG\TcpServerCallModule\obj\Release\TcpServerCallModule.pdb

@@ -1,0 +1,149 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Nordasoft.Data.Sql;
+using System.Data;
+using System.Collections;
+using System.Data.SqlClient;
+using System.Web.SessionState;
+
+/// <summary>
+/// DBManager 的摘要说明
+/// </summary>
+public class DBManager
+{
+    //public static DataBase db1 = null;
+    public static DataBase GetDB(System.Web.SessionState.HttpSessionState session)
+    {
+        string cnnstr = session["SystemConnection"].ToString();
+        return GetDB(cnnstr);
+    }
+    public static DataBase GetDB(string cnnstr)
+    {
+        return new DataBase(cnnstr);
+    }
+	public DBManager()
+	{
+		//
+		// TODO: 在此处添加构造函数逻辑
+		// 
+	}
+
+    /// <summary>
+    /// 根据ProcedureName与参数获取DataSet
+    /// </summary>
+    /// <param name="sql">sql语句</param>
+    /// <param name="ps">参数列表</param>
+    /// <returns>DataSet</returns>
+    public static DataSet GetDataSetByExcSql(string ProcedureName,Hashtable ps,HttpSessionState session)
+    {
+        SqlCommand sqlcom = new SqlCommand();
+        sqlcom.CommandText = ProcedureName;
+        sqlcom.CommandType = CommandType.StoredProcedure;
+        foreach (System.Collections.DictionaryEntry item in ps)
+        {
+            sqlcom.Parameters.Add(new SqlParameter(item.Key.ToString(), item.Value.ToString()));
+        }
+
+        return GetDB(session).ExecuteDataset(sqlcom);
+    }
+
+
+
+    /// <summary>
+    /// 根据SQL条件与参数,返回Data结果
+    /// </summary>
+    /// <param name="sql">sql语句：注意条件已经通过@userid 方式拼入</param>
+    /// <param name="ps">条件集合</param>
+    /// <returns>DataTable</returns>
+    //public static DataTable GetDataTbleBySQL(string sql, Hashtable ps)
+    //{
+    //    DataTable dt = new DataTable();
+    //    SqlCommand sqlcom = new SqlCommand();
+    //    sqlcom.CommandText = sql;
+    //    sqlcom.CommandType = CommandType.Text;
+    //    foreach (System.Collections.DictionaryEntry item in ps)
+    //    {
+    //        sqlcom.Parameters.Add(new SqlParameter(item.Key.ToString(), item.Value.ToString()));
+    //    }
+
+    //    try
+    //    {
+    //          dt =  db.ExecuteDataTable(sqlcom);
+    //    }
+    //    catch
+    //    {
+    //        return null;
+    //    }
+
+    //    return dt;
+    //}
+
+    /// <summary>
+    /// 根据SQL条件与参数,返回Data结果
+    /// </summary>
+    /// <param name="sql">sql语句：注意条件已经通过@userid 方式拼入</param>
+    /// <param name="ps">条件集合</param>
+    /// <returns>DataTable</returns>
+    //public static DataTable GetDataTbleBySQL(string sql)
+    //{
+    //    return db.ExecuteDataTable(sql);
+    //}
+
+    /// <summary>
+    /// 执行SQL 
+    /// </summary>
+    /// <param name="sql"></param>
+    /// <returns></returns>
+    //public static int ExecuteBySQL(string sql)
+    //{
+    //    return db.ExecuteNonQuery(sql);
+    //}
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sql"></param>
+    /// <param name="ps"></param>
+    /// <returns></returns>
+    //public static int ExecuteBySQL(string sql, Hashtable ps)
+    //{
+    //    DataTable dt = new DataTable();
+    //    SqlCommand sqlcom = new SqlCommand();
+    //    sqlcom.CommandText = sql;
+    //    sqlcom.CommandType = CommandType.Text;
+    //    foreach (System.Collections.DictionaryEntry item in ps)
+    //    {
+    //        sqlcom.Parameters.Add(new SqlParameter(item.Key.ToString(), item.Value.ToString()));
+    //    }
+    //    return db.ExecuteNonQuery(sqlcom);
+    //}
+
+
+    /// <summary>
+    /// Table转为ArrayList
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    public static ArrayList DataTable2ArrayList(DataTable data)
+    {
+        ArrayList array = new ArrayList();
+        for (int i = 0; i < data.Rows.Count; i++)
+        {
+            DataRow row = data.Rows[i];
+
+            Hashtable record = new Hashtable();
+            for (int j = 0; j < data.Columns.Count; j++)
+            {
+                object cellValue = row[j];
+                if (cellValue.GetType() == typeof(DBNull))
+                {
+                    cellValue = null;
+                }
+                record[data.Columns[j].ColumnName] = cellValue;
+            }
+            array.Add(record);
+        }
+        return array;
+    }
+}

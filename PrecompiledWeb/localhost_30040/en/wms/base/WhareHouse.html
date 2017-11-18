@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<script src="../../../js/boot.js" type="text/javascript"></script>
+<script src="../../../js/core.js" type="text/javascript"></script>
+<title>WAREHOUSE维护</title>
+<style type="text/css">
+    html, body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+</style>
+</head>
+<body>
+    <div class="mini-splitter" style="width:100%;height:100%;">
+        <div size="240" showCollapseButton="true">
+            <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">                
+                <span style="padding-left:5px;">NULL：</span>
+                <input id="key" class="mini-textbox" onenter="onKeyEnter"/>
+                <a class="mini-button" iconCls="icon-search" plain="true" onclick="search()">查找</a>                  
+            </div>
+            <div class="mini-fit">
+                <ul id="tree1" class="mini-tree" url="../../../data/Base/WhareHouse.aspx?method=SearchHouseTree" style="width:100%;" allowSelect="true"
+                    showTreeIcon="true" textField="text" idField="id" parentField="pid" resultAsTree="false" expandOnNodeClick="true"  onnodeselect="onNodeSelect">        
+                </ul>
+            </div>
+        </div>
+
+        <div showCollapseButton="true" >
+            <div class="mini-toolbar" id="toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">                
+               <!-- <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true">ADD</a>
+                <a class="mini-button" iconCls="icon-close" onclick="removeRow()" plain="true">DEL</a>     
+                <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">SAVE</a> -->                 
+            </div>
+            <div id="div1" class="mini-fit" >
+                <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;" borderstyle="border:0;" editnextonenterkey="true"
+                     idfield="ID" allowresize="true" allowcellvalid="true" multiselect="true" allowalternating="true"
+                     url="../../../data/Base/WhareHouse.aspx?method=SearchAreaLocationInfo"
+                     allowcellselect="true" allowcelledit="true">
+                    <div property="columns">
+                        <div type="checkcolumn"></div>
+                        <div field="HouseName" width="120" headeralign="center" allowsort="true">所属WAREHOUSE</div>
+                        <div field="Name" width="120" headeralign="center" allowsort="true" vtype="required">
+                            库区NULL
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="Code" width="120" headeralign="center" allowsort="true" vtype="required">
+                            库区CODE
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="Name_E" width="120" headeralign="center" allowsort="true" vtype="required">
+                            AGENT ENGLISH NAME
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+
+                        <div type="comboboxcolumn" field="AreaType" width="80" headeralign="center" vtype="required">
+                            库区TYPE
+                            <div style="width: 100%" property="editor" id="AreaType" name="AreaType" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                                 allowinput="true" emptytext="请选择..."
+                                 url="../../../data/ComboBoxManager.ashx?tablename=V_D_AreaType&DataLoad=0" popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                                <div property="columns">
+                                    <div header="CODE" width="60" field="CODE"></div>
+                                    <div header="NULL" width="140" field="NAME"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div field="Activated" width="120" headeralign="center" allowsort="true" type="checkboxcolumn">YESNO 启用</div>
+                        <div field="CREATE_NAME" width="80px" headeralign="center" allowsort="true">DOC CREATED BY</div>
+                        <div field="CREATE_DATE" width="140px" headeralign="center" allowsort="true" renderer="onDateTimeRenderer">DOC CREATED DATE</div>
+                    </div>
+                </div>  
+            </div>
+
+            <div id="div2" class="mini-fit"  style="display:none">
+                <div id="grid2" class="mini-datagrid" borderstyle="border:0;" editnextonenterkey="true"
+                     idfield="ID" allowresize="true" allowcellvalid="true" multiselect="true" allowalternating="true"
+                     url="../../../data/Base/WhareHouse.aspx?method=SearchAreaLocationInfo"
+                     allowcellselect="true" allowcelledit="true">
+                    <div property="columns">
+                        <div type="checkcolumn"></div>
+                        <div field="HouseName" width="120" headeralign="center" allowsort="true">所属WAREHOUSE</div>
+                        <div field="AreaName" width="120" headeralign="center" allowsort="true">所属库区</div>
+
+                        <div field="Code" width="80" headeralign="center" allowsort="true" vtype="required">
+                            库位CODE
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="SelfCode" width="80" headeralign="center" allowsort="true">
+                            库位自CODE
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="Name" width="120" headeralign="center" allowsort="true" vtype="required">
+                            库位NULL
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="Name_E" width="120" headeralign="center" allowsort="true" vtype="required">
+                            AGENT ENGLISH NAME
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+
+                        <div type="comboboxcolumn" name="ShelfType" field="ShelfType" width="160" headeralign="center">
+                            货架TYPE
+                            <div style="width:100%" property="editor" id="ShelfType" name="ShelfType" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                                 allowinput="true" emptytext="请选择..."
+                                 url="../../../data/ComboBoxManager.ashx?tablename=V_D_ShelfType&DataLoad=0" popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                                <div property="columns">
+                                    <div header="CODE" width="60" field="CODE"></div>
+                                    <div header="NULL" width="100%" field="NAME"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div field="BathCode" width="120" headeralign="center" allowsort="true">
+                            条码
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+
+                        <div field="Length" width="50" headeralign="center" allowsort="true">
+                            长
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="Width" width="50" headeralign="center" allowsort="true">
+                            宽
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="Height" width="50" headeralign="center" allowsort="true">
+                            高
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="D_Row" width="50" headeralign="center" allowsort="true" vtype="required;int">
+                            行
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="D_Column" width="50" headeralign="center" allowsort="true" vtype="required;int">
+                            列
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="D_Layer" width="50" headeralign="center" allowsort="true" vtype="required;int">
+                            层
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+
+                        <div field="IsVirtual" width="100" headeralign="center" allowsort="true" type="checkboxcolumn">YESNO 虚拟库位</div>
+                        <div field="Activated" width="80" headeralign="center" allowsort="true" type="checkboxcolumn">YESNO 启用</div>
+                        <div field="IsFreeze" width="80" headeralign="center" allowsort="true" type="checkboxcolumn" readonly="true">YESNO 冻结</div>
+                        <div field="CREATE_NAME" width="80px" headeralign="center" allowsort="true">DOC CREATED BY</div>
+                        <div field="CREATE_DATE" width="140px" headeralign="center" allowsort="true" renderer="onDateTimeRenderer">DOC CREATED DATE</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="div3" class="mini-fit" style="display:none">
+                <div id="grid3" class="mini-datagrid" borderstyle="border:0;" editnextonenterkey="true"
+                     idfield="ID" allowresize="true" allowcellvalid="true" multiselect="true" allowalternating="true"
+                     url="../../../data/Base/WhareHouse.aspx?method=SearchAreaLocationInfo"
+                     allowcellselect="true" allowcelledit="true">
+                    <div property="columns">
+                        <div type="checkcolumn"></div>
+                        <div field="Code" width="80" headeralign="center" allowsort="true" vtype="required">
+                            WAREHOUSECODE
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="Name" width="120" headeralign="center" allowsort="true" vtype="required">
+                            WAREHOUSENULL
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="Name_E" width="120" headeralign="center" allowsort="true" vtype="required">
+                            AGENT ENGLISH NAME
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="DangerFlag" width="80" headeralign="center" allowsort="true" type="checkboxcolumn">YESNO DG</div>
+                        <div field="Activated" width="80" headeralign="center" allowsort="true" type="checkboxcolumn">YESNO 启用</div>
+                        <div field="CREATE_NAME" width="80px" headeralign="center" allowsort="true">DOC CREATED BY</div>
+                        <div field="CREATE_DATE" width="140px" headeralign="center" allowsort="true" renderer="onDateTimeRenderer">DOC CREATED DATE</div>
+                    </div>
+                </div>
+            </div>
+         </div>
+     </div>
+
+    <div id="winCreateLocationBatSet" class="mini-window" title="库位批量CREATE" style="width:200px;"
+         showtoolbar="false" showfooter="false" showmodal="true" allowresize="false" allowdrag="true">
+        <table align="center" border="0" cellpadding="1" cellspacing="2" style="width:100%;">
+            <tr>
+                <td style="width:50px;">行数：</td>
+                <td style="width:50px;">
+                    <input property="editor" class="mini-textbox" id="LocationRowNum" name="LocationRowNum" style="width:100%;" inputstyle="text-align:right;" vtype="int" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width:50px;">列数：</td>
+                <td style="width:50px;">
+                    <input property="editor" class="mini-textbox" id="LocationColumnNum" name="LocationColumnNum" style="width:100%;" inputstyle="text-align:right;" vtype="int" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width:50px;">层数：</td>
+                <td style="width:50px;">
+                    <input property="editor" class="mini-textbox" id="LocationCengNum" name="LocationCengNum" style="width:100%;" inputstyle="text-align:right;" vtype="int" required="true" />
+                </td>
+            </tr>
+        </table>
+        <div align="center">
+            <a onclick="CreateLocationBatOk" class="mini-button" style="width:60px;">CONFIRM</a>
+            <a onclick="CreateLocationBatCancel" class="mini-button" style="width:60px;">CANCEL </a>
+        </div>
+    </div>
+    <script src="../../../wms/base/WhareHouse.js" type="text/javascript"></script>
+</body>
+</html>

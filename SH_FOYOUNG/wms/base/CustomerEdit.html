@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../js/boot.js" type="text/javascript"></script>
+    <script src="../../js/core.js" type="text/javascript"></script>
+    <style type="text/css">
+        html, body
+        {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <title>客户编辑</title>
+</head>
+<body>
+    <div class="mini-toolbar" id="toolbar" >
+    </div>
+    <div id="form1">
+        <input id="ID" name="ID" class="mini-hidden" />
+        <input id="LockedFlag" name="LockedFlag" visible="false" class="mini-checkbox"  />
+        <input id="EMP_ID_Locked_BY" name="EMP_ID_Locked_BY" class="mini-hidden" />
+        <input id="Locked_BY" name="Locked_BY" class="mini-hidden" />
+
+        <div id="tabs1" class="mini-tabs" onactivechanged="tabactivechanged" activeindex="0" style="width: 100%; height:95%" plain="false" bodystyle="padding:0;border:0;">
+            <div title="基本信息">
+                <fieldset id="fdBase" style="width: 800px;margin-top:2px">
+                    <legend><input type="checkbox" checked  id="checkbox1" onclick="toggleFieldSet(this, 'fdBase')"/>基本信息</legend>
+                    <div class="fieldset-body">
+                        <table>
+                            <tr>
+                                <td style="width: 80px;">客户编码：</td>
+                                <td style="width: 120px;">
+                                    <input id="Code" name="Code" class="mini-textbox"  style="width: 100%" requirederrortext="客户编码不能为空！" required="true" />
+                                </td>
+                                <td style="width: 80px;">中文名称：</td>
+                                <td colspan="5" style="width: 520px;">
+                                    <input id="Name" name="Name" class="mini-textbox" style="width: 100%" requirederrortext="中文名称不能为空！" required="true"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 80px;">十位数编码：</td>
+                                <td style="width: 120px;">
+                                    <input id="TenCode" name="TenCode" class="mini-textbox"  style="width: 100%"  />
+                                </td>
+                                <td style="width: 80px;">厂商组织机构代码：</td>
+                                <td style="width: 120px;">
+                                    <input id="CustomOrgCode" name="CustomOrgCode" class="mini-textbox" style="width: 100%" />
+                                </td>
+                                <td style="width: 80px;">英文名称：</td>    
+                                <td colspan="3" style="width: 520px;">
+                                    <input id="Name_E" name="Name_E" class="mini-textbox" style="width: 100%" />
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="width: 115px;">投资总额(万元)：</td>
+                                <td style="width: 85px;">
+                                    <input id="InvestPrice" name="InvestPrice" class="mini-textbox" style="width: 100%" />
+                                </td>
+                                <td style="width: 115px;">注册总额(万元)：</td>
+                                <td style="width: 85px;">
+                                    <input id="Login" name="Login" class="mini-textbox" style="width: 100%" />
+                                </td>
+                                
+                                <td style="width: 110px;">亿通厂商编码：</td>
+                                <td colspan="3" style="width: 290px;" >
+                                    <input id="YTProducteCode" name="YTProducteCode" class="mini-textbox" style="width: 100%" />
+                                </td>
+                            </tr>
+                            <tr style="display:none">
+                                <td style="width: 80px;">客户类型：</td>
+                                <td style="width: 120px;">
+                                    <div id="Type" name="Type" class="mini-combobox"     textfield="NAME" valuefield="ID" 
+                                         emptytext="请选择..." popupwidth="200px"  requirederrortext="客户类型不能为空！" required="true"
+                                         showclose="true" oncloseclick="onCloseClick">
+                                        <div property="columns">
+                                            <div header="编码" field="CODE"  style="width:80px"></div>
+                                            <div header="名称" field="NAME"  style="width:100%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                               <td>所属客户：</td>
+                                <td colspan="5" style="width: 520px;">
+                                    <div style="width: 100%" id="SupplierCustomerID" name="SupplierCustomerID" textname="SupplierCustomer_Name" class="mini-autocomplete" textfield="NAME" valuefield="ID"
+                                       allowinput="true" emptytext="请选择..."
+                                         showclose="true" oncloseclick="onCloseClick">
+                                        <div property="columns">
+                                            <div header="编码" width="80" field="CODE"></div>
+                                            <div header="名称" width="100%" field="NAME"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 80px;">是否锁定：</td>
+                                <td style="width: 120px;">
+                                    <input id="LockedFlag_Name" name="LockedFlag_Name" readonly="true" class="mini-textbox readonly"  style="width: 100%"  />
+                                </td>
+                                 <td rowspan="2" style="width: 80px;">经营范围：</td>
+                                <td rowspan="2" colspan="5" style="width: 520px;" >
+                                    <input id="JingYingFanWei" name="JingYingFanWei" class="mini-textarea" style="width: 100%" />
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                                <td style="width: 80px;">锁定人：</td>
+                                <td style="width: 120px;">
+                                    <input id="Locked_Name" name="Locked_Name"  readonly="true" class="mini-textbox readonly"  style="width: 100%"  />
+                                </td>
+                                 
+                                
+                            </tr>
+                             <tr>
+                                 <td style="width: 80px;">锁定日期：</td>
+                                    <td>
+                                        <input id="Locked_Date" name="Locked_Date"  readonly="true" class="mini-datepicker readonly"   style="width: 100%"  />
+                                    </td>
+                                    <td style="width: 100px;">是否出库结算：</td>
+                                    <td>
+                                        <input id="IsOutSettle" name="IsOutSettle" class="mini-checkbox"  />
+                                    </td>
+                                
+                                    <td style="width: 100px;">是按月结算：</td>
+                                    <td>
+                                        <input id="IsMonthSettle" name="IsMonthSettle" class="mini-checkbox" />
+                                    </td>
+                                    <td style="width: 100px;">是否VIP用户：</td>
+                                    <td>
+                                        <input id="IsVIP" name="IsVIP" class="mini-checkbox" />
+                                    </td>
+                             </tr>
+                        </table>
+                    </div>
+                </fieldset>
+
+                <fieldset id="fdAddress" style="width: 800px;">
+                    <legend><input type="checkbox" checked  id="checkbox2" onclick="toggleFieldSet(this, 'fdAddress')"/>地址</legend>
+                    <div class="fieldset-body">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td rowspan="2">
+                                    <textarea id="ADDRESS" name="ADDRESS" class="mini-textarea" emptytext="详细地址" style="width: 400px"></textarea>
+                                </td>
+                                <td style="width: 80px;">国家：</td>
+                                <td style="width: 120px;">
+                                    <div id="COUNTRY_ID" name="COUNTRY_ID" class="mini-autocomplete" textName="CountryName"  textfield="NAME" valuefield="ID" 
+                                         emptytext="请选择..." popupwidth="200px" 
+                                         showclose="true" oncloseclick="onCloseClick">
+                                        <div property="columns">
+                                            <div header="编码" field="CODE"  style="width:80px"></div>
+                                            <div header="名称" field="NAME"  style="width:100%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width: 80px;">区域：</td>
+                                <td style="width: 120px;"><input id="AREA" name="AREA" class="mini-textbox" /></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 80px;">区(县)</td>
+                                <td style="width: 120px;"><input id="District" name="District" class="mini-textbox" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </fieldset>
+
+                <fieldset id="fdPeople" style="width: 800px;">
+                    <legend><input type="checkbox" checked  id="checkbox3" onclick="toggleFieldSet(this, 'fdPeople')"/>负责人</legend>
+                    <div class="fieldset-body">
+                        <table>
+                            <tr>
+                                <td style="width: 80px;">负责人：</td>
+                                <td style="width: 120px;">
+                                    <input id="LINK_MAN" name="LINK_MAN" class="mini-textbox"  style="width: 100%" /></td>
+                                <td style="width: 80px;">手机：</td>
+                                <td style="width: 120px;">
+                                    <input id="Mobile" name="Mobile" class="mini-textbox"  style="width: 100%" /></td>
+                                <td style="width: 80px;">联系电话：</td>
+                                <td style="width: 120px;">
+                                    <input id="LINK_TEL" name="LINK_TEL" class="mini-textbox"  style="width: 100%" /></td>
+                                <td style="width: 80px;">传真：</td>
+                                <td style="width: 120px;">
+                                    <input id="FAX" name="FAX" class="mini-textbox"  style="width: 100%" /></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 80px;">邮编：</td>
+                                <td style="width: 120px;">
+                                    <input id="POSTAL_CODE" name="POSTAL_CODE" class="mini-textbox"  style="width: 100%" /></td>
+                                <td style="width: 80px;">EMAIL：</td>
+                                <td style="width: 320px;" colspan="3">
+                                    <input id="EMAIL" name="EMAIL" class="mini-textbox"  style="width: 100%" /></td>
+                                <td style="width: 80px;">是否启用</td>
+                                <td style="width: 120px;">
+                                    <input id="Activated" name="Activated" checked="true"  class="mini-checkbox" readonly="readonly"  style="width: 100%" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </fieldset>
+
+                <fieldset id="fdInfo" style="width:900px">
+                    <legend><input type="checkbox" checked  id="checkbox4" onclick="toggleFieldSet(this, 'fdInfo')"/>系统信息</legend>
+                    <div class="fieldset-body">
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="width:80px">录入人：</td>
+                                <td style="width:120px"><input style="width:100%" id="CREATE_NAME" name="CREATE_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                                <td style="width:80px">录入日期：</td>
+                                <td style="width:140px"><input style="width:100%" id="CREATE_DATE" name="CREATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                                <td style="width:80px">更新人：</td>
+                                <td style="width:120px"><input style="width:100%" id="UPDATE_NAME" name="UPDATE_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                                <td style="width:80px">更新日期：</td>
+                                <td style="width:140px"><input style="width:100%" id="UPDATE_DATE" name="UPDATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+            
+        </div>
+    </div>
+    <script src="CustomerEdit.js?ver=2" type="text/javascript"></script>
+</body>
+</html>

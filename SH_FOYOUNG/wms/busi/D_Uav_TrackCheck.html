@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../js/boot.js" type="text/javascript"></script>
+    <title>航行检查</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="form1">
+        <input id="IDS" name="IDS" class="mini-hidden" />
+    </div>
+
+    <div class="mini-splitter" vertical="true" style="width:100%;height:100%;">
+        <div size="50%" showCollapseButton="true">
+            <!-- 航前检查 -->
+            <div class="mini-toolbar" style="border: none; padding: 0px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 100%;">
+                            <a class="mini-button" id="btnTrackCheckForP" iconcls="icon-user" onclick="onTrackCheck(1)" plain="true">最终确认</a>
+                            <a class="mini-button" id="btnTrackCheckForS" iconcls="icon-ok" onclick="onFlyCheckFlag()" plain="true">航前检查</a>
+
+                            <a class="mini-button" id="btnOpenTimeOut" style="display:none" iconcls="icon-reload" onclick="onOpenTimeOut()" plain="true">开启实时查询</a>
+                            <a class="mini-button" id="btnCloseTimeOut"  iconcls="icon-cancel" onclick="onCloseTimeOut()" plain="true">关闭实时查询</a>
+
+                            <a class="mini-button" id="btnReload"  iconcls="icon-reload" onclick="SystemSearch()" plain="true">刷 新</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="mini-fit" style="padding:1px">
+                <div id="grdList" class="mini-datagrid" style="width:100%;height:100%;" showPager="true" multiSelect="false"
+                     url="../../data/SearchManager.ashx?PageID=15" idfield="BILLID" allowresize="true" allowalternating="true"
+                     sizelist="[20,30,50,100]" pagesize="15" multiselect="true">
+                    <div property="columns">
+                        <div type="indexcolumn"></div>
+                        <div type="checkcolumn"></div>
+                        <div field="BILLID" width="80" headeralign="center" visible="false">BILLID</div>
+                        <div field="CheckFlagStr" width="80" headeralign="center" visible="false">CheckFlagStr</div>
+                        <div field="BILLNO" width="100" headeralign="center">任务单号</div>
+                        <div field="TrackCheckFlag" width="60" headeralign="center" type="checkboxcolumn">最终确认</div>
+                        <div field="TrackCheck_BY_NAME" width="80" headeralign="center" >确认人员</div>
+                        <div field="TrackCheck_DATE" width="130" headeralign="center" renderer="onDateTimeRenderer">确认时间</div>
+                        <div field="TaskStatus_NAME" width="80" headeralign="center" >任务状态</div>
+                        <div field="FlyWay_NAME" width="80" headeralign="center" >任务类型</div>
+                        <div field="TaskBTime" width="130" headeralign="center" renderer="onDateTimeRenderer">任务开始时间</div>
+                        <div field="TaskETime" width="130" headeralign="center" renderer="onDateTimeRenderer">任务结束时间</div>
+
+                        <div field="BaseInfoFlag" width="90" headeralign="center" type="checkboxcolumn">基本信息登记</div>
+                        <div field="InstallJoinFlag" width="100" headeralign="center" type="checkboxcolumn">安装及连接检查</div>
+                        <div field="RCControlFlag" width="100" headeralign="center" type="checkboxcolumn">RC遥控舵面检查</div>
+                        <div field="FlyControlFlag" width="120" headeralign="center" type="checkboxcolumn">飞控舵面/指令检查</div>
+                        <div field="PostureFlag" width="110" headeralign="center" type="checkboxcolumn">姿态检查</div>
+                        <div field="CiHangFlag" width="100" headeralign="center" type="checkboxcolumn">磁航向检查</div>
+
+                        <div field="HeightFlag" width="80" headeralign="center" type="checkboxcolumn">高度检查</div>
+                        <div field="AirspeedFlag" width="80" headeralign="center" type="checkboxcolumn">空速检查</div>
+                        <div field="RCDistanceFlag" width="100" headeralign="center" type="checkboxcolumn">RC遥控距离检查</div>
+
+                        <div field="TaskZHFlag" width="100" headeralign="center" type="checkboxcolumn">任务载荷检查</div>
+                        <div field="LinePlanFlag" width="100" headeralign="center" type="checkboxcolumn">航线规划检查</div>
+                        <div field="ProtectionFlag" width="80" headeralign="center" type="checkboxcolumn">保护配置</div>
+                        <div field="InitOilFlag" width="100" headeralign="center" type="checkboxcolumn">初始油量检查</div>
+                        <div field="ShakeFlag" width="100" headeralign="center" type="checkboxcolumn">震动状态检测</div>
+                    </div>
+                </div>  
+            </div>
+
+        </div>
+        <div showCollapseButton="true">
+            <!-- 航后维护 -->
+            <div class="mini-toolbar" style="border: none; padding: 0px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 100%;">
+                            <a class="mini-button" id="btnAdd" iconcls="icon-add" onclick="addRow()" plain="true">新增航后维护</a>
+                            <a class="mini-button" id="btnDel" iconcls="icon-remove" onclick="removeRow()" plain="true">删除</a>
+                            <a class="mini-button" id="btnSave" iconcls="icon-save" onclick="saveData()" plain="true">保存</a>
+                            <a class="mini-button" id="btnFinish" iconcls="icon-ok" onclick="onCheckFinish()" plain="true">维护完成</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+           <div class="mini-fit" style="padding:1px">
+                <div id="grdListEnd" class="mini-datagrid" style="width:100%;height:100%;" showPager="true" multiSelect="true"
+                     url="../../data/SearchManager.ashx?PageID=" idfield="DTLID" allowresize="true" allowalternating="true"
+                     sizelist="[20,30,50,100]" pagesize="15" multiselect="true">
+                    <div property="columns">
+                        <div type="indexcolumn"></div>
+                        <div type="checkcolumn"></div>
+                        <div field="DTLID" width="80" headeralign="center" visible="false">DTLID</div>
+                        <div vtype="required" field="UavSetID"  name="UavSetID" displayfield="UavSetID_NAME"  allowsort="true"  width="160" headeralign="center">
+                            飞机 
+                            <div style="width: 100%; height: 100%;" property="editor" id="UavSetID" name="UavSetID" textname="UavSetID_NAME" class="mini-autocomplete" textfield="NAME" valuefield="ID"
+                                allowinput="true" emptytext="请选择..." url="../../data/ComboBoxManager.ashx?tablename=V_D_Uav_UavSet&DataLoad=0"
+                                showclose="true" oncloseclick="onCloseClick">
+                                <div property="columns">
+                                    <div header="编码" width="120" field="CODE"></div>
+                                    <div header="名称" width="100%" field="NAME"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div field="" width="100" vtype="required" headeralign="center" dateformat="yyyy-MM-dd">
+                            维护日期 
+                            <input property="editor" class="mini-datepicker" style="width: 100%; height: 100%;"/>
+                        </div>
+                        <div vtype="required" field="Maintain_BY"  name="Maintain_BY" displayfield="Maintain_NAME"  allowsort="true"  width="120" headeralign="center">
+                            维护人员
+                            <div style="width: 100%; height: 100%;" property="editor" id="Maintain_BY" name="Maintain_BY" textname="Maintain_NAME" class="mini-autocomplete" textfield="NAME" valuefield="ID"
+                                allowinput="true" emptytext="请选择..." url="../../data/ComboBoxManager.ashx?tablename=Sys_D_USER&DataLoad=0"
+                                showclose="true" oncloseclick="onCloseClick">
+                                <div property="columns">
+                                    <div header="编码" width="100" field="CODE"></div>
+                                    <div header="名称" width="100%" field="NAME"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div field="" width="260" headeralign="center">
+                            维护内容
+                            <input property="editor" class="mini-textbox" style="width: 100%; height: 100%;"/>
+                        </div>
+                        <div field="" width="70" headeralign="center" type="checkboxcolumn">是否完成</div>
+                        <div field="" width="120" headeralign="center" dateformat="yyyy-MM-dd">完成时间</div>
+                    </div>
+                </div>  
+            </div> 
+
+
+        </div>        
+    </div>
+
+    <script src="../../js/Search.js" type="text/javascript"></script>
+    <script src="D_Uav_TrackCheck.js?ver=1" type="text/javascript"></script> 
+</body>
+</html>

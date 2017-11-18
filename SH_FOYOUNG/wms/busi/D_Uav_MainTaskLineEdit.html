@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../js/boot.js" type="text/javascript"></script>
+    <script src="../../js/core.js" type="text/javascript"></script>
+    <style type="text/css">
+        html, body
+        {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <title>任务航线编辑</title>
+</head>
+<body>
+    <div class="mini-toolbar" id="toolbar" >
+    </div>
+    <div id="form1">
+        <input id="BILLID" name="BILLID" class="mini-hidden" />
+        
+        <fieldset id="fdBase" style="width: 800px;margin-top:2px">
+                <legend><input type="checkbox" checked  id="checkbox1" onclick="toggleFieldSet(this, 'fdBase')"/>基本信息</legend>
+                <div class="fieldset-body">
+                    <table>
+                        <tr>
+                            <td style="width:80px">任务单号：</td>
+                            <td style="width:120px">
+                                <input id="BILLNO"  name="BILLNO" class="mini-textbox readonly" readonly="true" style="width:100%" />
+                            </td>
+                            <td style="width:80px;">任务状态：</td>
+                            <td style="width:120px">
+                               <div id="TaskStatus" name="TaskStatus" class="mini-combobox readonly" readonly="true"  textfield="NAME" valuefield="ID"
+                                    allowinput="true" emptytext="请选择..." style="width:100%" popupwidth="220px" showclose="true" oncloseclick="onCloseClick">
+                                    <div property="columns">
+                                        <div header="编码" width="60px" field="CODE"></div>
+                                        <div header="名称" width="100%" field="NAME"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width:80px;">任务类型：</td>
+                            <td style="width:120px">
+                               <div id="FlyWay" name="FlyWay" class="mini-combobox readonly" readonly="true"  textfield="NAME" valuefield="ID"
+                                    allowinput="true" emptytext="请选择..." style="width:100%" popupwidth="220px" showclose="true" oncloseclick="onCloseClick">
+                                    <div property="columns">
+                                        <div header="编码" width="60px" field="CODE"></div>
+                                        <div header="名称" width="100%" field="NAME"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width:80px;">任务来源：</td>
+                            <td style="width:120px">
+                               <div id="TaskSource" name="TaskSource" class="mini-combobox readonly" readonly="true"  textfield="NAME" valuefield="ID"
+                                    allowinput="true" emptytext="请选择..." style="width:100%" popupwidth="220px" showclose="true" oncloseclick="onCloseClick">
+                                    <div property="columns">
+                                        <div header="编码" width="60px" field="CODE"></div>
+                                        <div header="名称" width="100%" field="NAME"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:80px">基站：</td>
+                            <td style="width:320px" colspan="3">
+                                <div style="width: 100%" id="BaseStationID" name="BaseStationID" readonly="true" textname="BaseStationID_NAME" class="mini-autocomplete readonly" textfield="NAME" valuefield="ID"
+                                     allowinput="true" emptytext="请输入..." showclose="true" oncloseclick="onCloseClick">
+                                    <div property="columns">
+                                        <div header="编码" width="60" field="ID"></div>
+                                        <div header="名称" width="100%" field="NAME"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width:80px">飞机：</td>
+                            <td style="width:320px" colspan="3">
+                                <div style="width: 100%" id="UavSetID" name="UavSetID" readonly="true" textname="UavSetID_NAME" class="mini-autocomplete readonly" textfield="NAME" valuefield="ID"
+                                     allowinput="true" emptytext="请输入..." showclose="true" oncloseclick="onCloseClick">
+                                    <div property="columns">
+                                        <div header="编码" width="60" field="ID"></div>
+                                        <div header="名称" width="100%" field="NAME"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr> 
+                    </table>
+                </div>
+            </fieldset>
+
+        <fieldset id="fdInfo" style="width:900px">
+                <legend><input type="checkbox" checked  id="checkbox4" onclick="toggleFieldSet(this, 'fdInfo')"/>系统信息</legend>
+                <div class="fieldset-body">
+                    <table style="width:100%;">
+                        <tr>
+                            <td style="width:80px">录入人：</td>
+                            <td style="width:120px"><input style="width:100%" id="CREATE_BY_NAME" name="CREATE_BY_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                            <td style="width:80px">录入日期：</td>
+                            <td style="width:140px"><input style="width:100%" id="CREATE_DATE" name="CREATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                            <td style="width:80px">更新人：</td>
+                            <td style="width:120px"><input style="width:100%" id="UPDATE_BY_NAME" name="UPDATE_BY_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                            <td style="width:80px">更新日期：</td>
+                            <td style="width:140px"><input style="width:100%" id="UPDATE_DATE" name="UPDATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                        </tr>
+                    </table>
+                </div>
+        </fieldset>
+    </div>
+
+    <div class="mini-fit" style="padding:2px">
+
+        <div id="tabs1" class="mini-tabs" activeindex="0" style="width: 100%; height: 100%" plain="false" bodystyle="padding:0;border:0;">
+            <div  title="设置航线航点">
+                <div style="width: 100%;">
+                    <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 100%;">
+                                    <a class="mini-button" id="A1" iconcls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">行增加</a>
+                                    <a class="mini-button" id="A2" iconcls="icon-remove" onclick="removeRow()" plain="true">行删除</a>
+                                    <a class="mini-button" id="A3" iconcls="icon-save" plain="true" onclick="saveData()">保存</a>
+                                    <a class="mini-button" id="btnDownList" plain="true" iconCls="icon-excle" onclick="exportListForG()">下载航线列表</a>
+                                    <a class="mini-button" id="A4" iconcls="icon-edit" plain="true" onclick="setLineHeight()">批量设置航点高度</a>
+                                    <a class="mini-button" id="btnDownExcel" plain="true" iconCls="icon-excle" onclick="exportModule()">下载导入航线模板</a>
+                                    <a class="mini-button" id="btnImportExcel" plain="true" iconCls="icon-excle" onclick="importExcel()">导入航线航点</a>
+
+                                    <a class="mini-button" id="A5" plain="true" iconCls="icon-upload" onclick="uploadLine()">上传航线</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mini-fit">
+                    <div id="grdList" class="mini-datagrid" style="width: 100%; height: 100%;" allowcelledit="true" allowcellselect="true" 
+                        editnextonenterkey="true" showpager="false" allowalternating="true" skipReadOnlyCell="true"   sortmode="client" 
+                        url="../../data/SearchManager.ashx?method=SearchEditGridList&PageID=19" idfield="ID" allowresize="true" sizelist="[20,30,50,100]" pagesize="15" multiselect="true">
+                        <div property="columns">
+                            <div type="indexcolumn"></div>
+                            <div type="checkcolumn"></div>
+                            <div field="ID" name="ID" width="80" headeralign="center" visible="false">ID</div>
+
+                            <div field="LineCode" width="80" headeralign="center" vtype="int;required">
+                                航线编码
+                                <input property="editor" class="mini-textbox" style="width: 100%;height:100%;" />
+                            </div>
+
+                            <div field="Sortid" width="80" headeralign="center" vtype="int;required">
+                                航点序号
+                                <input property="editor" class="mini-textbox" style="width: 100%;height:100%;" />
+                            </div>
+
+                            <div field="Jd" width="120" headeralign="center" vtype="float;required"  numberFormat="0.000000">
+                                经度
+                                <input property="editor" class="mini-textbox" style="width: 100%;height:100%;" />
+                            </div>
+                            
+                            <div field="Wd" width="120" headeralign="center" vtype="float;required"   numberFormat="0.000000">
+                                纬度
+                                <input property="editor" class="mini-textbox" style="width: 100%;height:100%;" />
+                            </div>
+                           <div field="Height_G" width="120" headeralign="center" vtype="float;required">
+                                高度 
+                                <input property="editor" class="mini-textbox" style="width: 100%;height:100%;" />
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div title="点击命令发送日志">
+                <div class="mini-fit">
+                    <div id="grdListLog" class="mini-datagrid" style="width: 100%; height: 100%;" allowcelledit="true" allowcellselect="true" 
+                        editnextonenterkey="true" showpager="false" allowalternating="true" skipReadOnlyCell="true"   sortmode="client" 
+                        url="../../data/SearchManager.ashx?method=SearchEditGridList&PageID=22" idfield="ID" allowresize="true" sizelist="[20,30,50,100]" pagesize="15" multiselect="true">
+                        <div property="columns">
+                            <div type="indexcolumn"></div>
+                            <div type="checkcolumn"></div>
+                            <div field="ID" name="ID" width="80" headeralign="center" visible="false">ID</div>
+                            <div field="TaskID" name="TaskID" width="80" headeralign="center" visible="false">TaskID</div>
+
+                            <div field="CREATE_DATE" width="120" headeralign="center" renderer="onDateTimeRenderer">操作时间</div>
+                            <div field="CommandStr" width="160" headeralign="center" >命令内容</div>
+                            <div field="IsSuccessFlag" width="70" headeralign="center" type="checkboxcolumn">是否成功</div>
+                            <div field="ErrMessage" width="260" headeralign="center" >错误信息</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div title="定时器命令发送日志">
+               <div class="mini-fit">
+                    <div id="grdListLogOrder" class="mini-datagrid" style="width: 100%; height: 100%;" allowcelledit="true" allowcellselect="true" 
+                        editnextonenterkey="true" showpager="false" allowalternating="true" skipReadOnlyCell="true"   sortmode="client" 
+                        url="../../data/SearchManager.ashx?method=SearchEditGridList&PageID=23" idfield="ID" allowresize="true" sizelist="[20,30,50,100]" pagesize="15" multiselect="true">
+                        <div property="columns">
+                            <div type="indexcolumn"></div>
+                            <div type="checkcolumn"></div>
+                            <div field="ID" name="ID" width="80" headeralign="center" visible="false">ID</div>
+                            <div field="TaskID" name="TaskID" width="80" headeralign="center" visible="false">TaskID</div>
+
+                            <div field="CREATE_DATE" width="120" headeralign="center" renderer="onDateTimeRenderer">定时器发送时间</div>
+                            <div field="CommandStr" width="280" headeralign="center" >命令内容</div>
+                            <div field="IsSuccessFlag" width="70" headeralign="center" type="checkboxcolumn">是否成功</div>
+                            <div field="ErrMessage" width="120" headeralign="center" >错误信息</div>
+                            
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+        </div>
+    </div>
+
+    <div id="winImport" class="mini-window" title="导入航线航点信息" style="width: 250px;"
+        showtoolbar="false" showfooter="false" showmodal="true" allowresize="false" allowdrag="true">
+        <input id="FileUpload" class="mini-fileupload" name="Fdata" limittype="*.xls" style="width: 100%"
+            flashurl="../../js/swfupload/swfupload.swf"
+            uploadurl="../../data/Upload.aspx"
+            onuploadsuccess="onUploadSuccess" onuploaderror="onUploadError" />                        
+        <br />
+        <div align="center">
+            <a onclick="importOk" class="mini-button" style="width: 60px;">确定</a>
+            <a onclick="importCancel" class="mini-button" style="width: 60px;">取消</a>
+        </div>
+    </div>
+    <!-- 航线航点 模板导出 -->
+    <form id="FormDown" action="../../data/Busi/DUavMainTaskCode.aspx" method="post" target="excelIFrame">
+        <input type="hidden" name="jsonStr" id="exceljsonStr" />
+        <input type="hidden" name="method" id="excelmethod" />
+    </form>
+    <!-- 下载航线列表数据 -->
+    <form id="ExcelLineList" action="../../data/Busi/ExportUavTrackCode.aspx?method=ExportEditLineList" method="post" target="excelIFrame">
+        <input type="hidden" name="ExcelBILLID" id="ExcelBILLID" />
+    </form>
+
+    <script src="D_Uav_MainTaskLineEdit.js?ver=4" type="text/javascript"></script>
+    <script src="../../js/swfupload/swfupload.js" type="text/javascript"></script>
+</body>
+</html>

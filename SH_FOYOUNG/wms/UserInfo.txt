@@ -1,0 +1,15 @@
+﻿<fieldset style="width:800px">
+<legend>系统信息</legend>
+<table style="width:100%;" cellspacing="5px">
+<tr>
+    <td style="width:80px">录入人：</td>
+    <td style="width:120px"><input style="width:100%" id="CREATE_NAME" name="CREATE_NAME" class="mini-textbox" readonly="true" /></td>
+    <td style="width:80px">录入日期：</td>
+    <td style="width:220px"><input style="width:100%" id="CREATE_DATE" name="CREATE_DATE" class="mini-datepicker" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+    <td style="width:80px">更新人：</td>
+    <td style="width:120px"><input style="width:100%" id="UPDATE_NAME" name="UPDATE_NAME" class="mini-textbox" readonly="true" /></td>
+    <td style="width:80px">更新日期：</td>
+    <td style="width:220px"><input style="width:100%" id="UPDATE_DATE" name="UPDATE_DATE" class="mini-datepicker" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+</tr>
+</table>
+</fieldset>

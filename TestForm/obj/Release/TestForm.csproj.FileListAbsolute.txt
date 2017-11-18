@@ -1,0 +1,15 @@
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\TestForm.exe
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\TestForm.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\Nordasoft.Common.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\Nordasoft.Sql.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\VLP.NAV.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\Nordasoft.Common.xml
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\Nordasoft.Sql.xml
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\VLP.NAV.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\obj\Release\TestForm.csprojResolveAssemblyReference.cache
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\obj\Release\TestForm.Form1.resources
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\obj\Release\TestForm.Properties.Resources.resources
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\obj\Release\TestForm.csproj.GenerateResource.Cache
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\obj\Release\TestForm.exe
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\obj\Release\TestForm.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\TestForm\bin\Release\TestForm.exe.config

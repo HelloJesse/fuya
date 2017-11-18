@@ -1,0 +1,46 @@
+﻿html,body{height:100%;}
+.xwin{position:absolute;cursor:default;}
+.xwin_mask{position:absolute;left:0;top:0;background:black;}
+.xwin_alpha{background:black;opacity:0;filter:alpha(opacity=0);}
+.xwin_full{position:absolute;left:0;top:0;width:100%;height:100%;}
+.xwin_tb{position:relative;border-collapse:collapse;table-layout:fixed;}
+.xwin_body{position:relative;text-align:left;background:#fff;}
+.xwin_tl,.xwin_bl,.xwin_tr,.xwin_br,.xwin_hl,.xwin_hr,.xwin_close,.xwin_tm,.xwin_bm,.xwin_hm,.xwin_ml,.xwin_mr{width:13px;height:13px;background-image:url(../images/pop.png);_background-image:url(../images/pop.gif);}
+.xwin_close{display:block;position:absolute;right:13px;top:12px;line-height:16px;width:36px;height:16px;background-position:-26px 0;overflow:hidden; color:#656565; text-decoration:none;}
+.xwin_close:hover{text-decoration:underline;}
+.xwin_resizer{position:absolute;right:10px;bottom:10px;width:15px;height:15px;background:#ccc;overflow:hidden;}
+.xwin_title{height:22px;overflow:hidden;padding-left:6px;font-weight:bold;color:#2b2b2b;line-height:15px;*line-height:18px;text-align:left;white-space:nowrap;*min-width:1000px;}
+.xwin_tl{background-position:-62px 0;}
+.xwin_tm{background-position:-75px 0;width:auto;}
+.xwin_tr{background-position:right 0;}
+.xwin_hl{background-position:-62px -13px;height:20px;}
+.xwin_hm{background-position:-75px -13px;}
+.xwin_hr{background-position:right -13px;height:20px;}
+.xwin_ml{height:auto;}
+.xwin_mr{background-position:-13px 0;height:auto;}
+.xwin_bl{background-position:-62px -35px;}
+.xwin_bm{background-position:-75px -35px;width:auto;}
+.xwin_br{background-position:right -35px;}
+.xwin_rz .xwin_e_n{cursor:n-resize;}
+.xwin_rz .xwin_e_e{cursor:e-resize;}
+.xwin_rz .xwin_e_s{cursor:s-resize;}
+.xwin_rz .xwin_e_w{cursor:w-resize;}
+.xwin_rz .xwin_e_ne{cursor:ne-resize;}
+.xwin_rz .xwin_e_se{cursor:se-resize;}
+.xwin_rz .xwin_e_sw{cursor:sw-resize;}
+.xwin_rz .xwin_e_nw{cursor:nw-resize;}
+
+/*message*/
+.xwin_loading{height:100px;background:#fff url(../images/loading.gif) no-repeat center;}
+.xwin_message{background:#fff;}
+.xwin_box{padding-left:80px;height:70px;position:relative;}
+.xwin_text{padding-top:10px;padding-right:10px;line-height:1.5em;}
+.xwin_button{text-align:center;padding:10px 0;}
+.xwin_button a{display:inline-block;width:60px;height:21px;line-height:21px;overflow:hidden;text-align:center;text-decoration:none;color:#000;margin:0 5px;background-image:url(../images/message.png);background-repeat:no-repeat;background-position:-168px 0;}
+.xwin_button a:hover{background-position:-168px -21px;text-decoration:none;}
+.xwin_icon{position:absolute;left:20px;top:20px;width:42px;height:59px;background-image:url(../images/message.png);background-repeat:no-repeat;}
+.xwin_alert{background-position:0 0;}
+.xwin_confirm{background-position:-42px 0;}
+.xwin_success{background-position:-84px 0;}
+.xwin_error{background-position:-126px 0;}
+

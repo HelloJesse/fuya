@@ -1,0 +1,93 @@
+#################################################################
+#
+# IniFile Create by NordaSoft.Common.IO
+#
+# Author: clt_qd@yahoo.com.cn
+#
+################################################################
+
+[时间]  11/16/2017 11:39:10 AM
+程序启动
+[时间]  11/16/2017 11:39:15 AM
+开始作遥测信号测试.....
+[时间]  11/16/2017 11:39:42 AM
+遥测连接并接收信息成功
+[时间]  11/16/2017 11:42:01 AM
+程序启动
+[时间]  11/16/2017 11:42:06 AM
+开始作遥测信号测试.....
+[时间]  11/16/2017 11:42:08 AM
+遥测连接并接收信息成功
+[时间]  11/16/2017 11:46:49 AM
+程序启动
+[时间]  11/16/2017 11:46:49 AM
+开始作遥测信号测试.....
+[时间]  11/16/2017 11:46:50 AM
+遥测连接并接收信息成功
+[时间]  11/16/2017 2:54:12 PM
+程序启动
+[时间]  11/16/2017 2:54:13 PM
+开始作遥测信号测试.....
+[时间]  11/16/2017 2:54:13 PM
+程序异常:System.Net.Sockets.SocketException (0x80004005): 不知道这样的主机。
+   在 System.Net.Dns.GetAddrInfo(String name)
+   在 System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6)
+   在 System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 LocalServer.Server.preCheck() 位置 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\Server.cs:行号 125
+   在 LocalServer.Program.Main(String[] args) 位置 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\Program.cs:行号 112
+[时间]  11/16/2017 2:54:28 PM
+程序启动
+[时间]  11/16/2017 2:54:28 PM
+开始作遥测信号测试.....
+[时间]  11/16/2017 2:54:29 PM
+程序异常:System.Net.Sockets.SocketException (0x80004005): 不知道这样的主机。
+   在 System.Net.Dns.GetAddrInfo(String name)
+   在 System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6)
+   在 System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 LocalServer.Server.preCheck() 位置 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\Server.cs:行号 125
+   在 LocalServer.Program.Main(String[] args) 位置 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\Program.cs:行号 112
+[时间]  11/16/2017 2:54:38 PM
+程序启动
+[时间]  11/16/2017 2:54:38 PM
+开始作遥测信号测试.....
+[时间]  11/16/2017 2:54:56 PM
+程序异常:System.Net.Sockets.SocketException (0x80004005): 不知道这样的主机。
+   在 System.Net.Dns.GetAddrInfo(String name)
+   在 System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6)
+   在 System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   在 System.Net.Sockets.Socket.Connect(String host, Int32 port)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 LocalServer.Server.preCheck() 位置 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\Server.cs:行号 125
+   在 LocalServer.Program.Main(String[] args) 位置 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\Program.cs:行号 112
+[时间]  11/16/2017 2:55:06 PM
+程序启动
+[时间]  11/16/2017 2:55:07 PM
+开始作遥测信号测试.....
+[时间]  11/16/2017 9:41:09 PM
+程序启动
+[时间]  11/16/2017 9:41:09 PM
+开始作遥测信号测试.....
+[时间]  11/16/2017 9:41:12 PM
+遥测连接并接收信息成功
+[时间]  11/16/2017 9:44:29 PM
+程序启动
+[时间]  11/16/2017 9:44:29 PM
+开始作遥测信号测试.....
+[时间]  11/16/2017 9:44:30 PM
+遥测连接并接收信息成功
+[时间]  11/16/2017 9:46:05 PM
+程序启动
+[时间]  11/16/2017 9:46:05 PM
+开始作遥测信号测试.....
+[时间]  11/16/2017 9:46:06 PM
+遥测连接并接收信息成功
+[时间]  11/16/2017 9:46:30 PM
+程序启动
+[时间]  11/16/2017 9:46:31 PM
+开始作遥测信号测试.....
+[时间]  11/16/2017 9:46:32 PM
+遥测连接并接收信息成功

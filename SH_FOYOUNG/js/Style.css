@@ -1,0 +1,35 @@
+﻿
+        html, body
+        {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+.readonly .mini-textbox-border{
+    background-image:none;
+     background-color:#E7EAEE;
+}
+.readonly .mini-buttonedit-border{
+    background-image:none;
+     background-color:#E7EAEE;
+}
+
+fieldset
+{
+    border: solid 1px #aaa;
+}
+
+.hideFieldset
+{
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.hideFieldset .fieldset-body
+{
+    display: none;
+}

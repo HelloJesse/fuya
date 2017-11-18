@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../../js/boot.js" type="text/javascript"></script>
+    <script src="../../../js/core.js" type="text/javascript"></script>
+    <title>更改密码</title>
+    <style type="text/css">
+        html, body
+        {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="form1">
+        <fieldset style="width: 400px;">
+            <legend></legend>
+            <table border="0" cellpadding="1" cellspacing="2" style="width: 100%">
+                <tr>
+                    <td style="width: 90px;height:30px;">原始密码：</td>
+                    <td style="width:310px;height:30px;">
+                        <input name="OLDPWD" id="OLDPWD" required="true" requirederrortext="原始密码不能为空！" class="mini-password" style="width:90%;" />
+                    </td>
+                </tr>
+                <tr>
+                     <td style="width: 90px;height:30px;">NEW密码：</td>
+                    <td style="width: 310px;height:30px;">
+                        <input id="NEWPWD" name="NEWPWD" required="true" requirederrortext="NEW密码不能为空！" class="mini-password" style="width: 90%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 90px;height:30px;">密码CONFIRM ：</td>
+                    <td style="width: 310px;height:30px;">
+                        <input id="NEWPWD_AGAIN" name="NEWPWD_AGAIN" required="true" requirederrortext="密码CONFIRM 不能为空！" class="mini-password" style="width: 90%;" />
+                    </td>   
+                </tr>
+            </table>
+        </fieldset>
+        <div style="text-align:center;padding:10px;">               
+            <a class="mini-button" iconcls="icon-ok" style="width:60px;margin-right:20px;" onclick="UpdatePwd()">CONFIRM</a>
+            <a class="mini-button" iconcls="icon-cancel" style="width:60px;" onclick="onCancel()">CANCEL </a>
+        </div> 
+    </div>
+</body>
+    <script src="../../../wms/Main/ChangePwd.js" type="text/javascript"></script>
+</html>

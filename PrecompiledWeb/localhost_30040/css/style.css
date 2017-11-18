@@ -1,0 +1,33 @@
+﻿@charset "UTF-8";
+/* CSS Document */
+
+.login-page { background:url(../images/login_bg.jpg) no-repeat center center; -webkit-background-size:100% 100%; background-size:100% 100%;}
+.login-box { width:440px; height:469px; padding:0 59px; background:url(../images/login_box.png) no-repeat center bottom; position:absolute; left:50%; top:50%; margin:-240px 0 0 -279px;}
+/*.login-logo { width:320px; height:30px; background:url(../images/login_logo.png) no-repeat; margin:0 auto 114px;}*/
+.login-logo { width:320px; height:30px; margin:0 auto 114px;}
+.login-row { margin-bottom:20px; background:url(../images/login_text.png) no-repeat;}
+.login-label { float:left; font-size:16px; width:50px; height:40px; background:url(../images/login_icos.png) no-repeat 0 0;}
+.user-label { background-position:0 -40px;}
+.pwd-label { background-position:0 -80px;}
+.lang-label { background-position:0 -120px;}
+.login-input { margin-left:50px; padding:5px 0;}
+.check-row > * { line-height:30px;}
+.check-row .login-input { background:none;}
+.check-row input { margin-right:5px;}
+.login-select { position:relative; cursor:pointer;}
+.login-select em { display:block; width:19px; height:11px; background:url(../images/select_arr.png) no-repeat; position:absolute; right:15px; top:15px;}
+.login-select ul { position:absolute; width:390px; background-color:#fff; left:0; display:none;}
+.login-select ul li { line-height:30px; padding:0 17px; font-size:16px; cursor:pointer;}
+.login-select ul li:hover { background-color:#aaa; color:#fff;}
+.login-select ul li i { display:none;}
+.login-input input[type="text"], .login-input input[type="password"] { background-color:transparent; width:358px; padding:0 15px; height:30px; line-height:30px; border:none; font-size:16px; color:#666; border-left:2px solid #bbb;}
+.login-btns { overflow:hidden;}
+.login-input input[type="text"]:focus, .login-input input[type="password"]:focus { outline:none;}
+.login-btns > * { display:block; width:120px; height:40px; text-align:center; line-height:40px; float:left; background:url(../images/login_btn_l.png) no-repeat 0 0; color:#fff; font-size:14px; cursor:pointer;}
+.login-btns input[type="checkbox"] { margin-right:5px; zoom:1.5; vertical-align:middle;}
+.login-btns .login-btn { float:right; width:320px; background-image:url(../images/login_btn_r.png); color:#fff; font-size:18px;}
+.login-btns a:hover { background-position:0 -40px;}
+.login-btns a:active { background-position:0 -80px;}
+.login-btn i { display:inline-block; vertical-align:middle; margin-right:10px; width:19px; height:18px; background:url(../images/login_btn_i.png) no-repeat;}
+
+.login-row:after { clear:both; display:table; content:"";}

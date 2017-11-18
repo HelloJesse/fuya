@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* CSS Document */
+
+* { margin:0; padding:0;}
+h1, h2, h3, h4, h5, h6, p, dl, dt, dd { margin:0; font-weight:normal;}
+p { word-break:break-all; word-wrap:break-word;}
+i, em { font-style:normal;}
+body { background-color:#f9f9f9; overflow-x:hidden; font-family:"微软雅黑",Arial,"Helvetica Neue",Helvetica,sans-serif; font-size:14px; color:#333;}
+img { width:100%;}
+a { color:#666;}
+a:focus, a:hover { text-decoration:none;}
+ul { margin-bottom:0;}
+li { list-style:none;}
+label { font-weight:normal;}
+/*input:hover, input:focus { outline:none;}*/
+.container-fluid, .row { margin:0; padding:0;}
+.padding-container { padding-bottom:50px;}
+.padding-container-l { padding-bottom:40px;}
+.padding-container-h { padding-bottom:90px;}
+.btn { padding:0; background-color:#fc9c34; height:30px; line-height:30px; text-align:center; color:#fff; -webkit-border-radius:0; border-radius:0; font-size:16px;}
+.btn:active { background-color:#ea8b24;}
+.btn.focus, .btn:focus, .btn:hover { color:#fff;}
+.fyy-fl { float:left;}
+.fyy-fr { float:right;}
+footer { position:fixed; width:100%; height:40px; left:0; bottom:50px; z-index:9;}
+.padding-container-l ~ footer { bottom:0;}
+.footer-menu { background-color:#fff; border-top:1px solid #ddd; line-height:38px;}
+.footer-menu a { display:block; line-height:39px; text-align:center; color:#07aaee; font-size:16px;}
+.footer-menu a.on { background-color:#07aaee; color:#fff;}
+.win { display:none;}
+.win, .win-shadow { position:fixed; width:100%; height:100%; left:0; top:0; z-index:9;}
+.win-shadow { z-index:1; background-color:rgba(0,0,0,.7);}
+.win-box { position:fixed; top:50%; left:50%; -webkit-transform:translate(-50%,-50%); transform:translate(-50%,-50%); background-color:#fff; padding:10px 0; z-index:2; -webkit-border-radius:5px; border-radius:5px; width:80%;}
+.win-box i { display:block; width:30px; height:30px; position:fixed; right:-10px; top:-10px; background:url(../images/close_ico.png) no-repeat center center #fff; -webkit-background-size:100% 100%; background-size:100% 100%; border:1px solid #845518; -webkit-border-radius:50%; border-radius:50%;}
+.main-menu { position:fixed; width:100%; height:50px; left:0; bottom:0; z-index:9; background-color:#fff; border-top:1px solid #ddd;}
+.main-menu a { display:block; height:49px; padding:5px 0 0; text-align:center; font-size:12px;}
+.main-menu .on { background-color:#08b4fb; color:#fff;}
+.main-menu em { display:block; width:24px; height:24px; margin:0 auto 2px; background:url(../images/main_menu_icos.png) no-repeat 0 0; -webkit-background-size:200% auto;}
+.main-menu a:nth-child(2) em { background-position:0 -24px;}
+.main-menu a:nth-child(3) em { background-position:0 -48px;}
+.main-menu a:nth-child(4) em { background-position:0 -72px;}
+.main-menu .on em { background-position:-24px 0;}
+.main-menu a:nth-child(2).on em { background-position:-24px -24px;}
+.main-menu a:nth-child(3).on em { background-position:-24px -48px;}
+.main-menu a:nth-child(4).on em { background-position:-24px -72px;}
+
+.net-error { width:100%; position:absolute; left:0; top:45%; -webkit-transform:translateY(-50%); transform:translateY(-50%); text-align:center;}
+.net-error img { width:50%; max-width:220px;}
+.net-error p { margin-top:20px; font-size:16px;}
+.net-error .btn-box { margin-top:15px;}
+.net-error .btn { width:45%; margin:0 5px;}
+.net-error .btn-default { background-color:#fff; color:#333;}

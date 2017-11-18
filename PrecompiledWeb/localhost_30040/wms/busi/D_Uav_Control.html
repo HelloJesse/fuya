@@ -1,0 +1,669 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../js/boot.js" type="text/javascript"></script>
+    <script src="../../js/core.js" type="text/javascript"></script>
+
+    <title>无人机控制界面</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <link href="../../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/xwin.css" rel="stylesheet" type="text/css" />
+
+
+    <script src="http://api.shipxy.com/apdll/ap.dll?api=map&key=1ee14d6d7788461380589643ce44bcb7&ver=1.3" type="text/javascript"></script>
+    <script src="http://api.shipxy.com/apdll/ap.dll?api=data&key=1ee14d6d7788461380589643ce44bcb7&ver=1.3" type="text/javascript"></script>
+    
+    
+    <script src="D_Uav_ControlApp.js?ver=5" type="text/javascript"></script>
+    <script src="../../js/util.js?ver=6" type="text/javascript"></script>
+    <script src="D_Uav_ControlView.js?ver=7" type="text/javascript"></script>
+    <script src="../../js/service.js?ver=10" type="text/javascript"></script>
+    <script src="../../js/xwin.js?ver=6" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            myApp.initView();
+            //myApp.initView('177861920412068B371F7F396D6298EA');
+        }
+    </script>
+
+</head>
+<body>
+    <div id="form1">
+        <input id="IDS" name="IDS" class="mini-hidden" />
+        <input id="departmentID" name="departmentID" class="mini-hidden" />
+        <!-- 摇杆信息 -->
+        <object id="YGObject"  classid="clsid:E43EA378-E5A2-492F-AE7D-1512F57C358B"  codebase="TMSTHandlerXSetup.msi" height="0" width="0"></object>
+    </div>
+    <div class="mini-splitter" vertical="true" style="width:100%;height:100%;">
+        <div size="70%" showCollapseButton="true">
+
+            <div class="mini-splitter" style="width:100%;height:100%;border:none">
+                <div size="70%" showCollapseButton="true" >
+                    <div id="mainer">
+                        <div id="mapDiv"></div>
+                    </div>
+                </div>
+                <div showCollapseButton="true" >
+                    <!--航线控制窗口上下 -->
+                    <div class="mini-splitter" vertical="true" style="width:100%;height:100%;">
+                        <div size="45%" showCollapseButton="true">
+                            <!-- 三行三列的表格 -->
+                            <div id="tabs1" class="mini-tabs" activeindex="0" style="width: 100%; height: 100%" plain="false" bodystyle="padding:0;border:0;"  onactivechanged="tabactivechanged">
+                                <div  title="固定翼模式" name="guding">
+                                    <table style="width: 100%;height:100%;text-align:center;">
+                                        <tr>
+                                            <td style="width:60%;border-right:#cccccc solid 1px;">
+                                                <table style="width: 100%;height:100%;text-align:center;" border="0" >
+                                                    <tr>
+                                                        <td style="width:15%"></td>
+                                                        <td style="width:68%; vertical-align:bottom">
+                                                            <img id="upId" src="../../images/uav/Up_Round.png" alt="升高"  style="background-color:green" onmousedown="onMouseDownControl('upId','升高',8)"  ondragstart="setOndragstart()"  onmouseup="onMouseUpControl()"/>
+                                                        </td>
+                                                        <td style="width:15%;">
+                                                            <input id="btnYG" type="button" value="开启摇杆" onclick="onChangeYG()" style="height:23px;width:100%;"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align:right"> 
+                                                            <img id="leftId" src="../../images/uav/Left_Round.png"alt="左飞" style="background-color:green" onmousedown="onMouseDownControl('leftId','左飞',4)" ondragstart="setOndragstart()"  onmouseup="onMouseUpControl()"/>
+                                                        </td>
+                                                        <td>
+                                                            <input id="controlId" name="" class="mini-textbox readonly"   style="width: 36%" value="信息"/>
+
+                                                            <input id="btnInputPattern" type="button" value="点击模式" onclick="onChangeInputPattern('btnInputPattern', 'controlId')" style="height:23px;width:40%;"/>         
+                                                        </td>
+                                                        <td  style="text-align:left"> 
+                                                            <img id="rightId" src="../../images/uav/Right_Round.png"alt="右飞" style="background-color:green" onmousedown="onMouseDownControl('rightId','右飞',2)" ondragstart="setOndragstart()"  onmouseup="onMouseUpControl()"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style=" vertical-align:top"> 
+                                                            <img id="downId" src="../../images/uav/Down_Round.png"alt="下降"  style="background-color:green"  onmousedown="onMouseDownControl('downId','下降',16)" ondragstart="setOndragstart()"  onmouseup="onMouseUpControl()"/>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+
+                                            </td>
+                                            <td>
+                                                <table style="width: 100%;height:100%;text-align:center;">
+                                                     <tr>
+                                                        <td style="width:60%; vertical-align:bottom">
+                                                            <img id="plus" src="../../images/uav/Plus_48px.png" alt="速度加" ondragstart="setOndragstart()"  style="background-color:green" onmousedown="onMouseDownControl_X('plus','速度加',1)"  onmouseup="onMouseUpControl_X()"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input id="controlId_X" name="" class="mini-textbox readonly" style="width: 33%" value="速度m/s"/>
+                                                            <input id="btnInputPattern_X" type="button" value="点击模式" onclick="onChangeInputPattern('btnInputPattern_X', 'controlId_X')" style="height:23px;width: 36%"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style=" vertical-align:top"> 
+                                                            <img id="minus" src="../../images/uav/Minus_48px.png"alt="速度减" ondragstart="setOndragstart()"  style="background-color:green"  onmousedown="onMouseDownControl_X('minus','速度减',2)"  onmouseup="onMouseUpControl_X()"/>
+                                                        </td>
+                                                    </tr>    
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                </div>
+                                <div  title="旋翼模式" name="xuanyi">
+                                    <table style="width: 100%;height:100%;text-align:center;">
+                                        <tr>
+                                            <td style="width:50%;border-right:#cccccc solid 1px;">
+                                                <table style="width: 100%;height:100%;text-align:center;" >
+                                                    <tr>
+                                                        <td style="width:15%"></td>
+                                                        <td style="width:68%; vertical-align:bottom">
+                                                            <img id="" src="../../images/uav/Up_Round.png" alt="升高"  style="background-color:green" onmousedown=""  ondragstart="setOndragstart()"  onmouseup=""/>
+                                                        </td>
+                                                        <td style="width:15%;"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align:right"> 
+                                                            <img id="" src="../../images/uav/Left_Round.png"alt="左飞" style="background-color:green" onmousedown="" ondragstart="setOndragstart()"  onmouseup=""/>
+                                                        </td>
+                                                        <td>
+                                                            <input id="" name="" class="mini-textbox readonly"   style="width: 36%" value="信息"/>
+                                                            <input id="" type="button" value="点击" onclick="" style="height:23px;width:30%;"/>         
+                                                        </td>
+                                                        <td  style="text-align:left"> 
+                                                            <img id="" src="../../images/uav/Right_Round.png"alt="右飞" style="background-color:green" onmousedown="" ondragstart="setOndragstart()"  onmouseup=""/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style=" vertical-align:top"> 
+                                                            <img id="" src="../../images/uav/Down_Round.png"alt="下降"  style="background-color:green"  onmousedown="" ondragstart="setOndragstart()"  onmouseup=""/>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td  style="width:50%">
+                                                <table style="width: 100%;height:100%;text-align:center;" >
+                                                    <tr>
+                                                        <td style="width:15%"></td>
+                                                        <td style="width:68%; vertical-align:bottom">
+                                                            <img id="" src="../../images/uav/Up_Round.png" alt="升高"  style="background-color:green" onmousedown=""  ondragstart="setOndragstart()"  onmouseup=""/>
+                                                        </td>
+                                                        <td style="width:15%;"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align:right"> 
+                                                            <img id="" src="../../images/uav/Left_Round.png"alt="左飞" style="background-color:green" onmousedown="" ondragstart="setOndragstart()"  onmouseup=""/>
+                                                        </td>
+                                                        <td>
+                                                            <input id="" name="" class="mini-textbox readonly"   style="width: 36%" value="信息"/>
+
+                                                            <input id="" type="button" value="点击" onclick="" style="height:23px;width:30%;"/>         
+                                                        </td>
+                                                        <td  style="text-align:left"> 
+                                                            <img id="" src="../../images/uav/Right_Round.png"alt="右飞" style="background-color:green" onmousedown="" ondragstart="setOndragstart()"  onmouseup=""/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style=" vertical-align:top"> 
+                                                            <img id="" src="../../images/uav/Down_Round.png"alt="下降"  style="background-color:green"  onmousedown="" ondragstart="setOndragstart()"  onmouseup=""/>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!--<div title="通话模块" name="tonghua">
+                                   <table style="width: 70%;height:50%;text-align:center;" cellspacing="5px" cellpadding="5px">
+                                        <tr>
+                                            <td>
+                                                <a class="mini-button" iconcls="" onclick="onStartTcpServer()">开启TCP服务器</a>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <a class="mini-button" iconcls="" onclick="onStopTcpServer()">关闭TCP服务器</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="mini-button" iconcls="" onclick="callModule(0)">讲话发射</a>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <a class="mini-button" iconcls="" onclick="callModule(1)">接听接收</a>
+                                            </td>
+                                        </tr>
+                                    </table>   
+                                </div>-->
+
+                                <div title="语音呼叫" name="voice">
+                                    <object id="gsmobject" classid="clsid:{e7f2e9e6-dd0f-4812-adc4-3ca73629a58a}" width="0" height="0" codebase="FYActiveXSetup.msi"></object>
+                                    <table style="width: 90%;height:70%;text-align:center;">
+                                        <tr>
+                                            <td>手机号码：</td>
+                                            <td style="text-align:left">
+                                                <input id="no" class="mini-textbox"  style="width: 60%"  vtype="int"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>串口号：</td>
+                                            <td style="text-align:left">
+                                                <input id="portno" class="mini-textbox"  style="width: 60%"  vtype="int"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="mini-button" iconcls="icon-dial" onclick="sendNo()">拨 号</a>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <a class="mini-button" iconcls="icon-cancel" onclick="stop()">停止呼叫</a>
+                                            </td>
+                                        </tr>
+                                    </table>  
+                                </div>
+
+                            </div>
+                        </div>
+                        <div showCollapseButton="true">
+                            <!-- 控制按钮 -->
+                            <table  style="width:100%;text-align:center;border-collapse:separate; border-spacing:0px 5px" >
+                                <tr>
+                                    <td style="width:20%">
+                                        <a class="mini-button" id="A1" iconcls="icon-qifei" onclick="onBtnControlType(1,'起飞')" plain="true">起 飞</a>
+                                    </td>
+                                    <td style="width:20%">
+                                        <a class="mini-button" id="A2" iconcls="icon-xunhang" onclick="onBtnControlType(6,'巡航')" plain="true">巡 航</a>
+                                    </td>
+                                    <td style="width:20%">
+                                        <a class="mini-button" id="A3" iconcls="icon-fanhang" onclick="onBtnControlType(2,'返航')" plain="true">返 航</a>
+                                    </td>
+                                    <td style="width:20%">
+                                        <a class="mini-button" id="A4" iconcls="icon-jiangluo" onclick="onBtnControlType(5,'降落')" plain="true">降 落</a>
+                                    </td>
+                                    <td style="width:20%">
+                                        <a class="mini-button" id="A5" iconcls="" onclick="" plain="true">返回自动</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="mini-button" id="panxuanId" iconcls="icon-panxuan" onclick="onBtnControlType(3,'盘旋')"  plain="true">盘 旋</a>
+                                        <a class="mini-button" id="xuantingId" style="display:none" iconcls="icon-panxuan" onclick="onBtnControlType(4,'悬停')"  plain="true">悬 停</a>
+                                    </td>
+                                    <td>
+                                        <a class="mini-button" id="A6" iconcls="" onclick="" plain="true">紧急降落</a>
+                                    </td>
+                                    <td>
+                                        <a class="mini-button" id="A7" iconcls="" onclick="" plain="true">紧急停机</a>
+                                    </td>
+                                    <td>
+                                        <a class="mini-button" id="A8" iconcls="" onclick="" plain="true">解 锁</a>
+                                    </td>
+                                    <td>
+                                        <a class="mini-button" id="A9" iconcls="" onclick="" plain="true">锁 定</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="mini-button" id="A10" iconcls="" onclick="" plain="true">目标模式</a>
+                                    </td>
+                                    <td>
+                                        <a class="mini-button" id="A11" iconcls="" onclick="" plain="true">指定模式</a>
+                                    </td>
+                                    <td>
+                                        <a class="mini-button" id="A12" iconcls="" onclick="" plain="true">摇 杆</a>
+                                    </td>
+                                    <td style="text-align:left">
+                                        <a class="mini-button" id="A13" iconcls="" onclick="onBtnControlType(0,'获取控制')" plain="true">获取控制</a>
+                                    </td>
+                                    <td>
+                                        <a class="mini-button" id="btnCruise" iconcls="" onclick="onConCruise()" plain="true">继续巡航</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <hr />
+
+                            <table  style="width:100%;text-align:center;border-collapse:separate; border-spacing:0px 5px" >
+                                <tr>
+                                    <td style="width:20%">航线</td>
+                                    <td style="width:20%">
+                                        <input id="cLine"  name="cLine" class="mini-textbox"  style="width:100%" vtype="int"/>
+                                    </td>
+                                    <td style="width:20%">航点</td>
+                                    <td style="width:20%">
+                                        <input id="cPoint"  name="cPoint" class="mini-textbox"  style="width:100%" vtype="int"/> 
+                                    </td>
+                                    <td style="width:20%">
+                                        <a class="mini-button" id="A14" iconcls="icon-goto" onclick="onChangeLine()" plain="true">执  行</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>高度(m)</td>
+                                    <td>
+                                        <input id="height" name="height" class="mini-spinner" vtype="int" maxValue="10000" style="width: 100%" />
+                                    </td>
+                                    <td>速度(m/s)</td>
+                                    <td>
+                                        <input id="speed" name="speed" class="mini-spinner" vtype="int" maxValue="10000" style="width: 100%" />
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>经度</td>
+                                    <td>
+                                        <input id="lng"  name="lng" class="mini-textbox"  style="width:100%" vtype="float"/>
+                                    </td>
+                                    <td>纬度</td>
+                                    <td>
+                                        <input id="lat"  name="lat" class="mini-textbox"  style="width:100%" vtype="float"/> 
+                                    </td>
+                                    <td>
+                                        <a class="mini-button" id="A15" iconcls="icon-goto" onclick="onControlCycle()" plain="true">定点盘旋</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>        
+                    </div>
+                </div>        
+            </div>
+
+        </div>
+        <div showCollapseButton="true">
+
+            <div class="mini-splitter" style="width:100%;height:100%;border:none">
+                <div size="70%" showCollapseButton="true" >
+                    
+                    <div class="mini-splitter" style="width:100%;height:100%;border:none">
+                        <div size="55%" showCollapseButton="true" >
+                           <div class="mini-toolbar" style="border: none; padding: 0px;">
+                               <table style="width: 100%;">
+                                    <tr id="mainID">
+                                        <td style="width: 100%;">
+                                            <a class="mini-button" id="btnGetcenter" iconcls="icon-save" onclick="getCenter()" plain="true">地图中心</a>
+                                            <a class="mini-button" id="btnSetPoint" iconcls="icon-point" onclick="onSetPoint()" plain="true">开启指点飞行</a>
+
+                                            <a class="mini-button" id="btnClearTrack" iconcls="icon-remove" onclick="onClearTrack()" plain="true">清除航迹</a>
+
+                                            <a class="mini-button" id="btnReload"  iconcls="icon-reload" onclick="SystemSearch()" plain="true">刷新</a>
+                                            <a class="mini-button" id="btnOpenTimeOut" style="display:none"  onclick="onOpenTimeOut()" plain="true">开启实时查询</a>
+                                            <a class="mini-button" id="btnCloseTimeOut"   onclick="onCloseTimeOut()" plain="true">关闭实时查询</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div> 
+                            <div class="mini-fit">
+                                <div id="grdList" class="mini-datagrid" showpager="false" style="width:100%;height:100%;" sortmode="client" allowalternating="true" multiSelect="false"
+                                     url="../../data/SearchManager.ashx?PageID=16" idfield="BILLID" allowresize="true" sizelist="[20,30,50,100]" pagesize="20" onselect="onViewFlyLine">
+                                    <div property="columns">
+                                        <div type="indexcolumn"></div>
+                                        <div type="checkcolumn"></div>
+                                        <div field="BILLID" width="40" headeralign="center" visible="false">BILLID</div>
+                                        <div field="UavID" width="40" headeralign="center" visible="false">UavID</div>
+                                        <div field="UavType" width="40" headeralign="center" visible="false">UavType</div>
+                                        <div field="UavStatus" width="40" headeralign="center" visible="false">UavStatus</div>
+                                        <div field="FlyWay" width="40" headeralign="center" visible="false">FlyWay</div>
+                                        <div field="TrackCheckFlag" width="40" headeralign="center" visible="false">TrackCheckFlag</div>
+                                        <div field="LineHeight" width="40" headeralign="center" visible="false">LineHeight</div>
+
+
+                                        <div field="BILLNO" width="100" headeralign="center">任务单号</div>
+                                        <div field="TaskStatusName" width="70" headeralign="center">任务状态</div>
+                                        <div field="FlyWayName" width="70" headeralign="center">任务类型</div>
+
+                                        <div field="UavStatusName" width="70" headeralign="center">飞机状态</div>
+                                        <div field="UavSet_CODE" width="80" headeralign="center">飞机编码</div>
+                                        <div field="UavSet_NAME" width="80" headeralign="center">飞机名称</div>
+                                        <div field="UavSet_MODEL" width="80" headeralign="center">飞机型号</div>
+                                        <div field="UavTypeName" width="90" headeralign="center">飞机类型</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div showCollapseButton="true">
+                            <!--<div class="mini-toolbar" style="border: none; padding: 0px;">
+                               无人机状态:
+                            </div>-->
+
+                            <div  id="divFly" style="width:100%;height:100%;overflow:scroll;" >
+                                <table style="width:100%;height:100%;border-collapse:separate; border-spacing:0px 2px;">
+                                    <tr>
+                                        <td style="width:25%;text-align:center">经度</td>
+                                        <td style="width:25%">
+                                            <input id="Loction_Longitude" name="Loction_Longitude" class="mini-textbox readonly" readonly="true" style="width:100%;"/>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">纬度</td>
+                                        <td style="width:25%">
+                                            <input id="Loction_Latitude" name="Loction_Latitude" class="mini-textbox readonly" readonly="true"  style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">解锁状态</td>
+                                        <td style="width:25%">
+                                            <input id="ControlUnlocked" name="ControlUnlocked" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+
+                                        </td>
+                                        <td style="width: 25%; text-align: center">准备起飞状态</td>
+                                        <td style="width:25%">
+                                            <input id="Standby_isOff" name="Standby_isOff" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">当前对地高度</td>
+                                        <td style="width:25%">
+                                            <input id="GroundHeight" name="GroundHeight" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">目标对地高度</td>
+                                        <td style="width:25%">
+                                            <input id="TargetGroundHeight" name="TargetGroundHeight" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">当前地速</td>
+                                        <td style="width:25%">
+                                            <input id="GroundSpeed" name="GroundSpeed" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">当前空速</td>
+                                        <td style="width:25%">
+                                            <input id="AirSpeed" name="AirSpeed" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">目标速度</td>
+                                        <td style="width:25%">
+                                            <input id="TargetSpeed" name="TargetSpeed" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">升降速率</td>
+                                        <td style="width:25%">
+                                            <input id="LiftingRate" name="LiftingRate" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">当前机头方位角</td>
+                                        <td style="width:25%">
+                                            <input id="NoseAzimuth" name="NoseAzimuth" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">目标机头方位角</td>
+                                        <td style="width:25%">
+                                            <input id="TargetNoseAzimuth" name="TargetNoseAzimuth" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">当前俯仰角</td>
+                                        <td style="width:25%">
+                                            <input id="PitchingAngle" name="PitchingAngle" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">目标俯仰角</td>
+                                        <td style="width:25%">
+                                            <input id="TargetPitchingAngle" name="TargetPitchingAngle" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">当前滚转角</td>
+                                        <td style="width:25%">
+                                            <input id="RollAngle" name="RollAngle" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">目标滚转角</td>
+                                        <td style="width:25%">
+                                            <input id="TargetRollAngle" name="TargetRollAngle" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                         
+                                        <td style="width: 25%; text-align: center">遥控RC超距</td>
+                                        <td style="width:25%">
+                                            <input id="Alarm_ControlRCDistance" name="Alarm_ControlRCDistance" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">偏侧距离</td>
+                                        <td style="width:25%">
+                                            <input id="DistanceCornering" name="DistanceCornering" class="mini-textbox readonly" readonly="true"  style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">目标距离</td>
+                                        <td style="width:25%">
+                                            <input id="DistanceTarget" name="DistanceTarget" class="mini-textbox readonly" readonly="true" style="width: 100%"  />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">原点距离</td>
+                                        <td style="width:25%">
+                                            <input id="DistanceOrigin" name="DistanceOrigin" class="mini-textbox readonly" readonly="true"  style="width: 100%" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">GPS航迹向</td>
+                                        <td style="width:25%">
+                                            <input id="GPSTrack" name="GPSTrack" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">GPS时</td>
+                                        <td style="width:25%">
+                                            <input id="GPS_H" name="GPS_H" class="mini-textbox readonly" readonly="true" style="width: 100%"  />
+                                        </td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">GPS分</td>
+                                        <td style="width:25%">
+                                            <input id="GPS_M" name="GPS_M" class="mini-textbox readonly" readonly="true" style="width: 100%" />
+                                        </td>
+                                        <td style="width: 25%; text-align: center">GPS秒</td>
+                                        <td style="width:25%">
+                                            <input id="GPS_S" name="GPS_S" class="mini-textbox readonly" readonly="true" style="width: 100%"  />
+                                        </td>
+                                    </tr>                                                                                   
+                                    <tr>
+                                        <td style="width:25%;text-align:center">飞机模式</td>
+                                        <td style="width:25%">
+                                            <input id="VehicleModal" name="VehicleModal" class="mini-textbox readonly" readonly="true" style="width:100%;"/>
+                                        </td>
+                                        <td style="width:25%;text-align:center"></td>
+                                        <td style="width:25%">
+                                        </td>
+                                    </tr>
+                                   
+                                    <!-- 状态信息 -->
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">主电压低</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_MainV_Low" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">舵机电压低</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_ServoV_Low" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">电流低</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_Electricity_Low" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">状态监控1</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_Status1" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">转速异常</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_AbnormalSpeed" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">空速异常</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_SpaceVelocityAnomaly" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">状态监控2</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_Status2" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">升降速度报警</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_LiftingSpeed" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">GPS定位精度低</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_GPSLoction_Low" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">航姿传感器状态</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_PositionSensor" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">高度报警</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_GrandHigh" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">超出安全围栏</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_BeyondSecurityFence" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">遥控上行状态</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_ControlUpward" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">飞控硬件状态</td>
+                                        <td style="width:25%">
+                                            <label id="Alarm_FlightControlHardware" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; text-align: center">发电机并网</td>
+                                        <td style="width:25%">
+                                            <label id="Switch_GeneratorInterconnection" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                        <td style="width: 25%; text-align: center">发动机启动</td>
+                                        <td style="width:25%">
+                                            <label id="Switch_EngineStart" style="width: 100%;background-color:gray">__________</label>
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+
+                        </div>        
+                    </div>
+                    
+
+                </div>
+                <div showCollapseButton="true">
+
+                    <div id="tabs2" class="mini-tabs" activeindex="0" style="width: 100%; height: 100%" plain="false" bodystyle="padding:0;border:0;"  onactivechanged="tabactivechanged">
+                        <div  title="指令信息列表" name="">
+                            <div class="mini-fit" style="padding:2px">
+                                <textarea id="resultInfo" readonly="true" class="readonly" style="width:99%;height:98%" ></textarea>
+                            </div>
+                        </div>
+                        <div  title="定时器列表" name="">
+                           <div class="mini-fit" style="padding:2px">
+                                <textarea id="timerInfo" readonly="true" class="readonly" style="width:99%;height:98%" ></textarea>
+                            </div> 
+                        </div>
+                        <div  title="定时器信息" name="">
+                           <div class="mini-fit" style="padding:2px">
+                                <textarea id="mmInfo" readonly="true" class="readonly" style="width:99%;height:98%" ></textarea>
+                            </div> 
+                        </div>
+                    </div>
+
+                </div>        
+            </div>
+
+        </div>        
+    </div>
+
+
+    
+
+    <script src="../../js/multisort.js" type="text/javascript"></script>
+    <!--  -->
+    <script src="D_Uav_Control.js?ver=10" type="text/javascript"></script>
+    <!-- 定时器js -->
+    <script src="D_Uav_ControlTimer.js?ver=11" type="text/javascript"></script>
+    <!-- TCP 暂未使用 -->
+    <script src="D_Uav_ControlTcp.js?ver=1" type="text/javascript"></script>
+    <!-- 摇杆 -->
+    <script src="D_Uav_ControlActiveX.js?ver=1" type="text/javascript"></script>
+</body>
+</html>

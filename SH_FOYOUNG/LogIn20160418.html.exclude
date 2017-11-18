@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../js/boot.js" type="text/javascript"></script>
+        <script src="../js/core.js" type="text/javascript"></script>
+    <title>WMS系统用户登录</title>
+</head>
+<body>
+    <div id="loginWindow" class="mini-window" title="WMS系统用户登录" style="width:350px;height:230px;"
+         showmodal="true" showclosebutton="false">
+        <div id="loginForm" style="padding:15px;padding-top:10px;">
+            <table align="center" style="width:230px;">
+                <tr>
+                    <td style="width:70px;">公司名称</td>
+                    <td>
+                        <input id="CompanyName" name="CompanyName" class="mini-textbox" style="width: 100%;" required="true" requirederrortext="公司名称不能为空" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>账号</td>
+                    <td>
+                        <input id="UserCode" name="UserCode" class="mini-textbox" style="width: 100%;" required="true" requirederrortext="账号不能为空" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td>
+                        <input id="Password" class="mini-password" style="width: 100%;" onenter="submitForm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>语言</td>
+                    <td>
+                        <input id="language" class="mini-combobox"     style="width: 100%;" required="true" requirederrortext="语言不能为空" data="[{id:'CN',text:'中文'},{id:'EN',text:'English'}]" value="CN" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><div id="ckjz" name="ckjz" class="mini-checkbox" checked="true" readOnly="false" text="记住我"></div>
+
+                    </td>
+                    <td>
+                        <a onclick="submitForm" class="mini-button" style="width:60px;">登录</a>
+                        <a onclick="onResetClick" class="mini-button" style="width:60px;">重置</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <!--dfwrewrewrwerwre-->
+    <script type="text/javascript">
+        mini.parse();
+        var params = GetParams(location.href, "?");
+        if (params.flag == "layout") {
+            $.ajax({
+                url: "data/Main/MenuManager.aspx?method=Layout",
+                type: "post",
+                data: { },
+                success: function (text) {
+
+                    window.location = "login.html";
+                }
+            });
+        }
+
+        var loginWindow = mini.get("loginWindow");
+        loginWindow.show();
+        var company = mini.get("CompanyName");
+        var usercode = mini.get("UserCode");
+        var companyname_t = getCookie_My("CompanyName");
+        var usercode_t = getCookie_My("UserCode");
+        if (companyname_t) {
+            company.setValue(companyname_t);
+        }
+        if (usercode_t) {
+            usercode.setValue(usercode_t);
+        }
+        
+        if (company.value == "") {
+            company.focus();
+        }
+        else if (usercode.value == "") {
+            usercode.focus();
+        } else {
+            mini.get("Password").focus();
+        }
+        //var user = mini.get("UserCode");
+        //user.focus();
+
+        function submitForm() {
+            var form = new mini.Form("#loginWindow");
+            form.validate();
+            if (form.isValid() == false) return;
+            var mask = mini.loading("系统正在登录...", "登录");
+            var companyName = mini.get("CompanyName").getValue();
+            var userCode = mini.get("UserCode").getValue();
+            var password = mini.get("Password").getValue();
+            var userLan = mini.get("language").getValue();
+            //if (mini.get("ckjz").value == "true") {
+            //    //mini.Cookie.set("CompanyName", companyName, 7, document.domain);
+            //    //mini.Cookie.set("UserCode", userCode, 7, document.domain);
+            //    setCookie("CompanyName", companyName,7);
+            //    setCookie("UserCode", userCode, 7);
+            //    setCookie("baseData", bootPATH + 'basedata/' + companyName + '_jsdata.js');
+            //}
+            //else {
+            //    mini.Cookie.set("CompanyName", "");
+            //    mini.Cookie.set("UserCode", "");
+            //}
+            $.ajax({
+                url: "data/Main/MenuManager.aspx?method=Login",
+                type: "post",
+                data: { userCode: userCode, password: password, userLan: userLan, CompanyName: companyName },
+                success: function (text) {
+                    if (text == "true") {
+                        if (mini.get("ckjz").value == "true") {
+                            setCookie("CompanyName", companyName, 7);
+                            setCookie("UserCode", userCode, 7);
+                            setCookie("baseData", location.host + '/js/basedata/' + companyName + '_jsdata.js');
+                        } else {
+                            setCookie("CompanyName", "",7);
+                            setCookie("UserCode", "",7);
+                        }
+                        //setTimeout(function () {
+                        window.location = "Main.html";
+                        //}, 1500);
+                    }
+                    else {
+                        mini.hideMessageBox(mask);//mini.unmask();
+                        mini.alert("用户名或密码不正确");
+
+                    }
+                    
+                }
+            });
+        }
+        function onResetClick(e) {
+            var form = new mini.Form("#loginWindow");
+            form.clear();
+        }
+        
+    </script>
+</body>
+
+</html>

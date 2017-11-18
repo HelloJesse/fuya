@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%; margin: 0" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+    <title></title>
+    <script type="text/javascript" src="js/echarts.js"></script>
+    <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0">
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 100%;height:100%;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 过渡---------------------
+        myChart.showLoading({
+            text: '正在努力的读取数据中...'    //loading话术
+        });
+
+        // ajax getting data...............
+
+        // ajax callback
+        myChart.hideLoading();
+
+        // 图表使用-------------------
+        var option = {
+            legend: {                                   // 图例配置
+                padding: 5,                             // 图例内边距，单位px，默认上下左右内边距为5
+                itemGap: 10,                            // Legend各个item之间的间隔，横向布局时为水平间隔，纵向布局时为纵向间隔
+                data: ['ios', 'android']
+            },
+            tooltip: {                                  // 气泡提示配置
+                trigger: 'item'                        // 触发类型，默认数据触发，可选为：'axis'
+            },
+            xAxis: [                                    // 直角坐标系中横轴数组
+                {
+                    type: 'category',                   // 坐标轴类型，横轴默认为类目轴，数值轴则参考yAxis说明
+                    data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                }
+            ],
+            yAxis: [                                    // 直角坐标系中纵轴数组
+                {
+                    type: 'value',                      // 坐标轴类型，纵轴默认为数值轴，类目轴则参考xAxis说明
+                    boundaryGap: [0.1, 0.1],            // 坐标轴两端空白策略，数组内数值代表百分比
+                    splitNumber: 4                      // 数值轴用，分割段数，默认为5
+                }
+            ],
+            series: [
+                {
+                    name: 'ios',                        // 系列名称
+                    type: 'line',                       // 图表类型，折线图line、散点图scatter、柱状图bar、饼图pie、雷达图radar
+                    data: [112, 23, 45, 56, 233, 343, 454, 89, 343, 123, 45, 123]
+                },
+                {
+                    name: 'android',                    // 系列名称
+                    type: 'line',                       // 图表类型，折线图line、散点图scatter、柱状图bar、饼图pie、雷达图radar
+                    data: [45, 123, 145, 526, 233, 343, 44, 829, 33, 123, 45, 13]
+                }
+            ]
+        };
+        
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<script src="../../js/boot.js" type="text/javascript"></script>
+<script src="../../js/core.js" type="text/javascript"></script>
+    <title>接收信号检测</title>
+        <style type="text/css">
+        html, body{
+            margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
+        }    
+    </style>
+</head>
+<body style="margin:0">
+    <div id="form1">
+    </div>
+
+    <div class="mini-fit" style="padding:2px;">
+        <div id="grdListPlane" class="mini-datagrid" showpager="false" style="width:100%;height:47%;" sortmode="client" allowalternating="true" multiSelect="false"
+            url="../../data/SearchManager.ashx?PageID=20" idfield="ID" allowresize="true" sizelist="[20,30,50,100]" pagesize="20">
+            <div property="columns">
+                <div type="indexcolumn"></div>
+                <div field="CREATE_DATE" width="140" headeralign="center" dateFormat="yyyy-MM-dd HH:mm:ss">飞机遥测信号接收时间</div>
+                <div field="Isolddata" width="70" headeralign="center">Isolddata</div>
+                <div field="OldTaskID" width="70" headeralign="center">OldTaskID</div>
+                <div field="UavID" width="60" headeralign="center">UavID</div>
+                <div field="Loction_Longitude" width="120" headeralign="center">经度</div>
+                <div field="Loction_Latitude" width="120" headeralign="center">纬度</div>
+                <div field="CurrentLine" width="80" headeralign="center">当前航线</div>
+                <div field="CurrentTargetPoint" width="100" headeralign="center">目标航点</div>
+            </div>
+        </div>  
+        <br />
+        <div id="grdListShip" class="mini-datagrid" showpager="false" style="width:100%;height:47%;" sortmode="client" allowalternating="true" multiSelect="false"
+            url="../../data/SearchManager.ashx?PageID=21" idfield="ID" allowresize="true" sizelist="[20,30,50,100]" pagesize="20">
+            <div property="columns">
+                <div type="indexcolumn"></div>
+                <div field="CREATE_DATE" width="140" headeralign="center" dateFormat="yyyy-MM-dd HH:mm:ss">船舶信号接收时间</div>
+                <div field="ShipID" width="80" headeralign="center">ShipID</div>
+                <div field="name" width="100" headeralign="center">船舶名称</div>
+                <div field="lon" width="120" headeralign="center">经度</div>
+                <div field="lat" width="120" headeralign="center">纬度</div>
+                <div field="BILLNO" width="100" headeralign="center">任务单号</div>
+                <div field="TrackType" width="100" headeralign="center" dataType="boolean">是否新跟踪目标</div>
+            </div>
+        </div>  
+    </div>
+
+    <script src="../../js/multisort.js" type="text/javascript"></script>
+    <script src="SignalDetection.js?ver=1" type="text/javascript"></script> 
+    <script src="../../js/multisort.js" type="text/javascript"></script>
+</body>
+
+    
+</html>

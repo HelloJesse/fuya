@@ -1,0 +1,1 @@
+﻿<%@ page language="C#" autoeventwireup="true" inherits="VLP.BS.HelpPage,VLP.BS" %>

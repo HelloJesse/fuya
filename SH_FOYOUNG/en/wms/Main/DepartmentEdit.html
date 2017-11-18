@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../../js/boot.js" type="text/javascript"></script>
+    <script src="../../../js/core.js" type="text/javascript"></script>
+    <title>部门EDIT</title>
+</head>
+<body>
+    <form id="form1" style="margin-bottom:4px;">
+        <div class="mini-toolbar" id="toolbar">
+        </div>
+        <input id="ID" name="ID" class="mini-hidden" />
+        <fieldset style="border:solid 1px #aaa;width:700px">
+            <legend>SHIPMENT INFO</legend>
+            <table>
+                <tr>
+                    <td style="width: 80px;">CODE：</td>
+                    <td style="width: 120px">
+                        <input name="CODE" class="mini-textbox" style="width: 100%;" required="true" requirederrortext="公司CODE不能为空" />
+                    </td>
+                    <td style="width: 80px;">PORT CHINESE NAME：</td>
+                    <td style="width: 120px;">
+                        <input name="Name" class="mini-textbox" style="width: 100%;" required="true" requirederrortext="公司PORT CHINESE NAME不能为空" />
+                    </td>
+                    <td style="width: 80px;">AGENT ENGLISH NAME：</td>
+                    <td style="width: 120px;">
+                        <input name="Name_E" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;"><input id="Activated" name="Activated" class="mini-checkbox" readonly="readonly" text="YESNO 启用" /></td>
+                </tr>
+                <tr>
+                    <td>所属公司：</td>
+                    <td colspan="3">
+                        <div style="width:100%" id="CompanyID" name="CompanyID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                             allowinput="true" emptytext="请选择..." required="true" requirederrortext="所属公司不能为空" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="CODE" field="CODE" width="50px"></div>
+                                <div header="NULL" field="NAME" width="100%"></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset style="border:solid 1px #aaa;margin-bottom:4px;width:900px">
+            <legend>系统INFO</legend>
+            <table>
+                <tr>
+                    <td style="width:80px">DOC CREATED BY：</td>
+                    <td style="width:120px"><input style="width:100%" id="CREATE_NAME" name="CREATE_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                    <td style="width:80px">DOC CREATED DATE：</td>
+                    <td style="width:140px"><input style="width:100%" id="CREATE_DATE" name="CREATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                    <td style="width:80px">UPDATE BY ：</td>
+                    <td style="width:120px"><input style="width:100%" id="UPDATE_NAME" name="UPDATE_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                    <td style="width:80px">UPDATE DATE：</td>
+                    <td style="width:140px"><input style="width:100%" id="UPDATE_DATE" name="UPDATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                </tr>
+            </table>
+        </fieldset>
+</form>
+    <script src="../../../wms/Main/DepartmentEdit.js" type="text/javascript"></script>
+</body>
+</html>

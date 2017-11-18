@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="../../js/boot.js" type="text/javascript"></script>
+    <script src="../../js/core.js" type="text/javascript"></script>
+    <title></title>
+
+</head>
+<body>
+    <div id="toolbar" class="mini-toolbar">
+        <a class="mini-button" iconcls="icon-add" onclick="AddUser()">添加</a>
+    </div>
+    <div class="mini-fit">
+        <ul id="tree2" class="mini-tree" url="../../data/main/RoleManager.ashx?method=GetUserTree" style="width:300px;height:100%; padding:5px;" 
+            showTreeIcon="true" textField="NAME" idField="ID" parentField="PID" resultAsTree="false"  virtualScroll="true"
+            showCheckBox="true" onbeforenodecheck="beforenodecheck"
+        
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var roleid;
+        var action;
+        var opfield;
+        var menuid;
+        function AddUser() {
+            if (roleid == undefined) {
+                notify('未指定角色.');
+                return;
+            }
+            var tree = mini.get("tree2");
+            var value = tree.getValue(false);
+            var method = "AddUserToRole";
+            if (action == "addviewuserid") {
+                method = "AddOPViewUserID";
+            }
+            $.ajax({
+                url: _Datapath + "Main/RoleManager.ashx?method=" + method,
+                data: { RoleID: roleid, UserIDS: value,OPField:opfield,MenuID:menuid },
+                type: "post",
+                success: function (text) {
+                    var data = mini.decode(text);   //反序列化成对象
+                    if (isLoginOut(data) == false) {
+                        mini.alert("操作成功.");
+                        if (data.IsOK == false) {
+                            mini.alert(data.ErrMessage);
+                        } 
+
+                    }
+                }
+            });
+        }
+        function SetData(data) {
+            roleid = data.id;
+            action = data.action;
+            opfield = data.opfield;
+            menuid = data.menuid;
+        }
+        function beforenodecheck(e) {
+            e.cancel = (e.node.ID.substring(0, 1) != "U");
+        }
+    </script>
+</body>
+</html>

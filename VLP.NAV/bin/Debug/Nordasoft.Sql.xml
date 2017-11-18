@@ -1,0 +1,1035 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nordasoft.Sql</name>
+    </assembly>
+    <members>
+        <member name="T:Nordasoft.Data.Sql.UpdateManager">
+            <summary>
+            更新命令管理器
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.UpdateManager.m_SbField">
+            <summary>
+            用于拼凑InsertSQL字段\值部分
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.UpdateManager.m_SbWhere">
+            <summary>
+            用于拼凑InsertSQL条件部分
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.UpdateManager.m_UpdateCommand">
+            <summary>
+            更新命令
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.UpdateManager.m_UpdateFieldCount">
+            <summary>
+            更新字段的个数
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.UpdateManager.m_WhereFieldCount">
+            <summary>
+            条件字段的个数
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.#ctor(System.String)">
+            <summary>
+            构造体
+            </summary>
+            <param name="tableName">待更新的表名</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.AddUpdateField(System.String,System.Object,System.Data.SqlDbType)">
+            <summary>
+            添加更新字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+            <param name="sqlDbType">字段类型</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.AddUpdateField(System.String,System.Object,System.Data.SqlDbType,System.Int32)">
+            <summary>
+            添加更新字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+            <param name="sqlDbType">字段类型</param>
+            <param name="size">字段长度,以字节为单位</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.AddUpdateField(System.String,System.Object)">
+            <summary>
+            添加更新字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.AddWhereField(System.String,System.Object,System.Data.SqlDbType)">
+            <summary>
+            添加条件字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+            <param name="sqlDbType">字段类型</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.AddWhereField(System.String,System.Object,System.Data.SqlDbType,System.Int32)">
+            <summary>
+            添加条件字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+            <param name="sqlDbType">字段类型</param>
+            <param name="size">字段长度,以字节为单位</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.AddWhereField(System.String,System.Object)">
+            <summary>
+            添加条件字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.GetCommand">
+            <summary>
+            获取更新命令(当更新字段或条件字段为零时，将反回null)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.UpdateManager.ExecuteNonQuery(System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            对连接执行Transact-SQL语句并返回影响行数
+            </summary>
+            <param name="trans">事务</param>
+            <returns></returns>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.UpdateManager.UpdateFieldCount">
+            <summary>
+            获取更新字段的个数
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.UpdateManager.WhereFieldCount">
+            <summary>
+            获取条件字段的个数
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.DataBase.CommandTimeout">
+            <summary>
+            命令执行时间
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.DataBase.IsNeedConvert">
+            <summary>
+            是否需要转换
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.DataBase.IsWriteLog">
+            <summary>
+            是否记录日志(默认为false)
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.DataBase.m_UserCode">
+            <summary>
+            当前用户编号
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.CreateBackupProc">
+            <summary>
+            创建备份数据库仅支持SQL Server
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.BackupDB(System.String)">
+            <summary>
+            备份当前数据库
+            </summary>
+            <param name="file">备份的文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.BackupDB(System.String,System.String)">
+            <summary>
+            备份数据库
+            </summary>
+            <param name="dbname">需要备份的数据库名称</param>
+            <param name="file">备份的文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.IsConnected">
+            <summary>
+            是否可以连接
+            </summary>
+            <returns>true-可以连接 false-不能连接</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.IsConnected(System.String)">
+            <summary>
+            是否可以连接
+            </summary>
+            <param name="connectionString">连接字符串</param>
+            <returns>true-可以连接 false-不能连接</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.#ctor(System.String)">
+            <summary>
+            构造体
+            </summary>
+            <param name="connectionString">数据连结字符串</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.#ctor(System.String,Nordasoft.Data.Sql.DataBaseType)">
+            <summary>
+            构造体
+            </summary>
+            <param name="connectionString">数据连接字符串</param>
+            <param name="dbtype">数据库类型</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.#ctor(System.String,System.String)">
+            <summary>
+            构造体
+            </summary>
+            <param name="connectionString">数据连接字符串</param>
+            <param name="logConnectionString">日志数据连接字符串</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.CreateConnection">
+            <summary>
+            创建数据连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.CreateLogConnection">
+            <summary>
+            创建日志数据连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.WriteLog(System.Data.IDbCommand,System.String,System.Exception)">
+            <summary>
+            记录日志
+            </summary>
+            <param name="cmmd">记录的命令</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.WriteLog(System.String,System.String,System.String)">
+            <summary>
+            记录日志
+            </summary>
+            <param name="userCode">当前用户编号</param>
+            <param name="message">信息</param>
+            <param name="detail">详细信息</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteNonQuery(System.String)">
+            <summary>
+            执行Transact-SQL语句并返回影响行数
+            </summary>
+            <param name="commandText">Transact-SQL语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteNonQuery(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            对连接执行Transact-SQL语句并返回影响行数
+            </summary>
+            <param name="sqlCommand">SqlCommand</param>
+            <returns></returns>
+            <remarks>命令执行错误,系统会自动记录错误日志</remarks>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteNonQuery(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            对连接执行Transact-SQL语句并返回影响行数
+            </summary>
+            <param name="sqlCommand">SqlCommand</param>
+            <returns></returns>
+            <remarks>鉴于在事务中执行,故系统不做日志记录</remarks>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SetCommandTimeout(System.Data.IDbCommand)">
+            <summary>
+            设置命令执行的时间
+            </summary>
+            <param name="cmmd"></param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteDataset(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            执行SQL命令，并反回Dataset
+            </summary>
+            <param name="sqlCommand"></param>
+            <returns></returns>
+            <remarks>命令执行错误,系统会自动记录错误日志</remarks>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteDataTable(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            执行SQL命令，并反回DataTable
+            </summary>
+            <param name="sqlCommand"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteScalar(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            执行查询，并返回第一行第一列的值
+            </summary>
+            <param name="sqlCommand"></param>
+            <returns></returns>
+            <remarks>命令执行错误,系统会自动记录错误日志</remarks>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteScalar(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行查询，并返回第一行第一列的值
+            </summary>
+            <param name="sqlCommand">查询命令</param>
+            <param name="trans">事务</param>
+            <returns></returns>
+            <remarks>鉴于在事务中执行,故系统不做日志记录</remarks>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteScalarInt(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            执行查询，并返回第一行第一列的值,且类型为Int型
+            </summary>
+            <param name="cmmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteScopeIdentity(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            执行命令，并取出Identity
+            </summary>
+            <param name="cmmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteReader(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            执行查询，并返回SqlDataReader
+            </summary>
+            <param name="sqlCommand"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetDataSetSchema(System.Data.SqlClient.SqlCommand,System.Data.SchemaType)">
+            <summary>
+            根据SqlCommand获取数据结构
+            </summary>
+            <param name="sqlCommand"></param>
+            <param name="dataSet"></param>
+            <param name="schemaType"></param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetDataTableSchema(System.Data.SqlClient.SqlCommand,System.Data.SchemaType)">
+            <summary>
+            根据SqlCommand获取数据结构
+            </summary>
+            <param name="sqlCommand"></param>
+            <param name="dataSet"></param>
+            <param name="schemaType"></param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetDBVersion">
+            <summary>
+            获取数据库版本
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetColumnProperties(System.String)">
+            <summary>
+            根据表名，获取列的属性集合(SQL2000、SQL2005测试通过)
+            </summary>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetColumnProperties2005(System.String)">
+            <summary>
+            根据表名，获取列的属性集合
+            </summary>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetProcedureParameters(System.String)">
+            <summary>
+            根据存储过程名称获取参数信息
+            </summary>
+            <param name="procName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SaveExtendedProperty(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            保存扩展属性
+            </summary>
+            <param name="schema"></param>
+            <param name="tableName"></param>
+            <param name="columnName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SaveExtendedProperty2005(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            保存扩展属性
+            </summary>
+            <param name="schema"></param>
+            <param name="tableName"></param>
+            <param name="columnName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SaveExtendedProperty(System.Boolean,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            保存扩展属性
+            </summary>
+            <param name="is2005"></param>
+            <param name="schema"></param>
+            <param name="tableName"></param>
+            <param name="columnName"></param>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SaveColumnLable(System.String,System.String,System.String)">
+            <summary>
+            保存列的Lable属性(所有者默认为dbo)
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名</param>
+            <param name="lable">Lalbe名称</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SaveColumnLable(System.String,System.String,System.String,System.String)">
+            <summary>
+            保存列的Lable属性
+            </summary>
+            <param name="schema">所有者</param>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名</param>
+            <param name="lable">Lalbe名称</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SaveColumnDescription(System.String,System.String,System.String)">
+            <summary>
+            保存列的decription属性(所有者默认为dbo)
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名</param>
+            <param name="description">列描述</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SaveColumnDescription2005(System.String,System.String,System.String)">
+            <summary>
+            保存列的decription属性(所有者默认为dbo)
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名</param>
+            <param name="description">列描述</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.SaveColumnDescription(System.Boolean,System.String,System.String,System.String,System.String)">
+            <summary>
+            保存列的Lable属性
+            </summary>
+            <param name="schema">所有者</param>
+            <param name="tableName">表名</param>
+            <param name="columnName">列名</param>
+            <param name="description">列描述</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetUserTableNames">
+            <summary>
+            获取所有的用户表名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetTableKey(System.String,System.Boolean@)">
+            <summary>
+            获取名的主键
+            </summary>
+            <param name="tableName">要获取主键表的名称</param>
+            <param name="isIdentity">是否为自增长</param>
+            <returns>主键名</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.InitBaseInfo">
+            <summary>
+            初始框架中用到的信息
+            <remarks>1、日志2、命令日志3、分页过程</remarks>
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteLongText(System.String)">
+            <summary>
+            初始命令文本，类似查询分析器
+            </summary>
+            <param name="longCommandText"></param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.CheckTableExists(System.String)">
+            <summary>
+            检测表是否已经存在
+            </summary>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetCommand">
+            <summary>
+            创建Command命令
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetConnection">
+            <summary>
+            获取数据连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetParameter(System.String,System.Object)">
+            <summary>
+            获取参数
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteReader(System.Data.IDbCommand)">
+            <summary>
+            获取DataReader
+            </summary>
+            <param name="cmmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteScalar(System.Data.IDbCommand)">
+            <summary>
+            获取第一行第一列的值
+            </summary>
+            <param name="cmmd"></param>
+            <returns>如未找到，则返回DBNull.Value</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteScalarInt(System.Data.IDbCommand)">
+            <summary>
+            获取第一行第一列的数字值
+            </summary>
+            <param name="cmmd"></param>
+            <returns>如未找到，则返回0</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteScalarLong(System.Data.IDbCommand)">
+            <summary>
+            获取第一行第一列的数字值
+            </summary>
+            <param name="cmmd"></param>
+            <returns>如未找到，则返回0</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteNonQuery(System.Data.IDbCommand)">
+            <summary>
+            执行命令
+            </summary>
+            <param name="cmmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteNonQuery(System.Data.IDbCommand,System.Data.IDbTransaction)">
+            <summary>
+            执行命令
+            </summary>
+            <param name="cmmd"></param>
+            <param name="trans"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetDataAdapter">
+            <summary>
+            获取DataAdapter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteDataset(System.Data.IDbCommand)">
+            <summary>
+            执行命令，并返回DataSet
+            </summary>
+            <param name="cmmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExecuteDataTable(System.Data.IDbCommand)">
+            <summary>
+            执行命令，并返回DataTable
+            </summary>
+            <param name="cmmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.Update(System.Data.DataTable)">
+            <summary>
+            更新表（只读列不用于更新和插入)
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.Update(System.Data.DataTable,System.Data.DataColumn[])">
+            <summary>
+            更新表（只读列不用于更新和插入)
+            </summary>
+            <param name="dt"></param>
+            <param name="primaryKeys">关键列，用于Update\Delete</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.CheckMSSQLValid(System.String)">
+            <summary>
+            检测SQL语句的有效性
+            </summary>
+            <param name="sql">SQL语句，可带参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetParameterNames(System.String)">
+            <summary>
+            获取SQL语句中，参数的名称
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.CheckMSQLConnectionValid(System.String,System.Int32)">
+            <summary>
+            检测数据连接是否有效
+            </summary>
+            <param name="connectionStr">连接字符串</param>
+            <param name="connectionTimeout">连接超时时间（秒）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.CheckMSQLConnectionValid(System.String)">
+            <summary>
+            检测数据连接是否有效
+            </summary>
+            <param name="connectionStr">连接字符串默认为2秒</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.BindObject(System.Object,System.Data.IDataReader)">
+            <summary>
+            利用反射，邦定对象的属性。属性名与列名必须一致
+            </summary>
+            <param name="obj"></param>
+            <param name="dr"></param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetExcelFormat">
+            <summary>
+            获取导出Excel的格式字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetExcelContent(System.Data.DataTable)">
+            <summary>
+            将DataTable转换为Excel内容
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ToExcel(System.String,System.Data.DataTable)">
+            <summary>
+            将DataTable转换为Excel内容
+            </summary>
+            <param name="dt"></param>
+            <param name="fileName">要保存的文件名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetInsertCommands(System.Data.DataTable)">
+            <summary>
+            根据数据表，获取INSERT COMMAND 集
+            </summary>
+            <param name="dt">数据表</param>
+            <returns>新增命令集</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetSQLCommands(System.Data.DataTable)">
+            <summary>
+            根据行的状态，获取SQL命令集(只读列不用于更新和插入)
+            </summary>
+            <param name="dt">需要同步的表</param>
+            <returns>SQL命令集</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetSQLCommands(System.Data.DataTable,System.Data.DataColumn[])">
+            <summary>
+            根据行的状态，获取SQL命令集(只读列不用于更新和插入)
+            </summary>
+            <param name="dt">需要同步的表</param>
+            <param name="primaryKeys">关键列，用于Update\Delete</param>
+            <returns>SQL命令集</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.GetInsertCommands(System.Data.DataTable[])">
+            <summary>
+            根据表集，获取对应的INSERT COMMAND 集
+            </summary>
+            <param name="dts">数据表集</param>
+            <returns>命令集</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.ExceuteCommands(System.Collections.ObjectModel.Collection{System.Data.SqlClient.SqlCommand},System.String)">
+            <summary>
+            执行命令集合
+            </summary>
+            <param name="cmmds">命令集合</param>
+            <param name="connectionString">数据连接字符串</param>
+            <returns>成功反回空；失败返回原因</returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DataBase.CheckFieldExists(System.Data.IDataReader,System.String)">
+            <summary>
+            检测指定的字段是否存在于IDataReader中
+            </summary>
+            <param name="dr"></param>
+            <param name="fieldName">字段名</param>
+            <returns>true-存在 false--不存在</returns>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.DataBase.UserCode">
+            <summary>
+            用户编号
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.DataBase.DataBaseType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.OperationEnum">
+            <summary>
+            运算符
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.OperationEnum.Equal">
+            <summary>
+            等于
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.OperationEnum.GreaterThen">
+            <summary>
+            大于
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.OperationEnum.LessThen">
+            <summary>
+            小于
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.OperationEnum.GreaterThenOrEqual">
+            <summary>
+            大于等于
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.OperationEnum.LessThenOrEqual">
+            <summary>
+            小于等于
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.OperationEnum.Like">
+            <summary>
+            模式匹配
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.OperationEnum.IN">
+            <summary>
+            包含
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.Converter">
+            <summary>
+            运算符转换类
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.Converter.Convert(Nordasoft.Data.Sql.OperationEnum)">
+            <summary>
+            运算符转换类
+            </summary>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.Converter.ConvertDbType(System.String)">
+            <summary>
+            将类型名称转换为SqlDbType
+            </summary>
+            <param name="typeName">类型名称</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.DataBaseType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.ColumnProperty">
+            <summary>
+            列属性
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.ColumnProperty.m_Name">
+            <summary>
+            列名
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.ColumnProperty.m_DbType">
+            <summary>
+            数据类型
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.ColumnProperty.m_Length">
+            <summary>
+            长度
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.ColumnProperty.m_Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.ColumnProperty.m_Lable">
+            <summary>
+            Lable显示文本
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.ColumnProperty.m_IsNullable">
+            <summary>
+            是否可以为Null
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.ColumnProperty.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ColumnProperty.Name">
+            <summary>
+            列名
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ColumnProperty.DbType">
+            <summary>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ColumnProperty.Length">
+            <summary>
+            长度
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ColumnProperty.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ColumnProperty.Lable">
+            <summary>
+            Lable显示文本
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ColumnProperty.IsNullable">
+            <summary>
+            是否可以为Null
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ColumnProperty.Tag">
+            <summary>
+            冗余字段，用于用户扩展
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.ColumnProperties">
+            <summary>
+            列属性集合
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ColumnProperties.Item(System.String)">
+            <summary>
+            根据字段名，获取ColumnProperty
+            </summary>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nordasoft.Sql.SQLResource">
+            <summary>
+              强类型资源类，用于查找本地化字符串等。
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Sql.SQLResource.ResourceManager">
+            <summary>
+              返回此类使用的缓存 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Sql.SQLResource.Culture">
+            <summary>
+              为使用此强类型资源类的所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Sql.SQLResource.CommandLog">
+             <summary>
+               查找类似 /****** 对象:  Table [dbo].[Log]   ******/
+            
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            SET ANSI_PADDING ON
+            GO
+            IF NOT exists (select * from dbo.sysobjects where id = object_id(N&apos;[dbo].[CommandLog]&apos;) and OBJECTPROPERTY(id, N&apos;IsTable&apos;) = 1)
+            BEGIN
+            	-- =============================================
+            	-- Author:		clt
+            	-- Create date: 2006.12.01
+            	-- Description:日志表
+            
+            	-- =============================================
+            	CREATE TABLE [dbo].[CommandLog](
+            		[Indx] [bigint] IDENTITY(1,1) NOT NULL,
+            		[Us [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <!-- 对于成员“P:Nordasoft.Sql.SQLResource.GetPageData”忽略有格式错误的 XML 注释 -->
+        <member name="P:Nordasoft.Sql.SQLResource.Log">
+             <summary>
+               查找类似 /****** 对象:  Table [dbo].[Log]   ******/
+            
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            SET ANSI_PADDING ON
+            GO
+            IF NOT exists (select * from dbo.sysobjects where id = object_id(N&apos;[dbo].[Log]&apos;) and OBJECTPROPERTY(id, N&apos;IsTable&apos;) = 1)
+            BEGIN
+            	-- =============================================
+            	-- Author:		clt
+            	-- Create date: 2006.12.01
+            	-- Description:日志表
+            
+            	-- =============================================
+            	CREATE TABLE dbo.[Log] (
+            		[Indx] [bigint] IDENTITY (1, 1) NOT NULL ,
+            		[UserCode] [cha [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.DatabaseException">
+            <summary>
+            因数据库中数据与客户端数据不一致而导致的错误
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.DatabaseException.m_ErrCommand">
+            <summary>
+            产生错误的命令
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DatabaseException.#ctor(System.String,System.String)">
+            <summary>
+            构造体
+            </summary>
+            <param name="errTip">产生错误的功能描述</param>
+            <param name="message">产生错误原因</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.DatabaseException.#ctor(System.String,System.String,System.Data.Common.DbCommand)">
+            <summary>
+            构造体
+            </summary>
+            <param name="errTip">产生错误的功能描述</param>
+            <param name="message">产生错误原因</param>
+            <param name="errCommand">产生错误的命令</param>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.DatabaseException.ErrTip">
+            <summary>
+            错误提示
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.DatabaseException.ErrCommand">
+            <summary>
+            产生错误的命令
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.ModifyDatabaseException">
+            <summary>
+            修改数据时，因影响数据行数不对所引发的异常
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.ModifyDatabaseException.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            构造体(修改数据时，因影响数据行数不对所引发的异常)
+            </summary>
+            <param name="errTip">功能描述</param>
+            <param name="billNo">单据编号</param>
+            <param name="rows">影响行数</param>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ModifyDatabaseException.FunctionDescription">
+            <summary>
+            引发错误的功能描述
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.ModifyDatabaseException.Message">
+            <summary>
+            错误描述
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.InsertDatabaseException">
+            <summary>
+            新增数据时，因影响数据行数不对所引发的异常
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertDatabaseException.#ctor(System.String,System.Int32)">
+            <summary>
+            构造体（新增数据时，因影响数据行数不对所引发的异常）
+            </summary>
+            <param name="functionDescription">引发错误的功能描述</param>
+            <param name="rows">影响数据行数</param>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.InsertDatabaseException.FunctionDescription">
+            <summary>
+            引发错误的功能描述
+            </summary>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.InsertDatabaseException.Message">
+            <summary>
+            错误描述
+            </summary>
+        </member>
+        <member name="T:Nordasoft.Data.Sql.InsertManager">
+            <summary>
+            插入命令管理器
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.InsertManager.m_SbFieldName">
+            <summary>
+            用于拼凑InsertSQL字段名称部分
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.InsertManager.m_SbFieldValue">
+            <summary>
+            用于拼凑InsertSQL字段值部分
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.InsertManager.m_InsertCommand">
+            <summary>
+            插入命令
+            </summary>
+        </member>
+        <member name="F:Nordasoft.Data.Sql.InsertManager.m_FieldCount">
+            <summary>
+            字段的个数
+            </summary>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertManager.#ctor(System.String)">
+            <summary>
+            构造体
+            </summary>
+            <param name="tableName">表名</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertManager.AddField(System.String,System.Object,System.Data.SqlDbType)">
+            <summary>
+            添加字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+            <param name="sqlDbType">字段类型</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertManager.AddField(System.String,System.Object,System.Data.SqlDbType,System.Int32)">
+            <summary>
+            添加字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+            <param name="sqlDbType">字段类型</param>
+            <param name="size">字段长度,以字节为单位</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertManager.AddField(System.String,System.Object)">
+            <summary>
+            添加字段
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="value">字段对应的值</param>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertManager.GetCommand">
+            <summary>
+            获取插入命令
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertManager.GetIdentityCommand">
+            <summary>
+            返回插入命令、插入到同一作用域中的 IDENTITY 值的命令
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertManager.ExecuteNonQuery(System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            对连接执行Transact-SQL语句并返回影响行数
+            </summary>
+            <param name="trans">事务</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nordasoft.Data.Sql.InsertManager.ExecuteAndGetIdentity(System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            对连接执行Transact-SQL语句并返回Identity值
+            </summary>
+            <param name="trans"></param>
+            <param name="identity"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Nordasoft.Data.Sql.InsertManager.FieldCount">
+            <summary>
+            字段的个数
+            </summary>
+        </member>
+    </members>
+</doc>

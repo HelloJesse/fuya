@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../../js/boot.js" type="text/javascript"></script>
+    <title>DEPT. MANAGEMENT</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="mini-toolbar" id="toolbar">
+    </div>
+    <div id="form1" style="margin-bottom:4px;">
+        <input id="IDS" name="IDS" class="mini-hidden" />
+        <fieldset style="border:solid 1px #aaa;width:600px">
+            <legend>SEARCH FORM</legend>
+            <table>
+                <tr>
+                    <td style="width:80px;"><label for="CODE$text">CODE：</label></td>
+                    <td style="width:120px;">
+                        <input id="CODE" name="CODE" class="mini-textbox" style="width:100%;" />
+                    </td>
+                    <td style="width:80px;">PORT CHINESE NAME：</td>
+                    <td style="width:120px;">
+                        <input name="Name" class="mini-textbox" style="width:100%;" />
+                    </td>
+                    <td style="width:80px;">AGENT ENGLISH NAME：</td>
+                    <td style="width:120px;">
+                        <input name="Name_E" class="mini-textbox" style="width:100%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:80px;">所属公司：</td>
+                    <td style="width:320px;" colspan="3">
+                        <div style="width:100%" id="CompanyID" name="CompanyID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                             allowinput="true" emptytext="请选择..." showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="CODE" field="CODE" width="50px"></div>
+                                <div header="NULL" field="NAME" width="100%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width:80px;">YESNO 启用：</td>
+                    <td style="width:120px;">
+                        <div style="width:100%" id="Activated" name="Activated" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                             allowinput="true" emptytext="请选择..." showclose="true" oncloseclick="onCloseClick">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+</div>
+    <div class="mini-fit">
+        <div id="grdList" class="mini-datagrid" style="width:100%;height:100%;" sortmode="client" allowalternating="true"
+             url="../../../data/SearchManager.ashx?PageID=2" idfield="ID" allowresize="true" sizelist="[20,30,50,100]" pagesize="20" multiselect="true">
+            <div property="columns">
+                <div type="indexcolumn"></div>
+                <div type="checkcolumn"></div>
+                <div field="CODE" width="50px" headeralign="center" allowsort="true">CODE</div>
+                <div field="NAME" width="200px" headeralign="center" allowsort="true">PORT CHINESE NAME</div>
+                <div field="NAME_E" width="200px" headeralign="center">AGENT ENGLISH NAME</div>
+                <div field="CompanyName" width="200px" headeralign="center">所属公司</div>
+                <div field="Activated" width="50px" headeralign="center" type="checkboxcolumn">YESNO 启用</div>
+                <div header="系统INFO" headeralign="center">
+                    <div property="columns">
+                        <div field="CREATE_NAME" width="80px" headeralign="center" allowsort="true">DOC CREATED BY</div>
+                        <div field="CREATE_DATE" width="140px" headeralign="center" allowsort="true" renderer="onDateTimeRenderer">DOC CREATED DATE</div>
+                        <div field="UPDATE_NAME" width="80px" headeralign="center" allowsort="true">UPDATE BY </div>
+                        <div field="UPDATE_DATE" width="140px" headeralign="center" renderer="onDateTimeRenderer" allowsort="true">UPDATE DATE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/Search.js" type="text/javascript"></script>
+    <script src="../../../wms/Main/Department.js" type="text/javascript"></script>
+
+</body>
+</html>

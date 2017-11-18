@@ -1,0 +1,17 @@
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\bin\Debug\VLP.NAV.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\bin\Debug\VLP.NAV.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\bin\Debug\Nordasoft.Common.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\bin\Debug\Nordasoft.Sql.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\bin\Debug\Nordasoft.Common.xml
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\bin\Debug\Nordasoft.Sql.xml
+C:\VLP\通用VLP\VLP_FOYOUNG\SH_FOYOUNG\Bin\VLP.NAV.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\SH_FOYOUNG\Bin\VLP.NAV.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\obj\Debug\VLP.NAV.csprojResolveAssemblyReference.cache
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\obj\Debug\VLP.NAV.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\VLP.NAV\obj\Debug\VLP.NAV.pdb
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\SH_FOYOUNG\Bin\VLP.NAV.dll
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\VLP.NAV\obj\Debug\VLP.NAV.csproj.CoreCompileInputs.cache
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\VLP.NAV\obj\Debug\VLP.NAV.dll
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\VLP.NAV\obj\Debug\VLP.NAV.pdb
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\SH_FOYOUNG\Bin\VLP.NAV.pdb
+D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\VLP.NAV\obj\Debug\VLP.NAV.csprojResolveAssemblyReference.cache

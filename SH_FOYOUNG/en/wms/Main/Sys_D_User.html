@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<script src="../../../js/boot.js" type="text/javascript"></script>
+<script src="../../../js/jquery.min.js" type="text/javascript"></script>
+<title>POSITION MAN.</title>
+</head>
+<body>
+      <style type="text/css">
+    html, body{
+        margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
+    }    
+    </style>
+    <div class="mini-toolbar" id="toolbar">
+        <!--<a class="mini-button" iconcls="icon-search" onclick="SystemSearch()">SEARCH</a>
+        <a class="mini-button" iconcls="icon-add" onclick="Add()">ADD</a>
+        <a class="mini-button" iconcls="icon-edit" onclick="Edit()">EDIT</a>
+        <a class="mini-button" iconcls="icon-remove">DEL</a>
+        <a class="mini-button" iconcls="icon-ok" onclick="Actived(1)">启用</a>
+        <a class="mini-button" iconcls="icon-close" onclick="Actived(0)">STOP USING</a>
+        <span class="separator"></span>
+        <input class="mini-textbox" />
+        <a class="mini-button" plain="true">SEARCH</a>-->
+    </div>
+    
+    <div id="form1">
+        <input id="IDS" name="IDS" class="mini-hidden" />
+        <fieldset style="width:800px;border:solid 1px #aaa;margin-bottom:4px">
+            <legend>SEARCH FORM</legend>
+            <table border="0" cellpadding="1" cellspacing="2" style="width:100%; ">
+            <tr>
+                <td style="width:80px;">CODE：</td>
+                <td style="width:120px;">
+                    <input style="width:100%" name="CODE" class="mini-textbox" />
+                </td>
+                <td style="width:80px;">PORT CHINESE NAME：</td>
+                <td style="width:120px;">
+                    <input style="width:100%" name="Name" class="mini-textbox" />
+                </td>
+                <td style="width:80px;">AGENT ENGLISH NAME：</td>
+                <td style="width:120px;">
+                    <input style="width:100%"  name="Name_E" class="mini-textbox" />
+                </td>
+                <td style="width:80px;">岗位TYPE：</td>
+                <td style="width:120px;">
+                    <div style="width:100%" id="USER_TYPE" name="USER_TYPE" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                         allowinput="true" emptytext="请选择..." popupwidth="220"
+                        showclose="true" oncloseclick="onCloseClick">
+                        <div property="columns">
+                            <div header="CODE" field="CODE" width="60"></div>
+                            <div header="NULL" field="NAME" width="100%"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>所属公司：</td>
+                <td>
+                    <div style="width:100%" id="CompanyID" name="CompanyID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                         allowinput="true" emptytext="请选择..."
+                        popupwidth="220" showclose="true" oncloseclick="onCloseClick" onvaluechanged="onCompanyChanged">
+                        <div property="columns">
+                            <div header="CODE" width="60" field="CODE"></div>
+                            <div header="NULL" width="100%" field="NAME"></div>
+                        </div>
+                    </div>
+                </td>
+                <td>所属部门：</td>
+                <td>
+                    <div style="width:100%" id="DepartmentID" name="DepartmentID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                         allowinput="true" emptytext="请选择..." showclose="true" popupwidth="220" oncloseclick="onCloseClick">
+                        <div property="columns">
+                            <div header="CODE" field="CODE" width="60"></div>
+                            <div header="NULL" field="NAME" width="100%"></div>
+                        </div>
+                    </div>
+                </td>
+                <td>YESNO 启用：</td>
+                <td>
+                    <div style="width:100%" id="Activated" name="Activated" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                         allowinput="true" emptytext="请选择..."
+                         url="../../../data/ComboBoxManager.ashx?tablename=YesOrNo&DataLoad=0" showclose="true" oncloseclick="onCloseClick">
+                        <div property="columns">
+                            <div header="NULL" field="NAME"></div>
+                        </div>
+                    </div>
+                </td>
+                    <td>NOTE：</td>
+                <td colspan="5">
+                    <input style="width:100%" name="REMARK" class="mini-textbox" />
+                </td>
+               
+            </tr>
+            <tr>
+
+                <td>DOC CREATED BY：</td>
+                <td>
+                   <!-- <input style="width:100%"  name="CREATE_BY" class="mini-textbox" />-->
+                    <div style="width:100%" id="CREATE_BY" name="CREATE_BY" class="mini-autocomplete" textfield="NAME" valuefield="ID"
+                         allowinput="true" emptytext="请选择..."
+                         popupwidth="220px" showclose="true" oncloseclick="onCloseClick">
+                        <div property="columns">
+                            <div header="CODE" width="60px" field="CODE"></div>
+                            <div header="NULL" width="100%" field="NAME"></div>
+                        </div>
+                    </div>
+                </td>
+
+                <td>DOC CREATED DATE：</td>
+                <td>
+                    <input style="width:100%"  name="CREATE_DATE_BEGIN"　format="yyyy-MM-dd" class="mini-datepicker" />
+                </td>
+                <td>TO：</td>
+                <td>
+                    <input style="width:100%"  name="CREATE_DATE_END"　format="yyyy-MM-dd" class="mini-datepicker" />
+                </td>
+            </tr>
+        </table>
+        </fieldset>
+    </div>
+    <div class="mini-fit" >
+        <div id="grdList" class="mini-datagrid" style="width:100%;height:100%;" pagerbuttons="#grdexcelbutton" sortmode="client" allowalternating="true"
+             url="../../../data/SearchManager.ashx?PageID=1" idfield="ID" allowresize="true" sizelist="[20,30,50,100]" pagesize="20" multiselect="true">
+            <div property="columns">
+                <div type="indexcolumn"></div>
+                <div type="checkcolumn"></div>
+                <div field="CODE" width="80" headeralign="center" allowsort="true">CODE</div>
+                <div field="NAME" width="80" headeralign="center" allowsort="true">PORT CHINESE NAME</div>
+                <div field="NAME_E" width="80" headeralign="center" allowsort="true">AGENT ENGLISH NAME</div>
+                <div field="USER_TYPE" width="80" headeralign="center" allowsort="true">岗位TYPE</div>
+                <div field="CompanyName" width="80" headeralign="center" allowsort="true">所属公司</div>
+                <div field="DepartmentName" width="80" headeralign="center" allowsort="true">所属部门</div>
+                <div header="联系INFO" headeralign="center">
+                    <div property="columns">
+                        <div field="TELE" width="80" headeralign="center">MOBILE</div>
+                        <div field="MOBILE" width="80" headeralign="center">座机</div>
+                        <div field="FAX" width="80" headeralign="center">FAX</div>
+                        <div field="QQ" width="80" headeralign="center">QQ</div>
+                        <div field="WinXin" width="80" headeralign="center">微信</div>
+                        <div field="EMAIL" width="80" headeralign="center">Email</div>
+                        <div field="ADDRESS" width="80" headeralign="center">ADDRESS</div>
+                    </div>
+                </div>
+                <div field="REMARK" width="80" headeralign="center">NOTE</div>
+                <div field="Activated" width="80" headeralign="center" align="center" renderer="onBoolRenderer">启用</div>
+                <div header="系统INFO" headeralign="center">
+                    <div property="columns">
+                        <div field="CREATE_NAME" width="80px" headeralign="center" allowsort="true">DOC CREATED BY</div>
+                        <div field="CREATE_DATE" width="140px" headeralign="center" allowsort="true" renderer="onDateTimeRenderer">DOC CREATED DATE</div>
+                        <div field="UPDATE_NAME" width="80px" headeralign="center" allowsort="true">UPDATE BY </div>
+                        <div field="UPDATE_DATE" width="140px" headeralign="center" renderer="onDateTimeRenderer" allowsort="true">UPDATE DATE</div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div id="grdexcelbutton"><span class="separator"></span><a class="mini-button" iconCls="icon-excle" tooltip="EXPORT Excle" plain="true" onclick="ExportExcel('grdList')" id="add"></a></div>
+    <iframe id="exportIFrame" style="display:none;"></iframe>
+    <!--EXPORT Excel相关HTML-->
+     <form id="excelForm"  action="../../../data/ToExcle.aspx?PageID=1" method="post" target="excelIFrame">
+        <input type="hidden" name="columns" id="excelData" />
+    </form>
+    <iframe id="excelIFrame" name="excelIFrame" style="display:none;"></iframe>
+        
+    <script src="../../../wms/Main/Sys_D_User.js" type="text/javascript"></script>
+    <script src="../../../js/Search.js" type="text/javascript"></script>
+</body>
+</html>

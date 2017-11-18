@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="../../js/boot.js" type="text/javascript"></script>
+    <script src="../../js/core.js" type="text/javascript"></script>
+    <title>公司管理编辑</title>
+</head>
+<body>
+    <div class="mini-toolbar" id="toolbar">
+       <!-- <a class="mini-button" iconcls="icon-add" onclick="EditAddTabs('公司管理', '公司管理', 'wms/Main/Sys_D_Company_Edit.html')">新增</a>
+        <a class="mini-button" iconcls="icon-save" onclick="DataSave()">保存</a>
+        <a class="mini-button" iconcls="icon-remove">删除</a>
+        <a class="mini-button" iconcls="icon-ok" onclick="UpdateActived('act')">启用</a>
+        <a class="mini-button" iconcls="icon-close" onclick="UpdateActived('disact')">停用</a>-->
+    </div>
+    <div id="form1">
+        <input id="ID" name="ID" class="mini-hidden" />
+        <fieldset id="fdBase" style="width: 800px">
+            <legend>
+                <label><input type="checkbox" checked id="checkbox1" onclick="toggleFieldSet(this, 'fdBase')" />基本信息</label>
+            </legend>
+            <div class="fieldset-body">
+                <table border="0" cellpadding="1" cellspacing="2" style="width: 100%;">
+                <tr>
+                    <td style="width: 80px;">编码：</td>
+                    <td style="width: 120px;">
+                        <input id="CODE" name="CODE" emptytext="必填" required="true" requirederrortext="编码不能为空！" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                     <td style="width: 80px;">中文简称：</td>
+                    <td style="width: 120px;">
+                        <input id="SHORT_NAME" name="SHORT_NAME" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">英文简称：</td>
+                    <td style="width: 120px;">
+                        <input id="SHORT_NAME_E" name="SHORT_NAME_E" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">上级编码：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="PARENT_ID" name="PARENT_ID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="编码" width="60" field="CODE"></div>
+                                <div header="名称" width="100%" field="NAME"></div>
+                            </div>
+                    </td>    
+                              
+                </tr>
+                <tr>
+                   <td style="width: 80px;">中文名称：</td>
+                    <td style="width: 320px;" colspan="3">
+                        <input id="NAME" name="NAME" emptytext="必填" required="true" requirederrortext="中文名称不能为空！" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">英文名称：</td>
+                    <td style="width: 320px;" colspan="3">
+                        <input id="NAME_E" name="NAME_E" class="mini-textbox" style="width: 100%;" />
+                    </td>                          
+                    
+                    
+                </tr>
+                <tr>
+                    <td style="width: 80px;">所属国家：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="COUNTRY_ID" name="COUNTRY_ID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                           popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="编码" width="60" field="CODE"></div>
+                                <div header="名称" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 80px;">所属省份：</td>
+                    <td style="width: 120px;">
+                        <div style="width: 100%" id="PROVINCE_ID" name="PROVINCE_ID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220" showclose="true" oncloseclick="onCloseClick" onvaluechanged="onProviceChanged">
+                            <div property="columns">
+                                <div header="编码" width="60" field="CODE"></div>
+                                <div header="名称" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 80px;">所属城市：</td>
+                   <td style="width: 120px;">
+                        <div style="width: 100%" id="CITY_ID" name="CITY_ID" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="编码" width="60" field="CODE"></div>
+                                <div header="名称" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 80px;">电话：</td>
+                   <td style="width: 120px;">
+                        <input id="TELE" name="TELE" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                  
+                    
+                </tr>
+                <tr>
+                      <td style="width: 80px;">传真：</td>
+                   <td style="width: 120px;">
+                        <input id="FAX" name="FAX" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">EMAIL：</td>
+                    <td style="width: 120px;">
+                        <input id="EMAIL" name="EMAIL" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">邮编：</td>
+                    <td style="width: 120px;">
+                        <input id="POST_CODE" name="POST_CODE" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">管理人：</td>
+                   <td style="width: 120px;">
+                        <input id="MANAGER_NAME" name="MANAGER_NAME" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    
+                    
+                </tr>
+                <tr>
+                    <td style="width: 80px;">语言：</td>
+                   <td style="width: 120px;">
+                        <input id="LanguageType" name="LanguageType" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                    <td style="width: 80px;">币制：</td>
+                   <td style="width: 120px;">
+                        <div style="width: 100%" id="CurrencyType" name="CurrencyType" class="mini-combobox"     textfield="NAME" valuefield="ID"
+                            allowinput="true" emptytext="请选择..."
+                            popupwidth="220" showclose="true" oncloseclick="onCloseClick">
+                            <div property="columns">
+                                <div header="编码" width="60" field="CODE"></div>
+                                <div header="名称" width="100%" field="NAME"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 80px;" rowspan="2">地址：</td>
+                    <td style="width: 320px;" colspan="3" rowspan="2">
+                        <input id="ADDRESS" name="ADDRESS" class="mini-textarea" style="width: 100%;" />
+                    </td>
+                   
+                    
+                    
+                </tr>
+                <tr>
+                    <td style="width: 80px;">注册税：</td>
+                    <td style="width: 120px;">
+                        <input id="TAX_REG" name="TAX_REG" class="mini-textbox" style="width: 100%;" />
+                    </td>
+                     <td>
+                        <label for="Activated$text">是否启用：</label>
+
+                    </td>
+                    <td>
+                        <input id="Activated" name="Activated" class="mini-checkbox" readonly="readonly" />
+                    </td>
+                   
+                </tr>
+                <tr>
+                     <td style="width: 80px;" rowspan="2">备注：</td>
+                    <td  style="width: 720px;" colspan="7" rowspan="2" >
+                        <input id="REMARK" name="REMARK" class="mini-textarea" style="width: 100%;" />
+                    </td>
+                   
+                </tr>
+
+            </table>
+            </div>
+        </fieldset>
+        <fieldset id="fdSystem" style="width: 900px">
+            <legend>
+                <label><input type="checkbox" checked id="checkbox2" onclick="toggleFieldSet(this, 'fdSystem')" />系统信息</label>
+            </legend>
+            <div class="fieldset-body">
+                <table style="width:100%;">
+                <tr>
+                    <td style="width:80px">录入人：</td>
+                    <td style="width:120px"><input style="width:100%" id="CREATE_NAME" name="CREATE_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                    <td style="width:80px">录入日期：</td>
+                    <td style="width:140px"><input style="width:100%" id="CREATE_DATE" name="CREATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                    <td style="width:80px">更新人：</td>
+                    <td style="width:120px"><input style="width:100%" id="UPDATE_NAME" name="UPDATE_NAME" class="mini-textbox readonly" readonly="true" /></td>
+                    <td style="width:80px">更新日期：</td>
+                    <td style="width:140px"><input style="width:100%" id="UPDATE_DATE" name="UPDATE_DATE" class="mini-datepicker readonly" format="yyyy-MM-dd HH:mm" readonly="true" /></td>
+                </tr>
+            </table>
+            </div>
+
+        </fieldset>
+    </div>
+    <script src="./Sys_D_Company_Edit.js" type="text/javascript"></script>
+</body>
+</html>

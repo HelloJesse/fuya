@@ -1,0 +1,16 @@
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\GetSingleShipInfo.exe
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\GetSingleShipInfo.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\Newtonsoft.Json.Net20.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\Nordasoft.Common.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\VLP.BS.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\obj\Release\GetSingleShipInfo.MainForm.resources
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\obj\Release\GetSingleShipInfo.Properties.Resources.resources
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\obj\Release\GetSingleShipInfo.csproj.GenerateResource.Cache
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\obj\Release\GetSingleShipInfo.exe
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\obj\Release\GetSingleShipInfo.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\Nordasoft.Sql.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\Nordasoft.Common.xml
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\VLP.BS.pdb
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\bin\Release\Nordasoft.Sql.xml
+C:\VLP\通用VLP\VLP_FOYOUNG\GetSingleShipInfo\obj\Release\GetSingleShipInfo.csprojResolveAssemblyReference.cache
