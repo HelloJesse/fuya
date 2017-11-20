@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -71,17 +72,26 @@ namespace ReceiveServer
 
             while (!_CanReceive)
             {
+
+                ReConnect:
+
                 // 尝试重新连接
                 _CanReceive = Connect() && Authenticate();
                 if (_CanReceive)
                 {
                     try
                     {
+                        _Socket.ReceiveTimeout = 5000; 
                         Receive();
                     }
                     catch (SocketException ex)
                     {
-                        throw ex;
+                        if (ex.ErrorCode ==(int) SocketError.TimedOut)
+                        {
+                            Console.WriteLine("连接超时，正在重连...");
+                            _ErrLog.AddLogInfo("连接超时，正在重连...");
+                            goto ReConnect;
+                        }
                     }
                 }
                 else
@@ -173,7 +183,17 @@ namespace ReceiveServer
             return true;
         }
 
-        private void Receive()
+
+        private bool IsSocketConnected()
+        {
+            try
+            {
+                return !(_Socket.Poll(1, SelectMode.SelectRead) && _Socket.Available == 0);
+            }
+            catch (SocketException) { return false; }
+        }
+
+        private bool Receive()
         {
             int recv;
             byte[] data = new byte[_Size];
@@ -181,6 +201,11 @@ namespace ReceiveServer
 
             while (_CanReceive)
             {
+                if (!IsSocketConnected())
+                {
+                    return false;
+                }
+
                 recv = 0;
                 try
                 {
@@ -190,6 +215,11 @@ namespace ReceiveServer
                 {
                     _CanReceive = false;
                     throw err;
+                }
+                catch (IOException ioExcepiton)
+                {
+                    _CanReceive = false;
+                    throw ioExcepiton;
                 }
 
                 if (!DataValidate(data))
@@ -220,6 +250,8 @@ namespace ReceiveServer
                     }
                 }
             }
+
+            return false;
         }
 
         private bool DataValidate(byte[] data)

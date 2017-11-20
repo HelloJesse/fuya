@@ -48,6 +48,7 @@ namespace LocalServer
         static void Main(string[] args)
         {
             Console.Title = "遥控发送";
+            SetConsoleCtrlHandler(cancelHandler, true);
 
             _FileLog.AddLogInfo("程序启动");
 

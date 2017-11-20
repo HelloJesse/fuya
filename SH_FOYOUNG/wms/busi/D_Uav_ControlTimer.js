@@ -154,9 +154,9 @@ function getNavCommandServerConnected() {
                 _ServerConnected = text;
                 if (_ServerConnected == "False") {
                     setControlPro("遥控服务未连接，请联系管理员检查服务器!");
-                    $("#CommandServerStatus").html("<span style='color:red'>未连接</span>");
+                    $("#CommandServerStatus").text("未连接").css("color","red");
                 } else {
-                    $("#CommandServerStatus").html("<span style='color:green'>已连接</span>");
+                    $("#CommandServerStatus").text("已连接").css("color", "green");
                 }
             }
         });

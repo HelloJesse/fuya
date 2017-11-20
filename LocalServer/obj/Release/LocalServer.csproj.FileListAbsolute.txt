@@ -10,3 +10,17 @@ D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalSe
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\obj\Release\LocalServer.csproj.CoreCompileInputs.cache
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\obj\Release\LocalServer.exe
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\LocalServer\obj\Release\LocalServer.pdb
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\LocalServer.exe.config
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\LocalServer.exe
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\LocalServer.pdb
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\Dapper.dll
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\Nordasoft.Common.dll
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\VLP.NAV.dll
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\Nordasoft.Sql.dll
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\VLP.NAV.pdb
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\Dapper.xml
+D:\project_source\VLP_FOYOUNG\LocalServer\bin\Release\Nordasoft.Sql.xml
+D:\project_source\VLP_FOYOUNG\LocalServer\obj\Release\LocalServer.csprojResolveAssemblyReference.cache
+D:\project_source\VLP_FOYOUNG\LocalServer\obj\Release\LocalServer.csproj.CoreCompileInputs.cache
+D:\project_source\VLP_FOYOUNG\LocalServer\obj\Release\LocalServer.exe
+D:\project_source\VLP_FOYOUNG\LocalServer\obj\Release\LocalServer.pdb

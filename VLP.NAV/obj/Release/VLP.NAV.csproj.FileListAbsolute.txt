@@ -13,3 +13,10 @@ D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\VLP.NAV
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\VLP.NAV\obj\Release\VLP.NAV.csproj.CoreCompileInputs.cache
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\VLP.NAV\obj\Release\VLP.NAV.dll
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\VLP.NAV\obj\Release\VLP.NAV.pdb
+D:\project_source\VLP_FOYOUNG\VLP.NAV\bin\Release\VLP.NAV.dll
+D:\project_source\VLP_FOYOUNG\VLP.NAV\bin\Release\VLP.NAV.pdb
+D:\project_source\VLP_FOYOUNG\VLP.NAV\bin\Release\Nordasoft.Common.dll
+D:\project_source\VLP_FOYOUNG\VLP.NAV\bin\Release\Nordasoft.Sql.dll
+D:\project_source\VLP_FOYOUNG\VLP.NAV\obj\Release\VLP.NAV.csproj.CoreCompileInputs.cache
+D:\project_source\VLP_FOYOUNG\VLP.NAV\obj\Release\VLP.NAV.dll
+D:\project_source\VLP_FOYOUNG\VLP.NAV\obj\Release\VLP.NAV.pdb

@@ -23,6 +23,7 @@ namespace LocalServer
         private static string _password;
         private static string _telemetryPassword;
         private static int _telemetryPort;
+        private bool _canSend;
         private static Nordasoft.Common.IO.FileLog _FileLog = new Nordasoft.Common.IO.FileLog(
             AppDomain.CurrentDomain.BaseDirectory, string.Format("{0}.log", DateTime.Now.ToString("yyyyMMdd")), 50);
         private static string _healthCheckRequestUrl = System.Configuration.ConfigurationManager.AppSettings["WebHealthCheckurl"];
@@ -44,20 +45,41 @@ namespace LocalServer
 
         public void HandleLocalHeathCheck()
         {
-            if (_sender == null)
-                return;
-
             while (true)
             {
-                // 心跳检查
-                var isConnect = !(_sender.Poll(1000, SelectMode.SelectRead) && (_sender.Available == 0));
+                ReConnect:
+                try
+                {
+                    if (_sender == null)
+                        return;
 
-                var url = string.Format("{0}&status={1}", _healthCheckRequestUrl, isConnect ? 1 : 0);
-                var reqeust = HttpWebRequest.Create(url);
-                reqeust.GetResponse();
+                    // 心跳检查
+                    var isConnect = !(_sender.Poll(1, SelectMode.SelectRead) && (_sender.Available == 0));
+
+                    var url = string.Format("{0}&status={1}", _healthCheckRequestUrl, isConnect ? 1 : 0);
+                    var reqeust = HttpWebRequest.Create(url);
+                    reqeust.GetResponse();
+                }
+                catch (SocketException ex)
+                {
+                    if (ex.ErrorCode == (int)SocketError.TimedOut)
+                    {
+                        Console.WriteLine("正在重新建立连接");
+                        goto ReConnect;
+                    }
+                }
+
+               
 
                 Thread.Sleep(3000);
             }
+        }
+
+        public void ShutdownHeathCheck()
+        {
+            var url = string.Format("{0}&status={1}", _healthCheckRequestUrl, 0);
+            var reqeust = HttpWebRequest.Create(url);
+            reqeust.GetResponse();
         }
 
         public void initLocalReceiver()
@@ -71,6 +93,12 @@ namespace LocalServer
 
             while (true)
             {
+                if (!_canSend)
+                {
+                    Console.WriteLine("连接不可用，尝试重新建立连接");
+                    LoopConnectToServer();
+                }
+
                 int recv = server.ReceiveFrom(data, ref remote);
                 if (recv == 1)
                 {
@@ -105,11 +133,21 @@ namespace LocalServer
         {
             if (obj != null)
             {
-                var bytes = (byte[])obj;
-                var sendBytes = _sender.Send(bytes);
-                Console.WriteLine("{0} bytes sent.", sendBytes);
+                try
+                {
 
-                _FileLog.AddLogInfo(string.Format("{0} 字节遥控信号已发送服务器 ", sendBytes));
+                    var bytes = (byte[])obj;
+                    var sendBytes = _sender.Send(bytes);
+                    Console.WriteLine("{0} bytes sent.", sendBytes);
+
+                    _FileLog.AddLogInfo(string.Format("{0} 字节遥控信号已发送服务器 ", sendBytes));
+
+                }
+                catch (SocketException ex)
+                {
+                    _canSend = false;
+                }
+
             }
         }
 
@@ -178,52 +216,77 @@ namespace LocalServer
             return false;
         }
 
-        public void initSocket()
+        public void LoopConnectToServer()
         {
-            Console.WriteLine("Begin to connect");
-
-            EndPoint remote;
-            if (string.IsNullOrWhiteSpace(_serverIpAddress))
-                remote = new DnsEndPoint(_serverHost, _tcpServerPort);
-            else
-                remote = new IPEndPoint(IPAddress.Parse(_serverIpAddress), _tcpServerPort);
-
-            _sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _sender.Connect(remote);
-
-            byte[] recBytes = new byte[5];
-            int bytes = _sender.Receive(recBytes, recBytes.Length, 0);
-            if (bytes == 5 && recBytes[3].ToString("X2") == "C0")
+            while (!_canSend)
             {
-                Console.WriteLine("Beging to send password");
-
-                var pwdBytes = new byte[4];
-
-                pwdBytes[0] = 0xEC;
-                pwdBytes[1] = 0x91;
-                pwdBytes[3] = 0xC1;
-
-                pwdBytes = pwdBytes.Concat(Encoding.Unicode.GetBytes(_password)).ToArray();
-                pwdBytes[2] = Convert.ToByte(Common.putintTo16string(pwdBytes.Length + 1, 2), 16);
-
-                long n = 0;
-                for (int i = 0; i < pwdBytes.Length - 1; i++)
-                {
-                    n += pwdBytes[i];
-                }
-
-                pwdBytes = pwdBytes.Concat(new[] { Convert.ToByte(Common.putintTo16string(n, 2), 16) }).ToArray();
-
-                var sendBytes = _sender.Send(pwdBytes);
-
-                Console.WriteLine("Password sent successfully");
+                initSocket();
+                Thread.Sleep(3000);
             }
+        }
+        
+
+        public bool initSocket()
+        {
+            try
+            {
+                Console.WriteLine("Begin to connect");
+
+                EndPoint remote;
+                if (string.IsNullOrWhiteSpace(_serverIpAddress))
+                    remote = new DnsEndPoint(_serverHost, _tcpServerPort);
+                else
+                    remote = new IPEndPoint(IPAddress.Parse(_serverIpAddress), _tcpServerPort);
+
+                _sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                _sender.SendTimeout = 3000;
+                _sender.Connect(remote);
+
+                byte[] recBytes = new byte[5];
+                int bytes = _sender.Receive(recBytes, recBytes.Length, 0);
+                if (bytes == 5 && recBytes[3].ToString("X2") == "C0")
+                {
+                    Console.WriteLine("Beging to send password");
+
+                    var pwdBytes = new byte[4];
+
+                    pwdBytes[0] = 0xEC;
+                    pwdBytes[1] = 0x91;
+                    pwdBytes[3] = 0xC1;
+
+                    pwdBytes = pwdBytes.Concat(Encoding.Unicode.GetBytes(_password)).ToArray();
+                    pwdBytes[2] = Convert.ToByte(Common.putintTo16string(pwdBytes.Length + 1, 2), 16);
+
+                    long n = 0;
+                    for (int i = 0; i < pwdBytes.Length - 1; i++)
+                    {
+                        n += pwdBytes[i];
+                    }
+
+                    pwdBytes = pwdBytes.Concat(new[] { Convert.ToByte(Common.putintTo16string(n, 2), 16) }).ToArray();
+
+                    _canSend = true;
+                    var sendBytes = _sender.Send(pwdBytes);
+                    Console.WriteLine("Password sent successfully");
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("连接失败:" + ex.Message);
+                return false;
+            }
+
+            return true;
+            
         }
 
         public void Close()
         {
             if (_sender != null)
             {
+                ShutdownHeathCheck();
                 _sender.Shutdown(SocketShutdown.Both);
                 _sender.Close();
                 _sender.Dispose();

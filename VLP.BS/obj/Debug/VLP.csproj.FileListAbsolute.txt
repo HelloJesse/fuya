@@ -73,3 +73,7 @@ C:\VLP\通用VLP\VLP_FOYOUNG\VLP.BS\obj\Debug\VLP.BS.Resource1.resources
 C:\VLP\通用VLP\VLP_FOYOUNG\VLP.BS\obj\Debug\VLP.csproj.GenerateResource.Cache
 C:\VLP\通用VLP\VLP_FOYOUNG\VLP.BS\obj\Debug\VLP.BS.dll
 C:\VLP\通用VLP\VLP_FOYOUNG\VLP.BS\obj\Debug\VLP.BS.pdb
+D:\project_source\VLP_FOYOUNG\VLP.BS\obj\Debug\VLP.csprojResolveAssemblyReference.cache
+D:\project_source\VLP_FOYOUNG\VLP.BS\obj\Debug\VLP.BS.Resource1.resources
+D:\project_source\VLP_FOYOUNG\VLP.BS\obj\Debug\VLP.csproj.GenerateResource.Cache
+D:\project_source\VLP_FOYOUNG\VLP.BS\obj\Debug\VLP.csproj.CoreCompileInputs.cache

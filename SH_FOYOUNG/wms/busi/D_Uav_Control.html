@@ -2,24 +2,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <script src="../../js/boot.js" type="text/javascript"></script>
     <script src="../../js/core.js" type="text/javascript"></script>
 
     <title>无人机控制界面</title>
     <style type="text/css">
-        html, body {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+            html, body {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+
+        .command-box{
+            margin:1px 2px;
+            padding:10px; background:#efefef;
         }
-        .backColorDiv
-        {
+
+        .command-box-icon {
+            padding: 10px;
+            margin: 0 2px;
+            border-top: 1px solid #efefef;
+            border-bottom: 1px solid #efefef;
+        }
+        .backColorDiv {
             background-color: rgb(192,192,192);
-            opacity:0.6;
+            opacity: 0.6;
         }
 
     </style>
@@ -27,6 +39,7 @@
     <link href="../../css/common.css" rel="stylesheet" type="text/css" />
     <link href="../../css/xwin.css" rel="stylesheet" type="text/css" />
     <link href="../../newCss/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
 
     <script src="http://api.shipxy.com/apdll/ap.dll?api=map&key=1ee14d6d7788461380589643ce44bcb7&ver=1.3" type="text/javascript"></script>
     <script src="http://api.shipxy.com/apdll/ap.dll?api=data&key=1ee14d6d7788461380589643ce44bcb7&ver=1.3" type="text/javascript"></script>
@@ -248,83 +261,74 @@
 
                             </div>
                         </div>
-                        <div showCollapseButton="true">
+                        <div class="container" showCollapseButton="true">
                             <!-- 控制按钮 -->
-                            <div>
-                               <ul class="list-4-right-3-ul">
-                               <li><a href="#" title="" onclick="onBtnControlType(1,'起飞')"><img src="../../newCss/images/nav-ico-1.png" alt="" ><span>起飞</span></a></li>
-                               <li><a href="#" title="" onclick="onBtnControlType(6,'巡航')"><img src="../../newCss/images/nav-ico-2.png" alt="" ><span>巡航</span></a></li>
-                               <li><a href="#" title="" onclick="onBtnControlType(2,'返航')"><img src="../../newCss/images/nav-ico-3.png" alt="" ><span>返航</span></a></li>
-                               <li><a href="#" title="" onclick="onBtnControlType(5,'降落')"><img src="../../newCss/images/nav-ico-4.png" alt="" ><span>降落</span></a></li>
-                               <li><a href="#" title="" ><img src="../../newCss/images/nav-ico-5.png" alt="" ><span>返回自动</span></a></li>
-                               <li>
-                                   <a id="panxuanId"  href="#" title="" onclick="onBtnControlType(3,'盘旋')"><img src="../../newCss/images/nav-ico-6.png" alt="" ><span>盘旋</span></a>
-                                   <a id="xuantingId" href="#" title="" onclick="onBtnControlType(4,'悬停')"><img src="../../newCss/images/nav-ico-6.png" alt="" ><span>悬停</span></a>
-                               </li>
-                               <li><a href="#" title="" ><img src="../../newCss/images/nav-ico-10.png" alt="" ><span>紧急降落</span></a></li>
-                               <li><a href="#" title="" ><img src="../../newCss/images/nav-ico-7.png" alt="" ><span>紧急停机</span></a></li>
-                               <li><a href="#" title="" ><img src="../../newCss/images/nav-ico-8.png" alt="" ><span>解锁</span></a></li>
-                               <li><a href="#" title="" ><img src="../../newCss/images/nav-ico-9.png" alt="" ><span>锁定</span></a></li>
-                                
-                                <li class="rel"><a href="#" title=""><span>目标模式</span></a></li>
-                                <li class="rel"><a href="#" title=""><span>指定模式</span></a></li>
-                                <li class="rel"><a href="#" title=""><span>摇杆</span></a></li>
-                                <li class="rel"><a href="#" title="" onclick="onBtnControlType(0,'获取控制')"><span>获取控制</span></a></li>
-                                <li class="rel"><a href="#" title="" onclick="onConCruise()"><span>继续巡航</span></a></li>
-                               </ul>
-                               <div class="clear"></div>
-                           </div>                           <hr />
-                            <table  style="width:100%;text-align:center;border-collapse:separate; border-spacing:0px 5px" id="table4">
-                                <tr>
-                                    <td style="width:20%">航线</td>
-                                    <td style="width:20%">
-                                        <input id="cLine"  name="cLine" class="mini-textbox"  style="width:100%" vtype="int"/>
-                                    </td>
-                                    <td style="width:20%">航点</td>
-                                    <td style="width:20%">
-                                        <input id="cPoint"  name="cPoint" class="mini-textbox"  style="width:100%" vtype="int"/> 
-                                    </td>
-                                    <td style="width:20%">
-                                        <a class="mini-button" id="A14" iconcls="icon-goto" onclick="onChangeLine()" plain="true">执  行</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>高度(m)</td>
-                                    <td>
-                                        <input id="height" name="height" class="mini-spinner" vtype="int" maxValue="10000" style="width: 100%" />
-                                    </td>
-                                    <td>速度(m/s)</td>
-                                    <td>
-                                        <input id="speed" name="speed" class="mini-spinner" vtype="int" maxValue="10000" style="width: 100%" />
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>经度</td>
-                                    <td>
-                                        <input id="lng"  name="lng" class="mini-textbox"  style="width:100%" vtype="float"/>
-                                    </td>
-                                    <td>纬度</td>
-                                    <td>
-                                        <input id="lat"  name="lat" class="mini-textbox"  style="width:100%" vtype="float"/> 
-                                    </td>
-                                    <td>
-                                        <a class="mini-button" id="A15" iconcls="icon-goto" onclick="onControlCycle()" plain="true">定点盘旋</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td >
-                                        <span>遥控连接状态： </span> 
-                                        <div id="CommandServerStatus">
-                                            <span style="color:red;">未连接</span>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                            <div class="row">
+
+                                <div class="col-sm command-box-icon">
+                                    <a href="#" title="起飞" onclick="onBtnControlType(1,'起飞')">
+                                    <img src="../../newCss/images/nav-ico-1.png" alt="起飞" />
+
+                                    </a>
+                                </div>
+                                <div class="col-sm command-box-icon">
+                                    <a href="#" title="巡航" onclick="onBtnControlType(6,'巡航')"><img src="../../newCss/images/nav-ico-2.png" alt="巡航" /></a>
+                                </div>
+                                <div class="col-sm command-box-icon">
+                                    <a href="#" title="返航" onclick="onBtnControlType(2,'返航')"><img src="../../newCss/images/nav-ico-3.png" alt="返航" /></a>
+                                </div>
+                                <div class="col-sm command-box-icon">
+                                    <a href="#" title="降落" onclick="onBtnControlType(5,'降落')"><img src="../../newCss/images/nav-ico-4.png" alt="降落" /></a>
+                                </div>
+                                <div class="col-sm command-box-icon">
+                                    <a href="#" title="返回自动"><img src="../../newCss/images/nav-ico-5.png" alt="" /></a>
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm command-box-icon">
+                                    <a id="panxuanId" href="#" title="盘旋" onclick="onBtnControlType(3,'盘旋')"><img src="../../newCss/images/nav-ico-6.png" alt="盘旋" /></a>
+                                    <a id="xuantingId" href="#" title="悬停" onclick="onBtnControlType(4,'悬停')"><img src="../../newCss/images/nav-ico-6.png" alt="悬停" /></a>    
+                                </div>
+                                <div class="col-sm command-box-icon"><a href="#" title="紧急降落"><img src="../../newCss/images/nav-ico-10.png" alt="紧急降落" /></a></div>
+                                <div class="col-sm command-box-icon"><a href="#" title="紧急停机"><img src="../../newCss/images/nav-ico-7.png" alt="紧急停机" /></a></div>
+                                <div class="col-sm command-box-icon"><a href="#" title="解锁"><img src="../../newCss/images/nav-ico-8.png" alt="解锁" /></a></div>
+                                <div class="col-sm command-box-icon"><a href="#" title="锁定"><img src="../../newCss/images/nav-ico-9.png" alt="锁定" /></a></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm command-box"><a href="#" title=""><span>目标模式</span></a></div>
+                                <div class="col-sm command-box"><a href="#" title=""><span>指定模式</span></a></div>
+                                <div class="col-sm command-box"><a href="#" title=""><span>摇杆</span></a></div>
+                                <div class="col-sm command-box"><a href="#" title="" onclick="onBtnControlType(0,'获取控制')"><span>获取控制</span></a></div>
+                                <div class="col-sm command-box"><a href="#" title="" onclick="onConCruise()"><span>继续巡航</span></a></div>
+                            </div>                          
+                            <div class="form-row" style="margin-top:10px; border-top:1px solid #efefef">
+                                <div class="col"> <input id="cLine" placeholder="航线" class="form-control" name="cLine"  style="width:100%" vtype="int" /></div>
+                                <div class="col"> <input id="cPoint" placeholder="航点" name="cPoint" class="form-control"  style="width:100%" vtype="int" /> </div>
+                                <div class="col"><a class="mini-button" id="A14" iconcls="icon-goto"  onclick="onChangeLine()" plain="true">执  行</a></div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col"><input id="height"  placeholder="高度(m)" name="height" class="form-control" type="number" max="10000" style="width: 100%" /></div>
+                                <div class="col"><input id="speed" placeholder="速度(m/s)" name="speed" class="form-control" type="number" max="10000" style="width: 100%" /></div>
+                                <div class="col"></div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col"><input placeholder="经度" id="lng" name="lng"  class="form-control" style="width:100%" vtype="float" /></div>
+                                <div class="col"><input id="lat" placeholder="纬度" name="lat"  class="form-control" style="width:100%" vtype="float" /></div>
+                                <div class="col"><a class="mini-button" id="A15" iconcls="icon-goto" onclick="onControlCycle()" plain="true">定点盘旋</a></div>
+                            </div>
+                            
+                        
+                      
+                            <div class="row" style="margin-top:10px; border-top:1px solid #efefef">
+                                <div class="col-sm">
+                                    <span>遥控连接状态： </span>
+                                    <span id="CommandServerStatus" style="color:red;">未连接</span>
+                                </div>
+                            </div>
                             
                         </div>        
                     </div>
@@ -646,9 +650,9 @@
 
     <script src="../../js/multisort.js" type="text/javascript"></script>
     <!--  -->
-    <script src="D_Uav_Control.js?ver=11" type="text/javascript"></script>
+    <script src="D_Uav_Control.js?ver=12" type="text/javascript"></script>
     <!-- 定时器js -->
-    <script src="D_Uav_ControlTimer.js?ver=13" type="text/javascript"></script>
+    <script src="D_Uav_ControlTimer.js?ver=14" type="text/javascript"></script>
     <!-- TCP 暂未使用 -->
     <script src="D_Uav_ControlTcp.js?ver=1" type="text/javascript"></script>
     <!-- 摇杆 -->

@@ -15,3 +15,12 @@ D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TcpServ
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.exe
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.pdb
 D:\需求\复亚系统开发要求1024\项目工程源代码\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.csprojResolveAssemblyReference.cache
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\bin\Debug\TcpServerCallModule.exe
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\bin\Debug\TcpServerCallModule.pdb
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.csprojResolveAssemblyReference.cache
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.TcpServer.resources
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.Properties.Resources.resources
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.csproj.GenerateResource.Cache
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.csproj.CoreCompileInputs.cache
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.exe
+D:\project_source\VLP_FOYOUNG\TcpServerCallModule\obj\Debug\TcpServerCallModule.pdb

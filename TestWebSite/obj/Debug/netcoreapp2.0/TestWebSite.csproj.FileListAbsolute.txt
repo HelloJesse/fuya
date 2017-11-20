@@ -1,0 +1,11 @@
+D:\project_source\VLP_FOYOUNG\TestWebSite\bin\Debug\netcoreapp2.0\TestWebSite.deps.json
+D:\project_source\VLP_FOYOUNG\TestWebSite\bin\Debug\netcoreapp2.0\TestWebSite.runtimeconfig.json
+D:\project_source\VLP_FOYOUNG\TestWebSite\bin\Debug\netcoreapp2.0\TestWebSite.runtimeconfig.dev.json
+D:\project_source\VLP_FOYOUNG\TestWebSite\bin\Debug\netcoreapp2.0\TestWebSite.dll
+D:\project_source\VLP_FOYOUNG\TestWebSite\bin\Debug\netcoreapp2.0\TestWebSite.pdb
+D:\project_source\VLP_FOYOUNG\TestWebSite\obj\Debug\netcoreapp2.0\TestWebSite.csprojResolveAssemblyReference.cache
+D:\project_source\VLP_FOYOUNG\TestWebSite\obj\Debug\netcoreapp2.0\TestWebSite.csproj.CoreCompileInputs.cache
+D:\project_source\VLP_FOYOUNG\TestWebSite\obj\Debug\netcoreapp2.0\TestWebSite.AssemblyInfoInputs.cache
+D:\project_source\VLP_FOYOUNG\TestWebSite\obj\Debug\netcoreapp2.0\TestWebSite.AssemblyInfo.cs
+D:\project_source\VLP_FOYOUNG\TestWebSite\obj\Debug\netcoreapp2.0\TestWebSite.dll
+D:\project_source\VLP_FOYOUNG\TestWebSite\obj\Debug\netcoreapp2.0\TestWebSite.pdb
