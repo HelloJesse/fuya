@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using GetSingleShipInfo.Data;
 using GetSingleShipInfo.Models;
 
+
 namespace GetSingleShipInfo
 {
     public partial class MainForm : Form
@@ -100,6 +101,7 @@ namespace GetSingleShipInfo
                 if (DateTime.Now.ToString("mm").Equals("59"))
                 {
                     this.rtbResult.Text = "";
+                    
                 }
 
                 AppendMessage(string.Format("\r\n[{0}]开始查询已安排的船舶跟踪任务...\r\n", DateTime.Now));
@@ -155,8 +157,45 @@ namespace GetSingleShipInfo
                             foreach (Hashtable row in rows)
                             {
                                 var trackInfo = new TrackInfo(row);
-                                if (_trackInfoRepository.ExistsByShipIdAndLasttime(trackInfo.ShipId, trackInfo.Lasttime))
-                                    continue;
+                                if (_trackInfoRepository.ExistsByShipIdAndLasttime(trackInfo.ShipId, trackInfo.Lasttime)) {
+                                    DateTime dttime = DateTime.Now;
+                                    DateTime time = SpecialFunctions.ConvertIntDateTime(trackInfo.Lasttime);
+                                    //计算出相差的秒数
+                                    int sec = (int)(dttime - time).TotalSeconds;
+                                    if (sec < 120)
+                                    {
+                                        //不考虑 为null的情况  拿到角度（度）
+                                        double angle = ((trackInfo.Heading > 35990 || trackInfo.Heading <= 0) ? trackInfo.Course * 1.0 : trackInfo.Heading * 1.0) / 100;
+                                        //米/秒
+                                        double speed = trackInfo.Speed * 1.0 / 1000;
+                                        //距离（海里 ） 按照中国标准算（1海里=1.852公里=1852米）
+                                        double distance = sec * speed / 1852;
+                                        ////纬度 换度数
+                                        //string lat = SpecialFunctions.ConvertDigitalToDegrees(trackInfo.Latitude * 1.0 / 1000000);
+                                        ////经度 换度数
+                                        //string lon = SpecialFunctions.ConvertDigitalToDegrees(trackInfo.Longitude * 1.0 / 1000000);
+                                        //根据角度不同 cos 会自动正负  无需单独处理
+                                        double deviationLat = Math.Cos(angle) * distance * 10000;
+                                        //产生的新经度
+                                        double latNew = deviationLat + trackInfo.Latitude;
+
+                                        double m = SpecialFunctions.ConvertDigitalToDegrees((latNew + deviationLat) * 1.0 / 2000000);
+
+                                        double depm = Math.Sin(angle) * distance * (1 / Math.Cos(m)) * 10000;
+
+                                        double lonNew = depm + trackInfo.Longitude;
+
+
+                                        trackInfo.Lasttime = SpecialFunctions.ConvertDateTimeInt(dttime);
+                                        //  LogUtilities.WriteLine($"dt:{dt.ToString()},time:{time},latNew：{(int)latNew},lonNew{(int)lonNew},own:{ JsonConvert.SerializeObject(trackInfo)}");
+                                        trackInfo.Latitude = (int)latNew;
+                                        trackInfo.Longitude = (int)lonNew;
+                                        trackInfo.Course = 0;
+                                        _trackInfoRepository.Insert(trackInfo);
+                                    }
+                                        continue;
+                                }
+                                  
                                 
                                 //保存船舶信息
                                 sqlCmmd = GetShipInfoCommd(row, taskId, cnn);

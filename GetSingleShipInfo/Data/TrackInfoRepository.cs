@@ -15,6 +15,7 @@ namespace GetSingleShipInfo.Data
         private IMongoClient _client;
         private IMongoDatabase _database;
         private string _collectionName = "track_infos";
+       // private string _collectionNameNew = "track_infos_new";
         private IMongoCollection<TrackInfo> _collection;
 
 
@@ -37,7 +38,7 @@ namespace GetSingleShipInfo.Data
         public TrackInfoRepository()
         {
             _client = new MongoClient();
-            _database = _client.GetDatabase("fuya");
+            _database = _client.GetDatabase("fuyatest");
 
             CheckAndCreateCollection();
         }
